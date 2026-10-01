@@ -20,20 +20,21 @@ const icon = (size, pad) => `<html><head><style>${fonts}html,body{margin:0}body{
   <body><div class="in">${dots(size * .085, size * .035)}<b>AMA</b></div></body></html>`;
 
 const guests = data.sessions.filter(s => s.status !== "upcoming").sort((a, b) => b.held.localeCompare(a.held)).slice(0, 4);
+// Centered on purpose: Slack crops link previews to a square around the middle, LinkedIn and iMessage show it wide
 const og = `<html><head><style>${fonts}html,body{margin:0}
-  body{width:1200px;height:630px;background:linear-gradient(180deg,#D7EBFE 0,#F4F3F0 420px);font-family:H;color:#1B1A18;padding:76px 84px;box-sizing:border-box;display:flex;flex-direction:column}
-  .eye{display:flex;align-items:center;gap:16px;font:600 19px/1 H;letter-spacing:.14em;text-transform:uppercase;color:#55534E}
-  h1{margin:34px 0 0;font:700 92px/1 H;letter-spacing:-.045em}
-  h1 em{font-style:normal;color:#395AFA}
-  p{margin:26px 0 0;font:500 31px/1.35 H;color:#55534E;max-width:900px;letter-spacing:-.01em}
-  .row{margin-top:auto;display:flex;gap:16px}
-  .g{display:flex;align-items:center;gap:14px;background:#FEFDFB;border-radius:999px;padding:9px 24px 9px 9px;box-shadow:0 1px 2px rgba(21,21,24,.05),0 14px 36px -18px rgba(21,21,24,.25)}
-  .g img{width:58px;height:58px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #FEFDFB,0 0 0 5px #0667D9}
-  .g b{display:block;font:700 23px/1.15 H} .g small{display:block;font:500 17px/1.2 H;color:#7B7974;margin-top:3px}</style></head>
-  <body><div class="eye">${dots(15, 7)}<span>From the Clay community Slack</span></div>
-  <h1>Clay AMA <em>Compendium</em></h1>
-  <p>Every answer from the community's Ask Me Anything sessions. Find one by topic, or swipe through an AMA in a few minutes.</p>
-  <div class="row">${guests.map(s => `<div class="g"><img src="${img(s.photo)}"><span><b>${s.guest}</b><small>${s.role}</small></span></div>`).join("")}</div>
+  body{width:1200px;height:630px;background:radial-gradient(ellipse 70% 90% at 50% 0%,#D7EBFE 0,#E9F1F8 45%,#F4F3F0 100%);font-family:H;color:#1B1A18;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+  .eye{display:flex;align-items:center;gap:14px;font:600 17px/1 H;letter-spacing:.16em;text-transform:uppercase;color:#55534E}
+  h1{margin:30px 0 0;font:700 96px/.98 H;letter-spacing:-.05em}
+  h1 em{display:block;font-style:normal;color:#395AFA}
+  .ppl{margin-top:38px;display:flex;align-items:center;gap:16px}
+  .stack{display:flex}
+  .stack img{width:64px;height:64px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 4px #F4F3F0;margin-left:-14px}
+  .stack img:first-child{margin-left:0}
+  .ppl span{font:600 22px/1.25 H;color:#55534E;text-align:left}
+  .ppl b{display:block;color:#1B1A18;font-weight:700}</style></head>
+  <body><div class="eye">${dots(13, 6)}<span>Clay community</span></div>
+  <h1>Clay AMA<em>Compendium</em></h1>
+  <div class="ppl"><div class="stack">${guests.map(s => `<img src="${img(s.photo)}">`).join("")}</div><span><b>Every AMA answer</b>${guests.length === 1 ? guests[0].guest : guests.map(s => s.guest.split(" ")[0]).join(", ").replace(/, ([^,]*)$/, " & $1")}</span></div>
   </body></html>`;
 
 const b = await chromium.launch();
