@@ -37,7 +37,7 @@ Nothing is paraphrased. The only written-by-AI text per thread is its short titl
 | `src/index.html` | The app: one file of HTML, CSS and vanilla JS. Also published as a Claude artifact. |
 | `src/sw.js` | Service worker template (offline, instant repeat visits). |
 | `public/` | Data, report page, guest and member photos, icons, PDF libraries. |
-| `build.mjs` | Dependency-free build: page head and metadata, manifest, RSS, sitemap, versioned service worker. |
+| `build.mjs` | Dependency-free build: page head and metadata, the answer cards prerendered into the HTML (so crawlers and the first paint get them without JavaScript), FAQ structured data, self-hosted fonts, manifest, RSS, sitemap, versioned service worker. |
 | `site.config.json` | Title, domain, analytics keys. |
 | `tools/render-images.mjs` | Renders the app icons and the link-preview image (needs Playwright). |
 | `tools/artifact/` | Builds the template the Claude artifact copy needs. |
