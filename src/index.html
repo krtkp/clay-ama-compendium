@@ -897,6 +897,12 @@ footer .flinks a:hover{color:var(--ink); text-decoration:underline; text-underli
 .dctl{grid-template-columns:1fr 1fr}
 .dctl .dbtn{min-height:48px}
 .dbtn.keep{background:var(--btn); color:var(--btn-ink)}
+.dend .keepall{display:flex; align-items:center; justify-content:center; gap:8px; width:100%; min-height:46px; border-radius:14px; font-size:15px}
+.signin{display:flex; gap:8px; flex-wrap:wrap}
+.signin input{flex:1 1 220px; min-height:44px; border:1.5px solid var(--rule2); border-radius:12px; padding:0 14px; background:var(--surface); font:400 15px/1 var(--sans)}
+.signin input:focus{outline:none; border-color:var(--accent)}
+.toast{width:max-content}
+.toast > span{flex:1 1 auto; min-width:0}
 .keptchip .n{font:500 12.5px/1 var(--sans); color:var(--faint); font-variant-numeric:tabular-nums}
 .keptchip[aria-pressed="true"] .n{color:inherit; opacity:.75}
 .keptchip svg{color:var(--accent)}
@@ -1040,7 +1046,7 @@ canvas.confetti{position:fixed; inset:0; width:100vw; height:100vh; pointer-even
     <div class="hostcard" id="hostcard"></div>
     <p>Unofficial, community-made. Answers are each guest's own views, not Clay's.</p>
     <p><span id="synced"></span> · Corrections: message Kartik P. in the Clay Slack</p>
-    <p class="flinks"><a href="#" data-view="feed">All answers</a> · <a href="#topics" data-view="lib">By topic</a></p>
+    <p class="flinks"><a href="#" data-view="feed">All answers</a> · <a href="#topics" data-view="lib">By topic</a><span class="signinlink" hidden> · <a href="#signin">Editor sign-in</a></span></p>
   </footer>
 </div>
 
@@ -1191,6 +1197,8 @@ function routeFromHash(animate = true, was = ""){
   const ds = deckSpec(h);
   if (ds){ openDeck(ds, was); return; }
   if (DECK.open) closeDeck();
+  if (h === "signin" || h === "signin-expired"){ openSignin(h === "signin-expired"); history.replaceState(null, "", location.pathname + location.search); prevHash = ""; return; }
+  if (h === "toolbox"){ history.replaceState(null, "", location.pathname + location.search); prevHash = ""; if (caps.editor){ modalBack = null; openModal("Toolbox", editorHTML()); } else pendingToolbox = true; return; }
   if (h === "kept"){ st.kept = true; st.asker = null; st.askerIsMe = false; st.dd = null; setView("feed", false); renderResults(); window.scrollTo({ top: Math.max(0, $("#rbar").getBoundingClientRect().top + scrollY - 72), behavior: "instant" }); return; }
   if (h && QAS.some(q => q.id === h)){ setView("feed", false); jumpTo(h); return; }
   setView(h.startsWith("topics") ? "lib" : "feed", animate);
@@ -1740,7 +1748,7 @@ function card(qa, opt = {}){
     : `<div class="pbar"><span class="duo">${personPill(qa.asker, qa)}<span class="amp">&amp;</span>${personPill(s.guest, qa)}</span>${after}${stats}</div>`;
   const chips = (gold ? `<span class="rk gold">${ICON_STAR}Most upvoted of all time</span>` : "") + (opt.rank ? `<span class="rk"><b>#${opt.rank}</b><span class="rkl"> ${esc(opt.rankLabel)}</span></span>` : "");
   const ribbon = chips ? `<div class="ribbon">${chips}</div>` : "";
-  const hideBtn = caps.editor && !opt.label ? `<button class="hidebtn" type="button" data-hide="${esc(qa.id)}" title="Hide from the site (editors only)" aria-label="Hide this entry from the site">${ICON_EYEOFF}</button>` : "";
+  const hideBtn = caps.editor && caps.moderate && !opt.label ? `<button class="hidebtn" type="button" data-hide="${esc(qa.id)}" title="Hide from the site (editors only)" aria-label="Hide this entry from the site">${ICON_EYEOFF}</button>` : "";
   return `<article class="qa${opt.label !== undefined ? " mcard" : ""}${opt.rank ? ` rank rank${opt.rank}` : ""}${gold ? " alltime" : ""}${open ? " open" : ""}" id="${esc(key)}" data-card="${esc(key)}" tabindex="0" aria-expanded="${open}" aria-label="${opt.rank ? `${esc(opt.rankLabel)}: ` : ""}${esc(qa.title)}, ${esc(firstName(qa.asker))} and ${esc(firstName(s.guest))}">
     ${ribbon}
     <div class="phead"><h3>${esc(qa.title)}</h3>${hideBtn}</div>
@@ -1779,11 +1787,11 @@ function renderAdmin(){
 function editorHTML(){
   const byId = new Map(DATA.qas.map(q => [q.id, q]));
   const rows = MOD.hidden.slice().reverse().map(h => { const q = byId.get(h.id); if (!q) return "";
-    return `<li><div><b>${esc(q.title)}</b><span>${esc(q.asker)} &amp; ${esc(SESS[q.session]?.guest || "")}</span><span class="when">Hidden ${esc(fmtDate(new Date(h.at)))}</span></div><button class="btn small" type="button" data-restore="${esc(h.id)}">Restore</button></li>`; }).join("");
+    return `<li><div><b>${esc(q.title)}</b><span>${esc(q.asker)} &amp; ${esc(SESS[q.session]?.guest || "")}</span><span class="when">Hidden ${esc(fmtDate(new Date(h.at)))}${h.by ? ` by ${esc(h.by)}` : ""}</span></div>${caps.moderate ? `<button class="btn small" type="button" data-restore="${esc(h.id)}">Restore</button>` : ""}</li>`; }).join("");
   const open = QAS.filter(q => !q.answered);
   const guests = sessionsSorted();
   const tool = (t, d, btns) => `<div class="tool"><div class="tt"><b>${t}</b><small>${d}</small></div><div class="tb">${btns}</div></div>`;
-  return `<p class="note edsub">Editor-only. Visitors never see this button or anything in it.</p>
+  return `<p class="note edsub">${caps.who ? `Signed in as <b>${esc(caps.who.name)}</b> · <button class="linkbtn" type="button" data-signout="1">Sign out</button><br>` : ""}Editors only. Visitors never see this button or anything in it.</p>
     <div class="edsec"><h3>Reports</h3><div class="edlist">
       ${tool("Program report", "Every AMA so far, written for leadership", `<a class="btn small" href="report.html">Open</a>`)}
       ${tool("Guest report", "Numbers, a thank-you note and follow-ups for one guest", `<label class="gsel"><span class="sr">Guest</span><select id="tbGuest">${guests.map(x => `<option value="${esc(x.id)}"${x.id === st.tbGuest ? " selected" : ""}>${esc(x.guest)} · ${esc(sessDate(x).toLocaleDateString(undefined, { month: "short", year: "numeric" }))}</option>`).join("")}</select></label><button class="btn small" type="button" data-tb="guestreport">Open</button>`)}
@@ -1795,7 +1803,8 @@ function editorHTML(){
     <div class="edsec"><h3>Maintain</h3><div class="edlist">
       ${tool("Export the archive", "Every question and answer, for a Clay table, a sheet, or a backup", caps.downloads ? `<button class="btn small" type="button" data-tb="csv">CSV</button><button class="btn small" type="button" data-tb="md">Markdown</button>` : `<span class="note">Downloads aren't available in this view</span>`)}
       <div class="tool col"><div class="tt"><b>Hidden entries${MOD.hidden.length ? ` (${MOD.hidden.length})` : ""}</b><small>Cards you've hidden from visitors</small></div>
-        ${rows ? `<ul class="edhidden">${rows}</ul>` : `<p class="note">Nothing is hidden. Use the <span class="kbd">${ICON_EYEOFF}</span> button on any question to hide it.</p>`}</div>
+        ${rows ? `<ul class="edhidden">${rows}</ul>` : `<p class="note">Nothing is hidden. Use the <span class="kbd">${ICON_EYEOFF}</span> button on any question to hide it.</p>`}
+        ${caps.moderate ? "" : `<p class="note">Hide and restore entries from the Toolbox on <a href="${esc(PUBLIC_URL)}#signin" target="_blank" rel="noopener">${esc(PUBLIC_URL.replace(/^https:\/\/|\/$/g, ""))}</a>, so every visitor sees the change.</p>`}</div>
     </div></div>`;
 }
 // Toolbox actions
@@ -1842,6 +1851,7 @@ function toolbox(action, btn){
   }
 }
 async function saveModeration(next, after){
+  if (ON_SITE) return siteModeration(after);
   if (!caps.artifact){ toast("Editing isn't available in this view."); return; }
   let tpl;
   try { tpl = await (await fetch("admin/page.txt", { cache: "no-store" })).text(); } catch { toast("Couldn't load the page to save. Try again."); return; }
@@ -1865,6 +1875,56 @@ function hideEntry(id){
 function restoreEntry(id){
   const q = DATA.qas.find(x => x.id === id);
   saveModeration({ hidden: MOD.hidden.filter(h => h.id !== id) }, { kind: "restored", id, title: q ? q.title : "" });
+}
+// On the website: the change is saved to the repo and the site redeploys for everyone; this view updates right away
+async function siteModeration(after){
+  toast("Saving…", 20000);
+  let r, j = {};
+  try { r = await fetch("/api/moderation", { method: "POST", headers: { "Content-Type": "application/json" }, credentials: "same-origin", body: JSON.stringify({ action: after.kind === "hid" ? "hide" : "restore", id: after.id }) }); j = await r.json().catch(() => ({})); } catch {}
+  if (!r || !r.ok){
+    if (r && r.status === 401){ caps.editor = false; caps.moderate = false; caps.who = null; renderAdmin(); renderResults(); toast(`Your sign-in has expired. <a class="linkbtn" href="#signin">Sign in again</a>`, 10000); return; }
+    toast("Couldn't save that change. Try again in a moment."); return;
+  }
+  MOD.hidden = Array.isArray(j.hidden) ? j.hidden : MOD.hidden;
+  HIDDEN.clear(); MOD.hidden.forEach(h => HIDDEN.add(h.id));
+  track(after.kind === "hid" ? "editor_hide" : "editor_restore", { id: after.id });
+  await load();
+  if (!$("#modal").hidden && $("#mtitle").textContent === "Toolbox") $("#mcontent").innerHTML = editorHTML();
+  toast(after.kind === "hid" ? `<span>Hidden “${esc(after.title)}”. Gone for everyone in about a minute.</span><button class="linkbtn" type="button" data-restore="${esc(after.id)}">Undo</button>` : `<span>Restored “${esc(after.title)}”. Back for everyone in about a minute.</span>`, 9000);
+}
+// Editor sign-in by emailed link (website only)
+let pendingToolbox = false;
+function openSignin(expired){
+  if (!ON_SITE) return;
+  if (caps.editor){ modalBack = null; openModal("Toolbox", editorHTML()); return; }
+  modalBack = null;
+  openModal("Editor sign-in", `<p class="note">${expired ? "That link has expired or was already replaced. Request a new one." : "For the people who look after the Compendium. Enter your email and we'll send a sign-in link."}</p>
+    <form id="signinForm" class="signin"><input id="signinEmail" type="email" autocomplete="email" required placeholder="you@company.com" aria-label="Email address"><button class="btn primary" type="submit">Email me a link</button></form>
+    <p class="note" id="signinStatus" role="status"></p>`);
+  setTimeout(() => $("#signinEmail")?.focus(), 60);
+}
+document.addEventListener("submit", async e => {
+  if (e.target.id !== "signinForm") return;
+  e.preventDefault();
+  const btn = e.target.querySelector("button"), status = $("#signinStatus"), email = $("#signinEmail").value.trim();
+  btn.disabled = true; btn.textContent = "Sending…";
+  try { await fetch("/api/auth/request", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email }) }); } catch {}
+  e.target.hidden = true;
+  status.innerHTML = `If <b>${esc(email)}</b> is on the editor list, a sign-in link is on its way. It works for 15 minutes.`;
+});
+async function checkEditor(){
+  if (!ON_SITE) return;
+  $(".signinlink").hidden = false;
+  if (!/(^|;\s*)ama_ed=1/.test(document.cookie)) return;
+  try {
+    const r = await fetch("/api/me", { credentials: "same-origin", cache: "no-store" });
+    if (!r.ok) return;
+    const me = await r.json();
+    caps.editor = true; caps.moderate = true; caps.who = me;
+    $(".signinlink").hidden = true;
+    const go = () => { renderAdmin(); renderResults(); if (pendingToolbox){ pendingToolbox = false; modalBack = null; openModal("Toolbox", editorHTML()); } };
+    if (DATA) go(); else document.addEventListener("ama:loaded", go, { once: true });
+  } catch {}
 }
 function showPendingToast(){
   let t = null; try { t = JSON.parse(sessionStorage.getItem("ama.toast") || "null"); sessionStorage.removeItem("ama.toast"); } catch {}
@@ -1979,6 +2039,8 @@ document.addEventListener("click", e => {
   if (t.closest("[data-deckkeep]")){ deckThrow(1); return; }
   if (t.closest("[data-deckflip]")){ deckFlip(); return; }
   if (t.closest("[data-deckcopy]")){ deckCopy(); return; }
+  if (t.closest("[data-keptlink]")){ shareCollection(t.closest("[data-keptlink]")); return; }
+  if (t.closest("[data-keepall]")){ const n = DECK.list.filter(q => !KEPT.has(q.id)); n.forEach(q => { KEPT.delete(q.id); KEPT.add(q.id); DECK.kept.push(q.id); }); saveKept(); updateCount(true); track("collection_keep_all", { count: n.length }); renderDeck(true); return; }
   if (t.closest("[data-deckrestart]")){ DECK.i = 0; DECK.kept = []; DECK.hist = []; renderDeck(true); return; }
   if (t.closest("[data-deckundo]")){ deckUndo(); return; }
   if (t.closest("[data-deckkept]")){ openKeptSheet(); return; }
@@ -1997,6 +2059,7 @@ document.addEventListener("click", e => {
   if (t.closest("[data-keptview]")){ st.dd = null; st.kept = !st.kept; if (st.kept){ st.asker = null; st.askerIsMe = false; } try { history.replaceState(null, "", st.kept ? "#kept" : "#all"); prevHash = location.hash; } catch {} renderResults(); return; }
   if (t.closest("[data-keptclear]")){ KEPT.clear(); saveKept(); if (!$("#modal").hidden) openKeptSheet(); if (DECK.open) updateCount(true); if (VIEW === "feed") renderResults(); return; }
   if (t.closest("[data-keptcopy]")){ keptCopy(); return; }
+  if (t.closest("[data-signout]")){ fetch("/api/auth/signout", { method: "POST", credentials: "same-origin" }).finally(() => { caps.editor = false; caps.moderate = false; caps.who = null; closeModal(); renderAdmin(); renderResults(); $(".signinlink").hidden = false; toast("Signed out."); }); return; }
   const g = t.closest("[data-guest]"); if (g){ st.dd = null; setGuest(g.dataset.guest); return; }
   const hb = t.closest("[data-hide]"); if (hb){ hideEntry(hb.dataset.hide); return; }
   const rb = t.closest("[data-restore]"); if (rb){ restoreEntry(rb.dataset.restore); return; }
@@ -2178,7 +2241,7 @@ const ICON_CHECK = `<svg width="22" height="22" viewBox="0 0 16 16" aria-hidden=
 const STORAGE_OK = (() => { try { localStorage.setItem("ama.t", "1"); localStorage.removeItem("ama.t"); return true; } catch { return false; } })();
 const ENDINGS = ["You're all caught up!", "That's all, folks.", "Woooo, you made it.", "Every card, turned over.", "Deck done. Nicely."];
 const DECK = { open: false, busy: false, list: [], i: 0, kept: [], hist: [], title: "", spec: null, from: "", opener: null };
-const deckSpec = h => { const m = String(h || "").match(/^deck\/(s|t|q|all)(?:\/(.*))?$/); if (!m) return null; try { return { kind: m[1], key: m[2] ? decodeURIComponent(m[2]) : "" }; } catch { return null; } };
+const deckSpec = h => { const m = String(h || "").match(/^deck\/(s|t|q|k|all)(?:\/(.*))?$/); if (!m) return null; try { return { kind: m[1], key: m[2] ? decodeURIComponent(m[2]) : "" }; } catch { return null; } };
 const deckHash = sp => "deck/" + sp.kind + (sp.key ? "/" + encodeURIComponent(sp.key) : "");
 const deckMins = n => Math.max(1, Math.round(n * 11 / 60));   // about 11 seconds a card
 const curatorLast = q => (DATA.curator && q.asker === DATA.curator) ? 1 : 0;
@@ -2191,7 +2254,8 @@ function deckList(spec){
   if (spec.kind === "s"){ const s = SESS[spec.key]; if (!s) return null; list = list.filter(q => q.session === spec.key); title = `${firstName(s.guest)}'s AMA`; }
   else if (spec.kind === "t"){ const t = TOPICS.find(x => libSlug(x) === spec.key); if (!t) return null; list = list.filter(q => q.tags.includes(t)); title = t; }
   else if (spec.kind === "q"){ list = score(spec.key, list).map(x => x.qa); title = `“${spec.key}”`; }
-  if (spec.kind !== "q") list = list.slice().sort(rankVotes);   // most upvoted first, so stopping early still means you saw the best
+  else if (spec.kind === "k"){ const ids = String(spec.key).split("-").filter(Boolean).map(x => "msg_" + x); list = ids.map(id => list.find(q => q.id === id)).filter(Boolean); title = "Shared collection"; }
+  if (spec.kind !== "q" && spec.kind !== "k") list = list.slice().sort(rankVotes);   // most upvoted first, so stopping early still means you saw the best
   return list.length ? { list, title } : null;
 }
 function openDeck(spec, from){
@@ -2385,14 +2449,16 @@ const keptRows = (list, mixed, max) => list.slice(0, max).map(q => `<li><button 
 function deckEndHTML(){
   const n = DECK.list.length, kept = DECK.kept.map(id => QAS.find(q => q.id === id)).filter(Boolean), mixed = DECK.spec.kind !== "s";
   const others = sessionsSorted().filter(s => !(DECK.spec.kind === "s" && s.id === DECK.spec.key) && sessionStats(s).answered);
+  const shared = DECK.spec.kind === "k", notYet = shared ? DECK.list.filter(q => !KEPT.has(q.id)) : [];
   const what = DECK.spec.kind === "s" ? `All ${n} from ${esc(DECK.title)}` : DECK.spec.kind === "t" ? `All ${n} on ${esc(DECK.title)}` : `All ${n} cards`;
   const ch = slackChannel();
   return `<div class="dend">
     <div class="mark">${ICON_CHECK}</div>
     <h2>${ENDINGS[Math.floor(Math.random() * ENDINGS.length)]}</h2>
     <p class="sub">${what}${kept.length ? ` · <b>${kept.length} kept</b>` : ""}</p>
-    ${kept.length ? `<ul class="kept">${keptRows(kept, mixed, 5)}</ul>` : `<p class="sub">Nothing kept this time. Swipe right on anything worth coming back to.</p>`}
-    <div class="dend-act"><button class="btn small primary" type="button" data-deckclose="1">${ICON_HOME}Home</button>${kept.length ? `<button class="btn small" type="button" data-deckcopy="1">${ICON_SHARE}Copy for Slack</button>${caps.downloads ? `<button class="btn small" type="button" data-keptfile="1">${ICON_DL}Save file</button>` : ""}` : ""}<button class="btn small" type="button" data-deckrestart="1">Start over</button></div>
+    ${kept.length ? `<ul class="kept">${keptRows(kept, mixed, 5)}</ul>` : shared ? (notYet.length ? `<p class="sub">Someone shared these with you. Keep the whole collection in one tap.</p>` : "") : `<p class="sub">Nothing kept this time. Swipe right on anything worth coming back to.</p>`}
+    ${notYet.length ? `<button class="btn primary keepall" type="button" data-keepall="1">${ICON_KEEP_FILL}Keep all ${notYet.length}</button>` : ""}
+    <div class="dend-act"><button class="btn small${notYet.length ? "" : " primary"}" type="button" data-deckclose="1">${ICON_HOME}Home</button>${kept.length ? `<button class="btn small" type="button" data-deckcopy="1">${ICON_SHARE}Copy for Slack</button>${caps.downloads ? `<button class="btn small" type="button" data-keptfile="1">${ICON_DL}Save file</button>` : ""}` : ""}<button class="btn small" type="button" data-deckrestart="1">Start over</button></div>
     ${kept.length && !STORAGE_OK ? `<p class="fine">Kept answers last for this visit here. Copy or save them to take them with you.</p>` : ""}
     <div class="nextup"><div class="hk">Next up</div><div class="nrow">
       ${others.map(s => { const x = sessionStats(s); return `<a class="nchip" href="#deck/s/${esc(s.id)}">${s.photo ? `<img src="${esc(s.photo)}" alt="">` : ""}<span>${esc(firstName(s.guest))}<small>${x.answered} cards</small></span></a>`; }).join("")}
@@ -2408,7 +2474,7 @@ function openKeptSheet(){
   modalBack = null;
   openModal(`Kept${list.length ? ` · ${list.length}` : ""}`, list.length ? `
     <ul class="kept sheet">${keptRows(list, true, 200)}</ul>
-    <div class="mact"><button class="btn small primary" type="button" data-keptcopy="1">${ICON_SHARE}Copy for Slack</button>${caps.downloads ? `<button class="btn small" type="button" data-keptfile="1">${ICON_DL}Save file</button>` : ""}<span class="sp"></span><button class="btn small" type="button" data-keptclear="1">Clear</button></div>
+    <div class="mact"><button class="btn small primary" type="button" data-keptlink="1">${ICON_CARDS}Share collection</button><button class="btn small" type="button" data-keptcopy="1">${ICON_SHARE}Copy for Slack</button>${caps.downloads ? `<button class="btn small" type="button" data-keptfile="1">${ICON_DL}Save file</button>` : ""}<span class="sp"></span><button class="btn small" type="button" data-keptclear="1">Clear</button></div>
     <p class="note">${STORAGE_OK ? "Saved on this device. Copy or save the list to take it anywhere." : "Kept answers last for this visit here. Copy or save the list to take it with you."}</p>`
     : `<p class="note">Nothing kept yet. Swipe right on a card, or tap Keep, and it lands here.</p>`);
 }
@@ -2424,6 +2490,16 @@ function keptMarkdown(list){
   return `# Answers I kept from Clay's AMAs\n\n` + list.map(q => `## ${q.title}\n*${SESS[q.session].guest} · asked by ${q.asker}*\n\n${guestAnswer(q)}\n\n${q.url ? `Thread: ${q.url}\n\n` : ""}`).join("") + `From the Clay AMA Compendium: ${SITE_URL}\n`;
 }
 function keptFile(btn){ const list = keptList(); track("kept_download", { count: list.length }); if (list.length) download("clay-ama-kept.md", new Blob([keptMarkdown(list)], { type: "text/markdown" }), btn); }
+// One link carries a whole collection: open it on another device, or send it to someone, and it plays as a deck
+function collectionURL(list){ return SITE_URL + "#deck/k/" + list.map(q => q.id.replace(/^msg_/, "")).join("-"); }
+async function shareCollection(btn){
+  const list = keptList(); if (!list.length) return;
+  const url = collectionURL(list), label = btn.innerHTML;
+  track("collection_share", { count: list.length });
+  if (navigator.share && matchMedia("(pointer:coarse)").matches){ try { await navigator.share({ title: "Answers from Clay's AMAs", text: `${list.length} answer${list.length === 1 ? "" : "s"} from Clay's AMAs`, url }); return; } catch (e) { if (e?.name === "AbortError") return; } }
+  try { await navigator.clipboard.writeText(url); btn.textContent = "Link copied"; setTimeout(() => { btn.innerHTML = label; }, 1800); }
+  catch { textSheet("Share collection", "Open this link on another device to bring your kept answers with you, or send it to someone.", url); }
+}
 function keptCopy(){ copyList(keptList(), "Answers I kept from Clay's AMAs", "More in the Clay AMA Compendium"); }
 function deckCopy(){
   const kept = DECK.kept.map(id => QAS.find(q => q.id === id)).filter(Boolean); if (!kept.length) return;
@@ -2497,6 +2573,7 @@ $("#askForm").addEventListener("submit", e => { e.preventDefault(); $("#q").blur
 
 // ---------- capabilities (light up when available) ----------
 load();
+checkEditor();
 if (window.claude?.use){
   claude.use("downloads").then(d => { caps.downloads = d; if (d && DATA) renderResults(); }).catch(() => {});
   Promise.all([claude.use("artifact").catch(() => null), claude.use("user").catch(() => null)]).then(async ([art, user]) => {

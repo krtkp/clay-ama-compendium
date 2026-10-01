@@ -16,8 +16,12 @@ cpSync("public", "dist", { recursive: true });
 const data = JSON.parse(readFileSync("public/ama.json", "utf8"));
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const hidden = new Set();
-const page = readFileSync("src/index.html", "utf8");
-try { JSON.parse(page.match(/<script id="moderation" type="application\/json">([\s\S]*?)<\/script>/)[1]).hidden.forEach(h => hidden.add(h.id)); } catch {}
+// Hidden entries live in moderation.json (the Toolbox writes it); they are baked into the page at build time
+const moderation = existsSync("moderation.json") ? JSON.parse(readFileSync("moderation.json", "utf8")) : { hidden: [] };
+moderation.hidden = Array.isArray(moderation.hidden) ? moderation.hidden : [];
+moderation.hidden.forEach(h => hidden.add(h.id));
+const modBlock = '<script id="moderation" type="application/json">' + JSON.stringify(moderation).replace(/</g, "\\u003c") + "</script>";
+const page = readFileSync("src/index.html", "utf8").replace(/<script id="moderation" type="application\/json">[\s\S]*?<\/script>/, () => modBlock);
 const qas = data.qas.filter(q => !q.hidden && !hidden.has(q.id) && q.answered);
 const sessions = data.sessions.filter(s => s.status !== "upcoming");
 
