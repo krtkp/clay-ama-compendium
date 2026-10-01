@@ -903,6 +903,23 @@ footer .flinks a:hover{color:var(--ink); text-decoration:underline; text-underli
 .signin input:focus{outline:none; border-color:var(--accent)}
 .toast{width:max-content}
 .toast > span{flex:1 1 auto; min-width:0}
+.toast:has(.t1){flex-wrap:nowrap}
+.toast .t1{flex:1 1 auto; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.toast .t1 + .linkbtn{flex:none}
+.askcta{display:flex; align-items:center; gap:12px; margin-top:4px; padding:14px 16px; border-radius:16px; border:1.5px dashed color-mix(in srgb, var(--ink) 18%, transparent); color:var(--ink); text-decoration:none; transition:border-color .15s, background-color .15s, transform var(--t-quick) var(--spring-snap)}
+.askcta:hover{border-color:var(--accent); background:color-mix(in srgb, var(--accent) 5%, transparent)}
+.askcta:active{transform:scale(.99)}
+.askcta .ai{flex:none; width:34px; height:34px; border-radius:11px; display:grid; place-items:center; background:var(--accent-soft); color:var(--accent)}
+.askcta .at{flex:1; min-width:0; display:grid; gap:3px}
+.askcta b{font:600 14.5px/1.3 var(--sans)}
+.askcta small{font:500 12.5px/1.2 var(--sans); color:var(--faint)}
+.askcta .go{flex:none; color:var(--faint); font-weight:600}
+.empty + .askcta{margin-top:14px}
+#viewLib .askcta{margin-top:10px; padding:12px 14px}
+footer .about{max-width:640px; margin:6px 0 18px}
+footer .about h2{margin:0 0 6px; font:700 13px/1 var(--sans); text-transform:uppercase; letter-spacing:.1em; color:var(--faint)}
+footer .about p{margin:0 0 8px; color:var(--muted); font-size:14px; line-height:1.55}
+footer .about a{color:inherit; text-underline-offset:3px}
 .keptchip .n{font:500 12.5px/1 var(--sans); color:var(--faint); font-variant-numeric:tabular-nums}
 .keptchip[aria-pressed="true"] .n{color:inherit; opacity:.75}
 .keptchip svg{color:var(--accent)}
@@ -937,8 +954,8 @@ footer .flinks a:hover{color:var(--ink); text-decoration:underline; text-underli
 .deye .tg{flex:none}
 .deye .ap{flex:none; width:24px; height:24px; border-radius:50%; object-fit:cover; margin-right:-2px}
 .deye .ap.ph{display:grid; place-items:center; background:var(--sunk); color:var(--muted); font:700 9.5px/1 var(--sans); letter-spacing:0}
-.kmark{margin-left:auto; flex:none; display:inline-flex; color:var(--faint); opacity:.28; transition:opacity .2s, color .2s, transform .3s var(--spring-snap)}
-.kmark.on{color:var(--accent); opacity:1}
+.kmark{margin-left:auto; flex:none; display:none; color:var(--faint); opacity:.28; transition:opacity .2s, color .2s, transform .3s var(--spring-snap)}
+.kmark.on{display:inline-flex; color:var(--accent); opacity:1}
 .deye .tg + .kmark{margin-left:8px}
 .dmid{flex:1; min-height:0; display:flex; flex-direction:column; justify-content:center; padding:16px 0 14px; overflow:hidden}
 .dq{margin:0; color:var(--ink); font-weight:500; letter-spacing:-.015em; min-height:0; flex:0 1 auto; overflow:hidden; -webkit-line-clamp:unset; display:block}
@@ -1044,9 +1061,14 @@ canvas.confetti{position:fixed; inset:0; width:100vw; height:100vh; pointer-even
 
   <footer>
     <div class="hostcard" id="hostcard"></div>
-    <p>Unofficial, community-made. Answers are each guest's own views, not Clay's.</p>
-    <p><span id="synced"></span> · Corrections: message Kartik P. in the Clay Slack</p>
-    <p class="flinks"><a href="#" data-view="feed">All answers</a> · <a href="#topics" data-view="lib">By topic</a><span class="signinlink" hidden> · <a href="#signin">Editor sign-in</a></span></p>
+    <section class="about" id="about" aria-labelledby="about-h">
+      <h2 id="about-h">About</h2>
+      <p>Every question and answer from the Clay community's <a href="https://community.clay.com/x/10-ask-me-anything" target="_blank" rel="noopener">#10-ask-me-anything</a> channel, kept word for word so the answers stay easy to find after each live session. Nothing is edited; titles and topics are added to help you browse.</p>
+      <p>It updates itself every Monday from the public channel. Made by Kartik P., a member of the community. It isn't an official Clay project, and each answer is the guest's own view.</p>
+      <p>Asked or answered something you'd like removed or corrected? Message Kartik P. in the Clay Slack.</p>
+    </section>
+    <p><span id="synced"></span></p>
+    <p class="flinks"><a href="#" data-view="feed">All answers</a> · <a href="#topics" data-view="lib">By topic</a> · <a href="#about" data-about="1">About</a><span class="signinlink" hidden> · <a href="#signin">Editor sign-in</a></span></p>
   </footer>
 </div>
 
@@ -1583,10 +1605,7 @@ function filtered(){
     const g = SESS[feat].guest;
     const nextLikes = (list.filter(q => q.session === feat && !podium.includes(q))[0] || {}).likes;
     const tieTop = podium[1] && podium[1].likes === podium[0].likes;
-    const labels = [
-      tieTop ? `Tied for most upvoted in ${g}'s AMA` : `Most upvoted in ${g}'s AMA`,
-      tieTop ? "Tied for most upvoted" : "Second in upvotes",
-      podium[2] && podium[2].likes === podium[0].likes ? "Tied for most upvoted" : podium[2] && !tieTop && podium[2].likes === podium[1].likes ? "Tied for second in upvotes" : podium[2] && podium[2].likes === nextLikes ? "Tied for third in upvotes" : "Third in upvotes"];
+    const labels = [`Most upvoted in ${firstName(g)}'s AMA`, "Second most upvoted", "Third most upvoted"];
     podium.forEach((q, i) => RANKS.set(q.id, { rank: i + 1, rankLabel: labels[i] }));
     list = podium.concat(declump(list.filter(q => !RANKS.has(q.id)), q => q.session));
   }
@@ -1678,9 +1697,19 @@ function renderResults(){
       motion(thumb, [{ transform: `translateX(${lastThumb.left}px)`, width: lastThumb.width + "px" }, { transform: `translateX(${to.left}px)`, width: to.width + "px" }], { duration: M.base, easing: M.soft });
     lastThumb = to;
   } else lastThumb = null;
-  flipList(() => { $("#list").innerHTML = list.length ? list.map(qa => card(qa, RANKS.get(qa.id) || {})).join("")
-    : `<div class="empty">${st.q.trim() ? "No questions match those words. Try other words, a guest's or asker's name, or one of these topics:" : "Nothing here with these filters."}${st.q.trim() ? `<div class="suggest">${topTopics(3).map(t => `<button class="btn small" type="button" data-suggest="${esc(t)}">${esc(t)}</button>`).join("")}</div>` : ""}</div>`; });
+  flipList(() => { $("#list").innerHTML = list.length ? list.map(qa => card(qa, RANKS.get(qa.id) || {})).join("") + (st.kept || st.asker ? "" : askCTA(st.q.trim() ? "search" : "feed"))
+    : `<div class="empty">${st.q.trim() ? "No questions match those words. Try other words, a guest's or asker's name, or one of these topics:" : "Nothing here with these filters."}${st.q.trim() ? `<div class="suggest">${topTopics(3).map(t => `<button class="btn small" type="button" data-suggest="${esc(t)}">${esc(t)}</button>`).join("")}</div>` : ""}</div>${st.q.trim() ? askCTA("nomatch") : ""}`; });
 }
+// The way back into Slack: every list ends by inviting the next question
+function askCTA(where, topic){
+  const ch = DATA && DATA.slackBase ? DATA.slackBase.replace(/\/p$/, "") : null; if (!ch) return "";
+  const line = where === "nomatch" ? "Nobody has asked this yet. Ask it in the channel, and the next guest might answer."
+    : where === "topic" ? `Got a question about ${esc(topic.toLowerCase())}? Ask it for the next guest.`
+    : where === "search" ? "Didn't find quite what you were after? Ask it for the next guest."
+    : "Got a question for the next guest?";
+  return `<a class="askcta" href="${esc(ch)}" target="_blank" rel="noopener" data-askwhere="${esc(where)}"><span class="ai">${ICON_ASK}</span><span class="at"><b>${line}</b><small>Ask in #10-ask-me-anything · opens Slack</small></span><span class="go">↗</span></a>`;
+}
+const ICON_ASK = `<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.4 3.9c0-.9.7-1.6 1.6-1.6h8c.9 0 1.6.7 1.6 1.6v5.6c0 .9-.7 1.6-1.6 1.6H7.2l-3.1 2.6c-.3.2-.7 0-.7-.3v-2.3c-.6-.1-1-.7-1-1.3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M5.6 5.8h4.8M5.6 8h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>`;
 const topicSlug = t => "t-" + t.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 function topTopics(n){ const c = new Map(); QAS.forEach(q => q.answered && q.tags.forEach(t => c.set(t, (c.get(t) || 0) + 1))); return [...c.entries()].sort((a, b) => b[1] - a[1]).slice(0, n).map(x => x[0]); }
 function setAsker(name, remember){
@@ -1740,7 +1769,7 @@ const ICON_OUT = `<svg width="11" height="11" viewBox="0 0 12 12" aria-hidden="t
 function card(qa, opt = {}){
   const key = opt.key || qa.id, open = st.open.has(key);
   const s = SESS[qa.session], main = qa.replies.find(r => r.role === "guest"), n = qa.replies.length;
-  const stats = `<span class="stats2">${main ? `<span class="when"><span class="v">Chatted </span>${fmtDate(tsDate(main.ts))}</span>` : `<span class="when">Waiting for ${esc(firstName(s.guest))}</span>`}${qa.likes ? `<span class="ic" title="${qa.likes} upvote${qa.likes===1?"":"s"} on the question" aria-label="${qa.likes} upvotes">${ICON_UP}${qa.likes}</span>` : ""}${n && open ? `<span class="ic" title="${n} ${n===1?"reply":"replies"}" aria-label="${n} ${n===1?"reply":"replies"}">${ICON_REPLY}${n}</span>` : ""}</span>`;
+  const stats = `<span class="stats2">${main ? `<span class="when"><span class="v">Replied </span>${fmtDate(tsDate(main.ts))}</span>` : `<span class="when">Waiting for ${esc(firstName(s.guest))}</span>`}${qa.likes ? `<span class="ic" title="${qa.likes} upvote${qa.likes===1?"":"s"} on the question" aria-label="${qa.likes} upvotes">${ICON_UP}${qa.likes}</span>` : ""}${n && open ? `<span class="ic" title="${n} ${n===1?"reply":"replies"}" aria-label="${n} ${n===1?"reply":"replies"}">${ICON_REPLY}${n}</span>` : ""}</span>`;
   const after = qa.afterSession ? `<span class="pill">Asked after the session ended</span>` : "";
   const gold = qa.id === ALLTOP && !opt.label;
   const body = open
@@ -1890,7 +1919,7 @@ async function siteModeration(after){
   track(after.kind === "hid" ? "editor_hide" : "editor_restore", { id: after.id });
   await load();
   if (!$("#modal").hidden && $("#mtitle").textContent === "Toolbox") $("#mcontent").innerHTML = editorHTML();
-  toast(after.kind === "hid" ? `<span>Hidden “${esc(after.title)}”. Gone for everyone in about a minute.</span><button class="linkbtn" type="button" data-restore="${esc(after.id)}">Undo</button>` : `<span>Restored “${esc(after.title)}”. Back for everyone in about a minute.</span>`, 9000);
+  toast(after.kind === "hid" ? `<span class="t1">Hidden for everyone: <b>${esc(after.title)}</b></span><button class="linkbtn" type="button" data-restore="${esc(after.id)}">Undo</button>` : `<span class="t1">Restored for everyone: <b>${esc(after.title)}</b></span>`, 9000);
 }
 // Editor sign-in by emailed link (website only)
 let pendingToolbox = false;
@@ -2059,6 +2088,7 @@ document.addEventListener("click", e => {
   if (t.closest("[data-keptview]")){ st.dd = null; st.kept = !st.kept; if (st.kept){ st.asker = null; st.askerIsMe = false; } try { history.replaceState(null, "", st.kept ? "#kept" : "#all"); prevHash = location.hash; } catch {} renderResults(); return; }
   if (t.closest("[data-keptclear]")){ KEPT.clear(); saveKept(); if (!$("#modal").hidden) openKeptSheet(); if (DECK.open) updateCount(true); if (VIEW === "feed") renderResults(); return; }
   if (t.closest("[data-keptcopy]")){ keptCopy(); return; }
+  if (t.closest("[data-about]")){ e.preventDefault(); $("#about").scrollIntoView({ behavior: reduceMotion() ? "auto" : "smooth", block: "start" }); return; }
   if (t.closest("[data-signout]")){ fetch("/api/auth/signout", { method: "POST", credentials: "same-origin" }).finally(() => { caps.editor = false; caps.moderate = false; caps.who = null; closeModal(); renderAdmin(); renderResults(); $(".signinlink").hidden = false; toast("Signed out."); }); return; }
   const g = t.closest("[data-guest]"); if (g){ st.dd = null; setGuest(g.dataset.guest); return; }
   const hb = t.closest("[data-hide]"); if (hb){ hideEntry(hb.dataset.hide); return; }
@@ -2186,6 +2216,7 @@ function buildLibrary(){
       <div class="thead"><h2 id="${libSlug(t)}-h">${esc(t)}<span class="cnt">${qs.length}</span></h2><a class="btn small libdeck" href="#deck/t/${libSlug(t)}" aria-label="Swipe through ${esc(t)}">${ICON_CARDS}<span>Swipe</span></a><button class="btn small libshare" type="button" data-libshare="${esc(t)}" aria-label="Copy answers on ${esc(t)} for Slack">${ICON_SHARE}Copy for Slack</button></div>
       <div class="alist">${qs.slice(0, LIBSHOW).map(row).join("")}<div class="rest" hidden>${qs.slice(LIBSHOW).map(row).join("")}</div></div>
       ${qs.length > LIBSHOW ? `<button class="more" type="button" data-libmore="${qs.length}"><span>Show ${qs.length - LIBSHOW} more</span>${ICON_DOWN}</button>` : ""}
+      ${askCTA("topic", t)}
     </section>`).join("");
 }
 // Every link people copy points to the public website, including copies made inside the Claude artifact
@@ -2346,25 +2377,33 @@ function deckFlip(){
 }
 // The card flies off in the direction it was sent; the one behind it rises into place
 function deckThrow(dir, x = 0, y = 0, rot = 0){
+  if (DECK.busy && DECK.finish) DECK.finish();
   const top = $("#dstage .dcard.top"); if (!top || DECK.busy) return; DECK.busy = true;
   WHEEL.lock = true;
   if (dir > 0 && navigator.vibrate) try { navigator.vibrate(8); } catch {}
   const stamp = top.querySelector(dir > 0 ? ".stamp.keep" : ".stamp.next"); if (stamp) stamp.style.opacity = 1;
   const W = Math.max(innerWidth, 600);
-  const a = motion(top, [{ transform: `translate(${x}px, ${y}px) rotate(${rot}deg)` }, { transform: `translate(${dir * W * 1.15}px, ${y + 30}px) rotate(${dir * 22}deg)` }], { duration: 380, easing: "cubic-bezier(.3,.6,.55,1)", fill: "forwards" });
+  const a = motion(top, [{ transform: `translate(${x}px, ${y}px) rotate(${rot}deg)` }, { transform: `translate(${dir * W * 1.15}px, ${y + 30}px) rotate(${dir * 22}deg)` }], { duration: 300, easing: "cubic-bezier(.3,.6,.55,1)", fill: "forwards" });
   const b1 = $("#dstage .dcard.behind1"), b2 = $("#dstage .dcard.behind2");
-  const riseA = b1 ? motion(b1, [{ transform: "translateY(14px) scale(.955)" }, { transform: "none" }], { duration: 400, delay: 40, easing: M.soft, fill: "forwards" }) : null;
-  if (b2) motion(b2, [{ transform: "translateY(26px) scale(.91)", opacity: .72 }, { transform: "translateY(14px) scale(.955)", opacity: 1 }], { duration: 400, delay: 40, easing: M.soft, fill: "forwards" });
+  const riseA = b1 ? motion(b1, [{ transform: "translateY(14px) scale(.955)" }, { transform: "none" }], { duration: 300, easing: M.soft, fill: "forwards" }) : null;
+  const riseB = b2 ? motion(b2, [{ transform: "translateY(26px) scale(.91)", opacity: .72 }, { transform: "translateY(14px) scale(.955)", opacity: 1 }], { duration: 300, easing: M.soft, fill: "forwards" }) : null;
   const id = DECK.list[DECK.i].id, wasNew = !KEPT.has(id);
   DECK.hist.push({ i: DECK.i, dir, kept: dir > 0, wasNew });
   track(dir > 0 ? "card_keep" : "card_skip", { id, deck: deckHash(DECK.spec), position: DECK.i + 1 });
   if (dir > 0){ DECK.kept.push(id); KEPT.delete(id); KEPT.add(id); saveKept(); updateCount(true); }
   let ran = false;
-  const done = () => { if (ran) return; ran = true; DECK.busy = false; if (!DECK.open) return; DECK.i++; renderDeck(false); };
+  const done = () => { if (ran) return; ran = true; DECK.finish = null; DECK.busy = false; if (!DECK.open) return; DECK.i++; renderDeck(false); };
+  DECK.finish = () => { [a, riseA, riseB].forEach(x => { try { x && x.finish(); } catch {} }); done(); };
   const last = riseA || a;
   if (last) last.onfinish = done; else done();
-  setTimeout(done, 900);   // never leave the deck stuck if an animation is cut short
+  setTimeout(done, 700);   // never leave the deck stuck if an animation is cut short
 }
+$("#dstage").addEventListener("pointerdown", e => {
+  if (!(DECK.busy && DECK.finish) || e.target.closest("a, button")) return;
+  DECK.finish();
+  const top = $("#dstage .dcard.top");
+  if (top && top.__start && !(e.pointerType === "mouse" && e.button !== 0)){ top.__start(e); try { top.setPointerCapture(e.pointerId); } catch {} }
+}, { capture: true });
 // Two-finger swipes on a trackpad arrive as wheel events; the card follows them, and consuming them keeps Chrome from swiping back through history
 const WHEEL = { x: 0, card: null, t: null, lock: false, lastT: 0 };
 $("#dstage").addEventListener("wheel", e => {
@@ -2415,9 +2454,11 @@ function bindDrag(card){
   let id = null, x0 = 0, y0 = 0, t0 = 0, dx = 0, dy = 0, horiz = null, vx = 0, lastX = 0, lastT = 0, active = false;
   const keep = card.querySelector(".stamp.keep"), next = card.querySelector(".stamp.next");
   const paint = () => { card.style.transform = `translate(${dx}px, ${dy * .35}px) rotate(${dx * .06}deg)`; keep.style.opacity = Math.min(1, Math.max(0, dx - 24) / 90); next.style.opacity = Math.min(1, Math.max(0, -dx - 24) / 90); };
+  const start = e => { id = e.pointerId; x0 = lastX = e.clientX; y0 = e.clientY; t0 = lastT = performance.now(); dx = dy = 0; vx = 0; horiz = null; active = true; };
+  card.__start = start;   // lets a touch that landed on the previous, still-flying card carry on with this one
   card.addEventListener("pointerdown", e => {
     if (DECK.busy || (e.pointerType === "mouse" && e.button !== 0) || e.target.closest("a, button")) return;
-    id = e.pointerId; x0 = lastX = e.clientX; y0 = e.clientY; t0 = lastT = performance.now(); dx = dy = 0; vx = 0; horiz = null; active = true;
+    start(e);
   });
   card.addEventListener("pointermove", e => {
     if (!active || e.pointerId !== id) return;
