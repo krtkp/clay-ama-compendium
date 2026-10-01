@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AMA Program Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400..800;1,400&display=swap">
+<style>
+:root{
+  --ground:#F4F3F0; --surface:#FEFDFB; --sunk:#F3F2ED; --ink:#1B1A18; --muted:#55534E; --faint:#7B7974;
+  --rule:#E0DEDC; --rule2:#D1CDC7; --accent:#395AFA; --sky:#D7EBFE;
+  --bar:#395AFA; --bar-soft:#E9EEFF; --up:#078A52;
+  --f1:#FB4450; --f2:#FF7614; --f3:#FCBE11; --f4:#395AFA; --f5:#8B5CF6;
+  --shadow:0 1px 2px rgba(21,21,24,.04), 0 12px 36px -18px rgba(21,21,24,.16);
+  --btn:#000; --btn-ink:#fff;
+  --guest:#0667D9; --guest-soft:#F0F8FF; --guest-ink:#001433; --warn:#DD2C53;
+  --sans:"Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --ground:#121211; --surface:#1B1A18; --sunk:#262522; --ink:#F4F3F0; --muted:#B8B4AC; --faint:#8C887F;
+    --rule:#302F2C; --rule2:#3A3935; --accent:#6E8BFF; --sky:#10202E;
+    --bar:#6E8BFF; --bar-soft:#16213F; --up:#3ECE82;
+    --f4:#429DFF; --f5:#A17BF9;
+    --shadow:0 1px 0 rgba(0,0,0,.2), 0 12px 32px -18px rgba(0,0,0,.7);
+    --btn:#FEFDFB; --btn-ink:#1B1A18;
+    --guest:#429DFF; --guest-soft:#0D1E33; --guest-ink:#D7EBFE; --warn:#FF7A86;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#121211; --surface:#1B1A18; --sunk:#262522; --ink:#F4F3F0; --muted:#B8B4AC; --faint:#8C887F;
+  --rule:#302F2C; --rule2:#3A3935; --accent:#6E8BFF; --sky:#10202E;
+  --bar:#6E8BFF; --bar-soft:#16213F; --up:#3ECE82;
+  --f4:#429DFF; --f5:#A17BF9;
+  --shadow:0 1px 0 rgba(0,0,0,.2), 0 12px 32px -18px rgba(0,0,0,.7);
+  --btn:#FEFDFB; --btn-ink:#1B1A18;
+  --guest:#429DFF; --guest-soft:#0D1E33; --guest-ink:#D7EBFE; --warn:#FF7A86;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:linear-gradient(180deg, var(--sky) 0, var(--ground) 380px) no-repeat, var(--ground); color:var(--ink); font:15px/1.5 var(--sans); padding:0 16px 64px}
+.wrap{max-width:960px; margin:0 auto}
+a{color:var(--accent)}
+header{padding:32px 0 8px; display:grid; gap:10px}
+.top{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+.back{color:var(--ink); text-decoration:none; font:600 13.5px/1 var(--sans)}
+.back:hover{text-decoration:underline; text-underline-offset:3px}
+.sp{flex:1}
+.btn{all:unset; cursor:pointer; font:600 13px/1 var(--sans); padding:9px 13px; border-radius:12px; background:var(--surface); box-shadow:var(--shadow); color:var(--ink)}
+.btn:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.eyebrow{display:flex; align-items:center; gap:10px; font:600 11.5px/1 var(--sans); letter-spacing:.09em; text-transform:uppercase; color:var(--muted); margin-top:8px}
+.fruit{display:inline-flex; gap:4px}.fruit i{width:8px; height:8px; border-radius:50%; display:block}
+h1{font:650 clamp(28px,5vw,42px)/1.08 var(--sans); letter-spacing:-.04em; margin:0}
+.sub{color:var(--muted); font-size:14px}
+.headline{font:500 clamp(18px,2.6vw,22px)/1.45 var(--sans); letter-spacing:-.01em; margin:14px 0 6px; max-width:62ch}
+.headline{color:var(--muted)}
+.headline b{font-weight:650; color:var(--ink)}
+section{margin-top:28px}
+h2{font:650 18px/1.2 var(--sans); letter-spacing:-.015em; margin:0 0 4px}
+.hint{color:var(--faint); font-size:13px; margin:0 0 12px}
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:12px}
+.tiles.five{grid-template-columns:repeat(5, minmax(0,1fr))}
+.tile{background:var(--surface); border-radius:18px; box-shadow:var(--shadow); padding:16px 18px; display:grid; grid-template-rows:auto auto auto; gap:6px; align-content:start}
+.tile .d{white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.tile .k{font:600 12.5px/1.2 var(--sans); color:var(--muted)}
+.tile .v{font:650 34px/1 var(--sans); letter-spacing:-.03em; font-variant-numeric:tabular-nums}
+.tile .d{font:500 12.5px/1.35 var(--sans); color:var(--faint)}
+.tile .d.up{color:var(--up)}
+.card{background:var(--surface); border-radius:20px; box-shadow:var(--shadow); padding:18px 20px}
+table{width:100%; border-collapse:collapse; font-variant-numeric:tabular-nums}
+th{font:600 12px/1.2 var(--sans); color:var(--muted); text-align:right; padding:0 10px 10px; border-bottom:1px solid var(--rule); white-space:nowrap}
+th:first-child{text-align:left; padding-left:0}
+td{padding:14px 10px; border-bottom:1px solid var(--rule); text-align:right; font:500 15px/1.3 var(--sans); vertical-align:middle}
+tr:last-child td{border-bottom:0}
+td:first-child{text-align:left; padding-left:0}
+td .who{display:flex; align-items:center; gap:10px}
+td .who img{width:36px; height:36px; border-radius:50%; object-fit:cover; box-shadow:0 0 0 2px var(--surface), 0 0 0 3.5px var(--rule2)}
+td .who b{display:block; font:650 14.5px/1.2 var(--sans)}
+td .who span{display:block; font:400 12.5px/1.3 var(--sans); color:var(--faint)}
+td small{display:block; font:500 12px/1.2 var(--sans); color:var(--faint); margin-top:3px}
+td small.up{color:var(--up)}
+.topq{margin-top:10px; display:grid; gap:8px}
+.topq div{display:flex; gap:10px; align-items:baseline; font-size:14px}
+.topq .n{font:650 13px/1 var(--sans); color:var(--muted); min-width:44px; font-variant-numeric:tabular-nums}
+/* bar charts */
+.bars{display:grid; gap:10px}
+.bar{display:grid; grid-template-columns:minmax(120px, 190px) minmax(0,1fr) 44px; gap:12px; align-items:center; position:relative}
+.bar .l{font:500 13.5px/1.25 var(--sans); color:var(--ink)}
+.bar .track{height:14px; border-radius:4px; background:var(--bar-soft); overflow:hidden}
+.bar .fill{height:100%; background:var(--bar); border-radius:0 4px 4px 0}
+.bar .n{font:600 13.5px/1 var(--sans); text-align:right; font-variant-numeric:tabular-nums}
+.bar:hover .fill{filter:brightness(1.1)}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--ink); color:var(--ground); font:500 12.5px/1.35 var(--sans); padding:7px 10px; border-radius:10px; box-shadow:0 8px 24px rgba(0,0,0,.2); max-width:260px}
+details.defs{margin-top:28px; border-top:1px solid var(--rule); padding-top:14px}
+details.defs summary{cursor:pointer; font:600 14px/1.3 var(--sans); color:var(--muted); list-style:none; display:flex; align-items:center; gap:6px}
+details.defs summary::-webkit-details-marker{display:none}
+details.defs summary::after{content:"⌄"; font-size:13px; transform:translateY(-2px); transition:transform .2s}
+details.defs[open] summary::after{transform:rotate(180deg) translateY(-1px)}
+details.defs ul{display:grid; gap:6px; color:var(--muted); font-size:13.5px; margin:10px 0 0; padding-left:18px}
+.tqgrid{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:12px}
+.tq{display:grid; gap:12px}
+.tqh{display:flex; align-items:center; gap:10px}
+.tqh img{width:30px; height:30px; border-radius:50%; object-fit:cover}
+.tqh b{flex:1; font:600 15px/1.2 var(--sans)}
+.tqh a{font:600 13px/1 var(--sans); text-decoration:none}
+.tq ol{list-style:none; margin:0; padding:0; display:grid; gap:10px}
+.tq li{display:flex; gap:12px; align-items:baseline; font:400 14.5px/1.4 var(--sans)}
+.tq .up{flex:none; min-width:34px; font:600 13px/1 var(--sans); color:var(--muted); font-variant-numeric:tabular-nums}
+/* guest report */
+.gtop{display:flex; align-items:center; gap:16px}
+.gtop img{width:72px; height:72px; border-radius:50%; object-fit:cover; flex:none; box-shadow:0 0 0 3px var(--surface), 0 0 0 5px var(--guest)}
+.loved{display:grid; gap:12px}
+.lq{background:var(--surface); border-radius:20px; box-shadow:var(--shadow); padding:16px 18px; display:grid; gap:10px}
+.lq .meta{display:flex; flex-wrap:wrap; gap:6px 12px; font:600 13px/1.3 var(--sans); color:var(--muted)}
+.lq .meta .v{color:var(--ink); font-variant-numeric:tabular-nums}
+.lq h3{margin:0; font:560 18px/1.3 var(--sans); letter-spacing:-.015em; text-wrap:balance}
+.lq blockquote{margin:0; background:var(--guest-soft); color:var(--guest-ink); border-radius:18px 6px 18px 18px; padding:11px 14px 12px; font:400 15px/1.55 var(--sans)}
+.lq blockquote b{display:block; color:var(--guest); font:700 13.5px/1.2 var(--sans); margin-bottom:4px}
+.lq a{font:600 13px/1 var(--sans); text-decoration:none}
+.lq a:hover{text-decoration:underline}
+.people{display:flex; flex-wrap:wrap; gap:8px}
+.pc{display:inline-flex; align-items:center; gap:7px; padding:3px 12px 3px 3px; border-radius:999px; background:var(--sunk); font:600 13.5px/1 var(--sans); white-space:nowrap}
+.pc img,.pc .ini{width:28px; height:28px; border-radius:50%; object-fit:cover; flex:none}
+.pc .ini{display:grid; place-items:center; background:var(--surface); color:var(--muted); font:700 11px/1 var(--sans)}
+.pc small{font:500 11.5px/1 var(--sans); color:var(--up)}
+.open{display:grid; gap:0}
+.open div{padding:12px 0; border-bottom:1px solid var(--rule); display:grid; gap:3px}
+.open div:first-child{padding-top:0}
+.open div:last-child{border-bottom:0; padding-bottom:0}
+.open b{font:600 15px/1.35 var(--sans)}
+.open span{font:400 13px/1.35 var(--sans); color:var(--faint)}
+.open .late{color:var(--warn)}
+.send{display:grid; gap:12px}
+.send .row{display:flex; flex-wrap:wrap; gap:8px}
+.btn.primary{background:var(--btn); color:var(--btn-ink)}
+#copyBox{width:100%; min-height:190px; border:0; border-radius:14px; background:var(--sunk); color:var(--ink); padding:12px 14px; font:400 14px/1.5 var(--sans); resize:vertical}
+td .who a{color:inherit; text-decoration:none}
+td .who a:hover b{text-decoration:underline; text-underline-offset:3px}
+.more{display:inline-block; margin-top:8px; font:600 13px/1 var(--sans); text-decoration:none}
+.more:hover{text-decoration:underline}
+.foot{margin-top:28px; color:var(--faint); font-size:12.5px}
+.empty{color:var(--muted)}
+@media (max-width:720px){
+  .tiles,.tiles.five{grid-template-columns:repeat(2, minmax(0,1fr))}
+  /* the AMA count leads as one full-width card, then an even 2x2 */
+  .tiles.five .tile:first-child{grid-column:1 / -1; display:flex; align-items:baseline; flex-wrap:wrap; gap:4px 12px}
+  .tiles.five .tile:first-child .k{flex-basis:100%}
+  .tile .v{font-size:28px}
+  table, thead, tbody, tr, td, th{display:block}
+  thead{display:none}
+  tr{padding:14px 0; border-bottom:1px solid var(--rule)}
+  tr:last-child{border-bottom:0}
+  td{border:0; padding:4px 0; text-align:left; display:flex; justify-content:space-between; gap:12px}
+  td::before{content:attr(data-k); color:var(--muted); font:500 13px/1.3 var(--sans)}
+  td:first-child::before{content:none}
+  td:first-child{padding-bottom:10px}
+  td small{display:inline; margin:0 0 0 6px}
+  .bar{grid-template-columns:minmax(0,1fr) 40px; row-gap:6px}
+  .bar .l{grid-column:1 / -1}
+}
+@media print{
+  details.defs ul{display:grid}
+  body{background:#fff; color:#000; padding:0}
+  .noprint{display:none!important}
+  .tile,.card{box-shadow:none; border:1px solid #ddd}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="top noprint"><a class="back" href="./">← Compendium</a><a class="back" id="progLink" href="report.html" hidden>All AMAs</a><span class="sp"></span><button class="btn" type="button" id="printBtn">Save as PDF</button></div>
+    <div class="gtop"><img id="gPhoto" alt="" hidden><h1 id="title">AMA report</h1></div>
+    <div class="sub" id="sub">Loading…</div>
+    <p class="headline" id="headline"></p>
+  </header>
+
+  <div id="program">
+  <section aria-label="At a glance">
+    <div class="tiles five" id="tiles"></div>
+  </section>
+
+  <section aria-labelledby="h-each">
+    <h2 id="h-each">AMA by AMA</h2>
+    <p class="hint">Newest first. Changes are against the AMA before it.</p>
+    <div class="card"><table id="table"><thead><tr><th scope="col">AMA</th><th scope="col">Questions</th><th scope="col">Answered</th><th scope="col">Community members</th><th scope="col">Upvotes</th></tr></thead><tbody></tbody></table></div>
+  </section>
+
+  <section aria-labelledby="h-top">
+    <h2 id="h-top">What the community wanted most</h2>
+    <p class="hint">Top three questions by upvotes, per AMA.</p>
+    <div class="tqgrid" id="topqs"></div>
+  </section>
+
+  <section aria-labelledby="h-topics">
+    <h2 id="h-topics">What people ask about</h2>
+    <p class="hint">Questions per topic, across every AMA. A question can have more than one topic.</p>
+    <div class="card"><div class="bars" id="topics"></div></div>
+  </section>
+  </div>
+
+  <div id="guestView" hidden>
+    <section><div class="tiles" id="gTiles"></div></section>
+    <section aria-labelledby="g-loved">
+      <h2 id="g-loved">Answers people loved</h2>
+      <p class="hint" id="gLovedHint"></p>
+      <div class="loved" id="gLoved"></div>
+    </section>
+    <section aria-labelledby="g-people">
+      <h2 id="g-people">Who took part</h2>
+      <p class="hint" id="gPeopleHint"></p>
+      <div class="card"><div class="people" id="gPeople"></div></div>
+    </section>
+    <section aria-labelledby="g-topics">
+      <h2 id="g-topics">What they asked about</h2>
+      <p class="hint">Questions per topic. A question can have more than one topic.</p>
+      <div class="card"><div class="bars" id="gTopics"></div></div>
+    </section>
+    <section aria-labelledby="g-open">
+      <h2 id="g-open">Still waiting for an answer</h2>
+      <p class="hint">Questions from this AMA with no reply from the guest yet, including ones posted after it ended.</p>
+      <div class="card" id="gOpen"></div>
+    </section>
+    <section class="noprint" aria-labelledby="g-send">
+      <h2 id="g-send">Send to the guest</h2>
+      <p class="hint">Ready-to-paste messages for a Slack DM. Links go to each thread in the Clay community.</p>
+      <div class="send"><div class="row" id="gSendBtns"></div><p class="hint" id="copyHint" hidden style="margin:0">This is what was copied. Edit it here and press the button again to copy your version.</p><textarea id="copyBox" hidden aria-label="Message to copy"></textarea></div>
+    </section>
+  </div>
+
+  <details class="defs noprint-open">
+    <summary>How these are counted</summary>
+    <ul>
+      <li><b>Questions</b>: asked in the channel while the AMA was live.</li>
+      <li><b>Answered</b>: the guest replied in the thread.</li>
+      <li><b>Members</b>: anyone who asked or replied, not guests or hosts. Returning means they joined an earlier AMA too.</li>
+      <li><b>Upvotes</b>: on the questions, from the Clay community.</li>
+    </ul>
+  </details>
+  <p class="foot" id="foot"></p>
+</div>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+(() => {
+"use strict";
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt = (d, o) => d.toLocaleDateString(undefined, o || { month: "short", day: "numeric", year: "numeric" });
+const pct = (a, b) => b ? Math.round(a / b * 100) : 0;
+const change = (now, before) => {
+  if (before == null || !before) return "";
+  const p = Math.round((now - before) / before * 100);
+  if (p === 0) return `<small>same as before</small>`;
+  return `<small class="${p > 0 ? "up" : ""}">${p > 0 ? "↑" : "↓"} ${Math.abs(p)}% vs previous</small>`;
+};
+// "Save as PDF": the Claude app blocks the print dialog inside artifacts, so the page makes the PDF itself
+$("#printBtn").addEventListener("click", e => savePDF(e.currentTarget));
+const loadScript = src => new Promise((res, rej) => { if (document.querySelector(`script[src="${src}"]`)) return res(); const el = document.createElement("script"); el.src = src; el.onload = res; el.onerror = rej; document.head.appendChild(el); });
+async function savePDF(btn){
+  const label = btn.textContent; btn.disabled = true; btn.textContent = "Preparing…";
+  let frame;
+  try {
+    await loadScript("vendor/html2canvas.min.js");
+    await loadScript("vendor/jspdf.umd.min.js");
+    // lay the report out at desktop width in a hidden frame, so a phone still gets a full-width PDF
+    frame = document.createElement("iframe");
+    frame.setAttribute("aria-hidden", "true"); frame.tabIndex = -1;
+    frame.style.cssText = "position:fixed; left:-10000px; top:0; width:880px; height:1400px; border:0; visibility:hidden";
+    const u = new URL(location.href); u.hash = ""; frame.src = u.href;
+    document.body.appendChild(frame);
+    await new Promise((res, rej) => { const t0 = Date.now(); (function tick(){ const w = frame.contentWindow; if (w && w.__reportReady) return res(); if (Date.now() - t0 > 15000) return rej(new Error("timeout")); setTimeout(tick, 120); })(); });
+    const fd = frame.contentDocument, fw = frame.contentWindow;
+    fd.documentElement.dataset.theme = "light";
+    const defs = fd.querySelector("details.defs"); if (defs) defs.open = true;
+    fd.querySelectorAll(".noprint").forEach(el => el.style.display = "none");
+    await fd.fonts.ready;
+    await Promise.all([...fd.images].map(im => im.complete ? 0 : new Promise(r => { im.onload = im.onerror = r; })));
+    const wrap = fd.querySelector(".wrap"), S = 2, top0 = wrap.getBoundingClientRect().top;
+    // safe places to start a new page: between blocks, never through a card
+    const cuts = [...wrap.querySelectorAll("section, .card + .card, details, .foot")]
+      .filter(el => !el.closest(".noprint") && el.offsetParent)
+      .map(el => Math.round((el.getBoundingClientRect().top - top0 - 6) * S)).filter(y => y > 0).sort((x, y) => x - y);
+    const canvas = await html2canvas(wrap, { scale: S, backgroundColor: "#F4F3F0", useCORS: true, logging: false, windowWidth: 880 });
+    const { jsPDF } = window.jspdf, pdf = new jsPDF({ unit: "pt", format: "a4" });
+    const pw = pdf.internal.pageSize.getWidth(), ph = pdf.internal.pageSize.getHeight(), m = 30, iw = pw - m * 2, k = iw / canvas.width, per = Math.floor((ph - m * 2) / k);
+    for (let y = 0, i = 0; y < canvas.height - 4; i++){
+      let end = Math.min(y + per, canvas.height);
+      if (end < canvas.height){ const c = cuts.filter(v => v > y + per * .45 && v <= end).pop(); if (c) end = c; }
+      const sl = document.createElement("canvas"); sl.width = canvas.width; sl.height = end - y;
+      const c = sl.getContext("2d"); c.fillStyle = "#F4F3F0"; c.fillRect(0, 0, sl.width, sl.height); c.drawImage(canvas, 0, -y);
+      if (i) pdf.addPage();
+      pdf.setFillColor(244, 243, 240); pdf.rect(0, 0, pw, ph, "F");
+      pdf.addImage(sl.toDataURL("image/jpeg", .92), "JPEG", m, m, iw, sl.height * k);
+      y = end;
+    }
+    const blob = pdf.output("blob"), guest = new URLSearchParams(location.search).get("guest");
+    const name = `clay-ama-report${guest ? "-" + guest.replace(/^\d{4}-\d{2}-/, "") : ""}.pdf`;
+    let saved = false;
+    try { const d = window.claude?.use ? await Promise.race([claude.use("downloads"), new Promise(r => setTimeout(() => r(null), 1500))]) : null; if (d){ await d.save({ filename: name, data: blob }); saved = true; } }
+    catch (err) { if (err?.code === "declined") saved = true; }
+    if (!saved){ const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 5000); }
+    btn.textContent = "Saved";
+  } catch (err) { console.warn("PDF failed", err); btn.textContent = "Couldn't make the PDF"; }
+  finally { frame?.remove(); }
+  setTimeout(() => { btn.textContent = label; btn.disabled = false; }, 2400);
+}
+try { history.scrollRestoration = "manual"; } catch {}
+scrollTo(0, 0);
+
+// hover tooltip for the bar charts
+const tip = $("#tip");
+document.addEventListener("pointermove", e => {
+  const b = e.target.closest?.("[data-tip]");
+  if (!b){ tip.hidden = true; return; }
+  tip.textContent = b.dataset.tip; tip.hidden = false;
+  const x = Math.min(e.clientX + 14, innerWidth - tip.offsetWidth - 8), y = e.clientY + 16;
+  tip.style.left = x + "px"; tip.style.top = y + "px";
+});
+const bars = (items, total) => {
+  const max = Math.max(1, ...items.map(t => t[1]));
+  return items.length ? items.map(([t, n]) => `<div class="bar" data-tip="${esc(t)}: ${n} question${n === 1 ? "" : "s"} (${pct(n, total)}% of all)"><span class="l">${esc(t)}</span><span class="track"><span class="fill" style="display:block; width:${(n / max * 100).toFixed(1)}%"></span></span><span class="n">${n}</span></div>`).join("") : `<p class="empty">No topics yet.</p>`;
+};
+const topicCounts = qs => { const c = new Map(); qs.forEach(q => (q.tags || []).forEach(t => c.set(t, (c.get(t) || 0) + 1))); return [...c.entries()].sort((a, b) => b[1] - a[1]); };
+const tsDate = ts => new Date(Number(String(ts).slice(0, 10)) * 1000);
+const initials = n => String(n).replace(/[^A-Za-z ]/g, "").split(" ").filter(Boolean).map(w => w[0]).join("").slice(0, 2).toUpperCase();
+function liveWindow(s){
+  if (!s.start || !s.end) return "";
+  const a = new Date(s.start), b = new Date(s.end);
+  const t = (d, o) => d.toLocaleTimeString(undefined, Object.assign({ hour: "numeric", minute: d.getMinutes() ? "2-digit" : undefined }, o));
+  const sameHalf = t(a, {}).slice(-2) === t(b, {}).slice(-2) && /[AP]M$/i.test(t(a, {}));
+  return (sameHalf ? t(a, {}).replace(/\s?[AP]M$/i, "") : t(a, {})) + "–" + t(b, { timeZoneName: "short" });
+}
+// Verbatim excerpt: whole sentences from the start of the answer, skipping a short opening pleasantry
+function excerpt(text, max = 260){
+  // keep going into a list when the opening sentence introduces one ("my top tips:")
+  const flat = text.replace(/\n\s*[•\-]\s+/g, " • ").replace(/\s*\n+\s*/g, " ").trim();
+  let sents = flat.match(/[^.!?]+(?:[.!?]+["”’)]*|$)\s*/g) || [flat];
+  while (sents.length > 1 && sents[0].length < 90 && /question|love this|thanks|thank you|fun one|like this/i.test(sents[0])) sents = sents.slice(1);
+  let out = "";
+  for (const x of sents){ if (out && (out + x).length > max) break; out += x; }
+  out = out.trim().replace(/\s*•\s*(\d+[.)])?$/, "").trim();   // don't end on a dangling list marker
+  if (out.length > max + 60) out = out.slice(0, max).replace(/\s+\S*$/, "") + "…";
+  else if (!/[.!?]["”’)]*$/.test(out)) out += "…";
+  return out;
+}
+// The message shows in an editable box first; the copy takes whatever is in the box, edits included
+async function copyOut(text, btn){
+  const box = $("#copyBox"), label = btn.dataset.label, kind = btn.dataset.msg;
+  if (box.dataset.kind !== kind || box.hidden){ box.value = text; box.dataset.kind = kind; box.hidden = false; $("#copyHint").hidden = false; }
+  try { await navigator.clipboard.writeText(box.value); btn.textContent = "Copied"; }
+  catch { box.focus(); box.select(); btn.textContent = "Select the text below to copy it"; }
+  setTimeout(() => { btn.textContent = label; }, 2200);
+}
+
+// Entries an editor hid on the site are left out here too, so the report matches the page
+const hiddenIds = fetch("index.html", { cache: "no-store" }).then(r => r.ok ? r.text() : "").then(t => {
+  const m = t.match(/<script id="moderation" type="application\/json">([\s\S]*?)<\/script>/);
+  try { return new Set((JSON.parse(m ? m[1] : "{}").hidden || []).map(h => h.id)); } catch { return new Set(); }
+}).catch(() => new Set());
+
+Promise.all([fetch("ama.json", { cache: "no-store" }).then(r => r.json()), hiddenIds]).then(([DATA, HIDDEN]) => {
+  const QAS = DATA.qas.filter(q => !q.hidden && !HIDDEN.has(q.id));
+  const sessions = DATA.sessions.filter(s => s.status !== "upcoming").sort((a, b) => a.held.localeCompare(b.held));  // oldest first
+  const peopleIn = q => [q.asker, ...q.replies.filter(r => r.role === "asker" || r.role === "community").map(r => r.by)];
+  const seen = new Set();
+  const rows = sessions.map(s => {
+    const all_ = QAS.filter(q => q.session === s.id), qs = all_.filter(q => !q.afterSession);   // live AMA questions only
+    const people = new Set(all_.flatMap(peopleIn));
+    const returning = [...people].filter(p => seen.has(p)).length;
+    people.forEach(p => seen.add(p));
+    return {
+      s, qs, everyone: all_,
+      questions: qs.length,
+      answered: qs.filter(q => q.answered).length,
+      people: people.size, returning, newcomers: people.size - returning,
+      upvotes: qs.reduce((n, q) => n + (q.likes || 0), 0),
+      replies: qs.reduce((n, q) => n + q.replies.filter(r => r.role === "asker" || r.role === "community").length, 0),
+      top: qs.slice().sort((a, b) => b.likes - a.likes).slice(0, 3),
+    };
+  });
+  const all = {
+    amas: rows.length,
+    questions: rows.reduce((n, r) => n + r.questions, 0),
+    late: QAS.filter(q => q.afterSession && sessions.some(s => s.id === q.session)).length,
+    answered: rows.reduce((n, r) => n + r.answered, 0),
+    people: seen.size,
+    returningPeople: (() => { const c = new Map(); rows.forEach(r => new Set(r.everyone.flatMap(peopleIn)).forEach(p => c.set(p, (c.get(p) || 0) + 1))); return [...c.values()].filter(v => v > 1).length; })(),
+    upvotes: rows.reduce((n, r) => n + r.upvotes, 0),
+  };
+  const first = sessions[0], last = sessions[sessions.length - 1];
+  const updated = new Date(Math.max(new Date(DATA.syncedAt || 0).getTime(), ...QAS.flatMap(q => [q.qts, ...q.replies.map(r => r.ts)]).map(t => Number(String(t).slice(0, 10)) * 1000)));
+  $("#sub").textContent = `${first ? fmt(new Date(first.held + "T12:00:00"), { month: "short", day: "numeric" }) : ""}${last && last !== first ? " – " + fmt(new Date(last.held + "T12:00:00")) : ""} · updated ${fmt(updated, { month: "short", day: "numeric" })}`;
+  $("#headline").innerHTML = `<b>${all.people} community members</b> took part in <b>${all.amas} AMA${all.amas === 1 ? "" : "s"}</b>, asking <b>${all.questions} questions</b> during the live sessions. Clay guests answered ${all.answered === all.questions ? `<b>every one</b> (100%)` : `<b>${all.answered}</b> of them (${pct(all.answered, all.questions)}%)`}.`
+    + (rows.length > 1 ? ` The latest AMA drew <b>${rows[rows.length - 1].questions} questions</b>, ${(() => { const a = rows[rows.length - 1].questions, b = rows[rows.length - 2].questions; const p = Math.round((a - b) / b * 100); return p > 0 ? `up ${p}% on the one before` : p < 0 ? `down ${-p}% on the one before` : "the same as the one before"; })()}.` : "");
+
+  const tiles = [
+    ["AMAs", all.amas, first ? `since ${fmt(new Date(first.held + "T12:00:00"), { month: "short", day: "numeric" })}` : "", false],
+    ["Questions", all.questions, `${(all.questions / Math.max(1, all.amas)).toFixed(1).replace(/\.0$/, "")} per AMA`, false],
+    ["Answer rate", pct(all.answered, all.questions) + "%", `${all.answered} of ${all.questions} answered`, all.answered === all.questions],
+    ["Members", all.people, all.returningPeople ? `${all.returningPeople} came back` : "All first-timers", all.returningPeople > 0],
+    ["Upvotes", all.upvotes, `${(all.upvotes / Math.max(1, all.questions)).toFixed(1)} per question`, false],
+  ];
+  $("#tiles").innerHTML = tiles.map(([k, v, d, up]) => `<div class="tile"><span class="k">${esc(k)}</span><span class="v">${esc(v)}</span><span class="d${up ? " up" : ""}">${esc(d)}</span></div>`).join("");
+
+  const gid = new URLSearchParams(location.search).get("guest");
+  const gi = rows.findIndex(r => r.s.id === gid || r.s.guest.toLowerCase().split(" ")[0] === String(gid || "").toLowerCase());
+  if (gi >= 0){ renderGuest(rows[gi], gi); return; }
+
+  function renderGuest(r, i){
+    const s = r.s, first = s.guest.split(" ")[0], prev = rows[i - 1];
+    const late = r.everyone.filter(q => q.afterSession).length;
+    const open = r.everyone.filter(q => !q.answered).sort((a, b) => a.qts.localeCompare(b.qts));
+    const loved = r.qs.filter(q => q.answered).sort((a, b) => b.likes - a.likes || a.qts.localeCompare(b.qts)).slice(0, 3);
+    const mostQs = rows.length > 1 && r.questions === Math.max(...rows.map(x => x.questions));
+    const mostUp = rows.length > 1 && r.upvotes === Math.max(...rows.map(x => x.upvotes));
+    document.title = `${s.guest}'s AMA · Clay community`;
+    $("#program").hidden = true; $("#guestView").hidden = false; $("#progLink").hidden = false;
+    $("#title").textContent = `${s.guest}'s AMA`;
+    if (s.photo){ $("#gPhoto").src = s.photo; $("#gPhoto").hidden = false; }
+    const w = liveWindow(s);
+    $("#sub").textContent = `${s.role} · ${fmt(new Date(s.held + "T12:00:00"))}${w ? " · " + w : ""}`;
+    $("#headline").innerHTML = `<b>${r.people} community members</b> joined ${esc(first)}'s AMA and asked <b>${r.questions} questions</b> while it was live. ${r.answered === r.questions ? "<b>Every one got an answer.</b>" : `<b>${r.answered}</b> got an answer.`} The community left <b>${r.upvotes} upvotes</b>.`
+      + (mostQs ? ` That's the most questions of any Clay community AMA so far.` : "");
+    const tiles = [
+      ["Questions", r.questions, i === 0 ? "The first AMA" : mostQs ? "Most of any AMA" : `${Math.round((r.questions - prev.questions) / prev.questions * 100)}% vs last AMA`, mostQs],
+      ["Answer rate", pct(r.answered, r.questions) + "%", `${r.answered} of ${r.questions} answered`, r.answered === r.questions],
+      ["Members", r.people, i === 0 ? "All first-timers" : `${r.returning} came back`, i > 0 && r.returning > 0],
+      ["Upvotes", r.upvotes, `${(r.upvotes / Math.max(1, r.questions)).toFixed(1)} per question`, mostUp],
+    ];
+    $("#gTiles").innerHTML = tiles.map(([k, v, d, up]) => `<div class="tile"><span class="k">${esc(k)}</span><span class="v">${esc(v)}</span><span class="d${up ? " up" : ""}">${esc(d)}</span></div>`).join("");
+
+    $("#gLovedHint").textContent = `The most-upvoted questions, with ${first}'s answer in ${first}'s own words.`;
+    $("#gLoved").innerHTML = loved.map(q => { const a = q.replies.find(x => x.role === "guest");
+      return `<article class="lq"><div class="meta"><span><span class="v">↑ ${q.likes}</span> upvote${q.likes === 1 ? "" : "s"}</span><span>asked by ${esc(q.asker)}</span></div>
+        <h3>${esc(q.title)}</h3>
+        <blockquote><b>${esc(first)}</b>${esc(excerpt(a ? a.text : ""))}</blockquote>
+        ${q.url ? `<a href="${esc(q.url)}" target="_blank" rel="noopener">Read the full thread ↗</a>` : ""}</article>`; }).join("") || `<p class="empty">No answers yet.</p>`;
+
+    const earlier = new Set(rows.slice(0, i).flatMap(x => x.everyone.flatMap(peopleIn)));
+    const ppl = [...new Set(r.everyone.flatMap(peopleIn))].sort((a, b) => a.localeCompare(b));
+    const photo = n => (DATA.people || {})[n];
+    $("#gPeopleHint").textContent = `${ppl.length} community members asked or replied${i > 0 ? `; ${ppl.filter(p => earlier.has(p)).length} of them also took part in an earlier AMA` : ""}.`;
+    $("#gPeople").innerHTML = ppl.map(n => `<span class="pc">${photo(n) ? `<img src="${esc(photo(n))}" alt="">` : `<span class="ini" aria-hidden="true">${esc(initials(n))}</span>`}${esc(n)}${earlier.has(n) ? ` <small>returning</small>` : ""}</span>`).join("");
+
+    $("#gTopics").innerHTML = bars(topicCounts(r.everyone), r.everyone.length);
+
+    $("#gOpen").innerHTML = open.length ? `<div class="open">${open.map(q => `<div><b>${q.url ? `<a href="${esc(q.url)}" target="_blank" rel="noopener" style="color:inherit; text-decoration:none">${esc(q.title)}</a>` : esc(q.title)}</b><span>Asked by ${esc(q.asker)} · ${fmt(tsDate(q.qts))}${q.afterSession ? ` · <span class="late">after the AMA ended</span>` : ""}</span></div>`).join("")}</div>`
+      : `<p class="empty" style="margin:0">Nothing waiting. Every question got an answer.</p>`;
+
+    const thanks = `Thank you for doing the Clay community AMA, ${first}! Here's what it added up to:\n\n`
+      + `• ${r.questions} questions from ${r.people} community members\n`
+      + `• ${r.answered === r.questions ? "Every question answered" : `${r.answered} of ${r.questions} questions answered`}\n`
+      + `• ${r.upvotes} upvotes from the community\n`
+      + (loved.length ? `\nThe answers people loved most:\n` + loved.map(q => `• ${q.title} (${q.likes} upvote${q.likes === 1 ? "" : "s"})${q.url ? ": " + q.url : ""}`).join("\n") + "\n" : "")
+      + `\nThe community got a lot out of it. Thank you for making the time!`;
+    const follow = `Hi ${first}! ${open.length === 1 ? "One question" : `${open.length} questions`} from your AMA ${open.length === 1 ? "is" : "are"} still waiting for an answer. If you have a minute, the community would love a reply:\n\n`
+      + open.map(q => `• ${q.title} (asked by ${q.asker})${q.url ? ": " + q.url : ""}`).join("\n");
+    $("#gSendBtns").innerHTML = `<button class="btn primary" type="button" data-label="Copy thank-you note" data-msg="thanks">Copy thank-you note</button>`
+      + (open.length ? `<button class="btn" type="button" data-label="Copy follow-up message" data-msg="follow">Copy follow-up message</button>` : "");
+    $("#gSendBtns").addEventListener("click", e => { const b = e.target.closest("[data-msg]"); if (b) copyOut(b.dataset.msg === "thanks" ? thanks : follow, b); });
+    $("#foot").textContent = `From the Clay community's #10-ask-me-anything. Updated ${fmt(updated)}.`;
+  }
+
+  const newestFirst = rows.map((r, i) => ({ r, prev: rows[i - 1] })).reverse();
+  $("#table tbody").innerHTML = newestFirst.map(({ r, prev }) => `<tr>
+      <td><div class="who">${r.s.photo ? `<img src="${esc(r.s.photo)}" alt="">` : ""}<div><a href="?guest=${esc(r.s.id)}"><b>${esc(r.s.guest)}</b></a><span>${esc(r.s.role)} · ${fmt(new Date(r.s.held + "T12:00:00"))}</span></div></div></td>
+      <td data-k="Questions"><span>${r.questions}${change(r.questions, prev?.questions)}</span></td>
+      <td data-k="Answered"><span>${pct(r.answered, r.questions)}%<small>${r.answered} of ${r.questions}</small></span></td>
+      <td data-k="Community members"><span>${r.people}${prev ? `<small>${r.newcomers} new · ${r.returning} returning</small>` : `<small>all new</small>`}</span></td>
+      <td data-k="Upvotes"><span>${r.upvotes}${change(r.upvotes, prev?.upvotes)}</span></td>
+    </tr>`).join("");
+
+  $("#topqs").innerHTML = newestFirst.map(({ r }) => `<div class="card tq">
+      <div class="tqh">${r.s.photo ? `<img src="${esc(r.s.photo)}" alt="">` : ""}<b>${esc(r.s.guest)}</b><a class="noprint" href="?guest=${esc(r.s.id)}">Report →</a></div>
+      <ol>${r.top.map(q => `<li><span class="up">↑ ${q.likes}</span><span class="t">${esc(q.title)}</span></li>`).join("")}</ol></div>`).join("");
+
+  $("#topics").innerHTML = bars(topicCounts(QAS), QAS.length);
+
+  $("#foot").textContent = `From the Clay community's #10-ask-me-anything. Updated ${fmt(updated)}.`;
+}).then(() => { window.__reportReady = true; }).catch(() => { $("#sub").textContent = "The report couldn't load. Reload the page to try again."; });
+})();
+</script>
+</body>
+</html>

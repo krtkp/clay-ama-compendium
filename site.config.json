@@ -1,0 +1,7 @@
+{
+  "title": "Clay AMA Compendium",
+  "shortName": "Clay AMAs",
+  "domain": "",
+  "fallbackHost": "clay-ama-compendium.vercel.app",
+  "posthog": { "key": "", "host": "https://us.i.posthog.com" }
+}

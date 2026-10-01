@@ -1,0 +1,1238 @@
+{
+ "version": 1,
+ "syncedAt": "2026-09-28T13:13:59Z",
+ "source": "Clay Community Slack, #10-ask-me-anything (public mirror at community.clay.com)",
+ "slackBase": "https://clayrunhq.slack.com/archives/C0BV7HRMR6G/p",
+ "sessions": [
+  {
+   "id": "2026-09-eric-engoron",
+   "guest": "Eric Engoron",
+   "handle": "Eric E.",
+   "role": "Special Technical Advisor",
+   "scheduled": "2026-09-24",
+   "held": "2026-09-25",
+   "bio": "Third-longest tenure at Clay (4.5 years, joined before co-founder Varun). Full-stack engineer who has worked on every part of the product and built more than half of Clay's 200+ integrations. Now works across Engineering on integrations, billing, enterprise features and institutional knowledge.",
+   "announcement": "https://community.clay.com/x/10-ask-me-anything/msg_IaBpB1mZsrM1/meet-eric-engoron-in-the-next-clay-ama-insights-on",
+   "linkedin": "https://www.linkedin.com/in/eengoron/",
+   "topics": [
+    "Building a technical career",
+    "Tradeoffs of building a complex tool like Clay",
+    "When not to use AI at work",
+    "How to pick which startup to join",
+    "The future of SaaS",
+    "AI apocalypse"
+   ],
+   "photo": "img/eric.jpg",
+   "introBy": "Shriya N.",
+   "introTs": "1789589413078329",
+   "intro": "Our next guest is Eric Engoron, Special Technical Advisor at Clay.\n\nEric has the third-longest tenure at Clay — even longer than our co-founder, Varun! In the 4.5 years since joining, he’s worked on every part of the product as a full-stack engineer. More than half of the >200 integrations that Clay currently has were built by Eric! These days, he works across the Engineering organization on integrations, billing, enterprise features, and anywhere else they need his deep institutional knowledge.\n\nAsk him about:\n\n• Building a technical career\n• Tradeoffs of building a complex tool like Clay\n• When to not use AI at work\n• How to pick which startup to join\n• What he thinks about the future of SaaS\n• If he’s scared of an AI apocalypse or not\n• & anything else you want to know",
+   "introLinks": [
+    {
+     "text": "Eric Engoron",
+     "href": "https://www.linkedin.com/in/eengoron/"
+    }
+   ],
+   "start": "2026-09-25T15:00:00Z",
+   "end": "2026-09-25T17:00:00Z"
+  },
+  {
+   "id": "2026-09-mishti-sharma",
+   "guest": "Mishti Sharma",
+   "handle": "Mishti S.",
+   "role": "Head of Narratives",
+   "scheduled": "2026-09-10",
+   "held": "2026-09-10",
+   "bio": "Head of Narratives at Clay. Known for the First Round Review piece on how she and Clay co-created her role, and the video The Rise of the GTM Engineer.",
+   "announcement": "https://community.clay.com/x/10-ask-me-anything/msg_EYOs5LgXsY7K/join-our-first-clay-ama-with-mishti-sharma-on-gtm",
+   "linkedin": "https://www.linkedin.com/in/vmsharma/",
+   "topics": [
+    "How GTM Engineering has evolved",
+    "Pitching a unique job title",
+    "The future of storytelling and brand in tech",
+    "Getting better at writing",
+    "Content creation & distribution"
+   ],
+   "photo": "img/mishti.jpg",
+   "introBy": "Shriya N.",
+   "introTs": "1788546126943299",
+   "intro": "Our first guest is Mishti Sharma, Head of Narratives at Clay.\n\nYou may recognize Mishti from her viral First Round Review article about how she & Clay co-created her dream role, or maybe you've seen her video about The Rise of the GTM Engineer.\n\nAsk her about:\n\n• How GTM Engineering has evolved in the past 3 years\n• Pitching a unique job title at your company\n• The future of storytelling and brand in tech\n• How to get better at writing\n• Tips for content creation & distribution",
+   "introLinks": [
+    {
+     "text": "Mishti Sharma",
+     "href": "https://www.linkedin.com/in/vmsharma/"
+    },
+    {
+     "text": "viral First Round Review article",
+     "href": "https://review.firstround.com/firsthand-clay/"
+    },
+    {
+     "text": "The Rise of the GTM Engineer",
+     "href": "https://www.youtube.com/watch?v=3MkQwr_6imk"
+    }
+   ],
+   "start": "2026-09-10T17:00:00Z",
+   "end": "2026-09-10T18:00:00Z"
+  }
+ ],
+ "qas": [
+  {
+   "id": "msg_pIGqpw3pmTOH",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_pIGqpw3pmTOH/why-i-bet-on-clay-early-and-advice-for-choosing-be",
+   "session": "2026-09-eric-engoron",
+   "title": "Why Eric bet on Clay early, and how to choose between startups",
+   "asker": "Heli V.",
+   "qts": "1790217611363749",
+   "likes": 2,
+   "tags": [
+    "Careers & skills",
+    "Building Clay"
+   ],
+   "question": "You joined Clay before Varun did. What did you see in Clay at that point that made you bet on it, and what would you tell someone choosing between startups today?",
+   "links": [],
+   "replies": [
+    {
+     "by": "Eric Engoron",
+     "ts": "1790355476300899",
+     "text": "The thing that made me so excited about Clay in the early days was that they saw the importance of integrations at Scale, and the thing that really sold me on it was Kareem’s conviction and his emphasis on creativity and not business.\n\nThe main things to focus on when choosing between startups, as cliche as this may sound, is can you get behind the vision. I fundamentally believe that your work product is only as good as your conviction in what you’re working on. If you don’t believe in what you’re building, you’re leaving room for your own growth on the table",
+     "role": "guest"
+    }
+   ],
+   "answered": true,
+   "short": "betting on Clay early",
+   "gist": "Eric joined for Clay's focus on integrations at scale and Kareem's conviction. His advice: choose the startup whose vision you truly believe in."
+  },
+  {
+   "id": "msg_sSboUriMN0a5",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_sSboUriMN0a5/how-do-you-prioritize-building-new-integrations-an",
+   "session": "2026-09-eric-engoron",
+   "title": "How new integrations get prioritized, and which ones surprised Eric",
+   "asker": "Heli V.",
+   "qts": "1790217517823059",
+   "likes": 1,
+   "tags": [
+    "Integrations",
+    "Building Clay"
+   ],
+   "question": "You’ve built SO MANY integrations! How do you decide which one gets built next? Is it customer requests/gaps in coverage/partners pushing for it/something else? I’m cheating with a follow up here- did any of the integrations surprise you? Like was there one that customers ended up using way more than you expected, or one you were sure would be a hit that barely got used?",
+   "links": [],
+   "replies": [
+    {
+     "by": "Eric Engoron",
+     "ts": "1790355309619379",
+     "text": "The way we decided what gets built next has changed over time. However, it started with people on a demo using Clay and telling us what was missing. That turned into customer requests as we grew. It continues to remain customer requests depending on our customers data and AI needs. We do a weekly review of every request and decide what would be the most impactful thing to build. Does anything need to be bumped up in priority from the current roadmap etc.\n\nThe one that I think was used way more than I ever though, which is cheating a bit, is “Clay Send Data to other Table”. In the world of workflows, it’s a bit outdated now, but I remember one day looking at a literally 15 table chain and thinking “wow, this a level of complexity I could never have anticipated”.\n\nFor the least used, I’d say Google Slides, because I think it’s the coolest thing I built, and I want to see people use it more. But, more similar providers are coming soon as well. Custom generated slide decks are just super fun and creative to me 🙂",
+     "role": "guest"
+    }
+   ],
+   "answered": true,
+   "short": "choosing which integrations to build",
+   "gist": "New integrations come from customer requests, reviewed weekly. \"Send Data to Other Table\" was used far more than he expected; Google Slides is his underused favorite."
+  },
+  {
+   "id": "msg_pXdMS8PYlQJB",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_pXdMS8PYlQJB/how-product-features-evolved-with-the-arrival-of-e",
+   "session": "2026-09-eric-engoron",
+   "title": "What changed in the product when enterprise customers arrived",
+   "asker": "Heli V.",
+   "qts": "1790217354450259",
+   "likes": 3,
+   "tags": [
+    "Building Clay"
+   ],
+   "question": "What changed in the product when enterprise customers started showing up? What did they ask for that the early Clay user never did?",
+   "links": [],
+   "replies": [
+    {
+     "by": "Eric Engoron",
+     "ts": "1790355064746859",
+     "text": "The biggest thing that changed was our need for controls. We built Clay in the early days very much like the business we wanted to build. It was a business of full transparency, anyone can see anyones workflows and help them iterate on them. Transparency is key when you want to build full alignment.\n\nWith that being said, as we continued to grow, Enterprise’s needed controls on who could use what in Clay, who could edit certain things in Clay, etc.\n\nAs we’ve grown, it’s important to still aim for that transparent mindset, but also allow you to lock that down if you need to.",
+     "role": "guest"
+    }
+   ],
+   "answered": true,
+   "short": "what enterprise customers changed",
+   "gist": "Enterprise customers brought the need for controls over who can use and edit things, while Clay tries to keep its open, transparent culture."
+  },
+  {
+   "id": "msg_DjT1o1RJNYK1",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_DjT1o1RJNYK1/building-clay-with-mcps-and-using-claude-together",
+   "session": "2026-09-eric-engoron",
+   "title": "Would Eric build Clay differently with MCPs? Using Claude and Clay together",
+   "asker": "Jon H.",
+   "qts": "1790213471338199",
+   "likes": 4,
+   "tags": [
+    "AI & vibe coding",
+    "Building Clay",
+    "Using Clay"
+   ],
+   "question": "1. Would you build Clay differently now that we have MCPs?\n2. How would you use Claude & Clay together to generate GTM alpha?",
+   "links": [],
+   "replies": [
+    {
+     "by": "Eric Engoron",
+     "ts": "1790354912529899",
+     "text": "I’m not sure I would actually build Clay all that differently in full transparency, as I think that each step we’ve taken as defined who we are now, and I think each of those successes, mistakes, and periods of Clay are part of that development.\n\nAdditionally, I think adoption of MCPs depends on the types of companies in your customer base. Larger enterprises may struggle to adopt MCPs as quickly as small to medium size teams that are focused on the cutting edge. So, I think it’s important to maintain both ways of using Clay. We want to adapt to your use-cases.\n\nIn terms of how to use AI and Clay together, the biggest thing that I can say is that as Clay becomes your source of truth for your operational data, and we orchestrate your workflows, Claude can then use all of the data we have to make better decisions for the pieces of your business we don’t know about",
+     "role": "guest"
+    },
+    {
+     "by": "Jon H.",
+     "ts": "1790361938496109",
+     "text": "Thank you, Eric E. !",
+     "role": "asker"
+    }
+   ],
+   "answered": true,
+   "short": "MCPs, Claude and Clay",
+   "gist": "He wouldn't rebuild Clay differently, since MCP adoption varies by company size. With Clay as the source of truth for GTM data, Claude can make better decisions."
+  },
+  {
+   "id": "msg_JsYkbV4UfeQY",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_JsYkbV4UfeQY/what-do-you-think-is-the-most-underutilized-featur",
+   "session": "2026-09-eric-engoron",
+   "title": "The most underutilized feature in Clay",
+   "asker": "Megan K.",
+   "qts": "1790191424778459",
+   "likes": 3,
+   "tags": [
+    "Using Clay"
+   ],
+   "question": "What do you think is the most underutilized feature or use case within Clay?",
+   "links": [],
+   "replies": [
+    {
+     "by": "Eric Engoron",
+     "ts": "1790354593768239",
+     "text": "In my mind, the most underutilized feature is also my favorite. I’d love to see more folks use our Google Slides (and similar integrations coming soon 👀) to generate dynamic slide decks, and allow you to be fully creative at scale.",
+     "role": "guest"
+    }
+   ],
+   "answered": true,
+   "short": "Clay's most underused feature",
+   "gist": "His pick is the Google Slides integration, for generating dynamic, creative slide decks at scale, with similar integrations on the way."
+  },
+  {
+   "id": "msg_OdvdR3XE2m4v",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_OdvdR3XE2m4v/tips-for-creating-clean-documentation-to-ensure-sm",
+   "session": "2026-09-eric-engoron",
+   "title": "Documentation for clean handoffs between sessions and teammates",
+   "asker": "Max R.",
+   "qts": "1790186440420379",
+   "likes": 1,
+   "tags": [
+    "AI & vibe coding",
+    "Careers & skills"
+   ],
+   "question": "What are your tips on documentation? 👀 For clean handoffs either between coding sessions or between team members.",
+   "links": [],
+   "replies": [
+    {
+     "by": "Eric Engoron",
+     "ts": "1790354511491589",
+     "text": "The biggest thing I’ve learned as my literally job has become sharing context with all of Clay is that nobody wants to read docs anymore. So, the biggest thing that I can suggest is:\n\n• Make sure that decisions between coding sessions are logged in a wiki (it can be ai written) and make sure that future sessions are pointing to that wiki\n• For context between team members, documentation becomes more important for historical decision making purposes. So, while all decisions should be documented, it’s important to remember to have live-calls for context sharing, calling out-key points people actually have to read in docs, and making sure that final decisions are fully documented, not just in progress docs",
+     "role": "guest"
+    }
+   ],
+   "answered": true,
+   "short": "documentation for clean handoffs",
+   "gist": "Log decisions in a wiki that future AI sessions point to. Between teammates, pair docs with live context-sharing and fully document final decisions."
+  },
+  {
+   "id": "msg_AHi1g95ik4OW",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_AHi1g95ik4OW/what-are-foundations-or-good-habits-a-vibe-coder-s",
+   "session": "2026-09-eric-engoron",
+   "title": "Foundations a vibe coder should build",
+   "asker": "Max R.",
+   "qts": "1790186368784059",
+   "likes": 1,
+   "tags": [
+    "AI & vibe coding"
+   ],
+   "question": "What are foundations or good habits a vibe coder should focus on building?",
+   "links": [],
+   "replies": [
+    {
+     "by": "Eric Engoron",
+     "ts": "1790354292017539",
+     "text": "Focus on building the primitives that AI can build upon. You can get those primitives from existing libraries, existing public system prompts, looking at the open-source codebases of brands you admire. If you focus on having essentially an OS of primatives that an AI can build on top of, you’ll have less duplicated code, and less management of code later on",
+     "role": "guest"
+    }
+   ],
+   "answered": true,
+   "short": "good habits for vibe coders",
+   "gist": "Build a base of reusable primitives (libraries, public prompts, open-source code) for AI to build on, so you avoid duplicate code later."
+  },
+  {
+   "id": "msg_vfL9WTOzblLY",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_vfL9WTOzblLY/favorite-clay-features-built-and-key-lessons-learn",
+   "session": "2026-09-eric-engoron",
+   "title": "Eric's favorite feature he built, and the one that taught him most",
+   "asker": "Max R.",
+   "qts": "1790186290670629",
+   "likes": 5,
+   "tags": [
+    "Building Clay",
+    "Integrations"
+   ],
+   "question": "What's your favourite Clay feature that you’ve built and why? In a similar thread, which Clay feature that you built taught the most important lessons that set up the foundation for how you approach building for Clay?",
+   "links": [],
+   "replies": [
+    {
+     "by": "Eric Engoron",
+     "ts": "1790354186625749",
+     "text": "My favorite Clay feature that I built has to be our Google Slides integration. Before Claude Design, being able to generate custom slide decks off of a meeting brief, in seconds was incredibly powerful and just spoke to my brain as the creative engineer.\n\nThe feature that I built that taught me the most lessons was Shared Tables in Clay. We viewed shared tables as the biggest growth driver at Clay because people would share their workflows and their brains to power the GTM community. What  I learned was that, while the sharing is cool, a GTME’s workflows are their brand and are their business, so without some form of monetization, sharing may be tricky. What it influenced was me remembering that we’re helping other people build businesses on top of our system, and each feature we build needs to have that in mind",
+     "role": "guest"
+    }
+   ],
+   "answered": true,
+   "short": "the features he's proudest of",
+   "gist": "Google Slides is his favorite build. Shared Tables taught him that a GTM engineer's workflows are their business, so features must respect that."
+  },
+  {
+   "id": "msg_GfDyv7nUw1GV",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_GfDyv7nUw1GV/how-has-ai-changed-the-way-you-build",
+   "session": "2026-09-eric-engoron",
+   "title": "How AI has changed the way Eric builds",
+   "asker": "Max R.",
+   "qts": "1790186206498799",
+   "likes": 2,
+   "tags": [
+    "AI & vibe coding"
+   ],
+   "question": "How has AI changed the way you build?",
+   "links": [],
+   "replies": [
+    {
+     "by": "Eric Engoron",
+     "ts": "1790353962924549",
+     "text": "I’m going to loop this one into this response:\n\nGiving AI business context has become far more important than writing code 🙂",
+     "role": "guest"
+    }
+   ],
+   "answered": true,
+   "short": "how AI changed building",
+   "gist": "In short: giving AI business context now matters more than writing code."
+  },
+  {
+   "id": "msg_eUZK6yTQtE58",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_eUZK6yTQtE58/how-to-delegate-work-between-yourself-and-ai-plann",
+   "session": "2026-09-eric-engoron",
+   "title": "Splitting work between yourself and AI; planning before building",
+   "asker": "Max R.",
+   "qts": "1790186189735919",
+   "likes": 4,
+   "tags": [
+    "AI & vibe coding"
+   ],
+   "question": "How do you delegate the work between yourself and AI? What’s your planning process like before you build?",
+   "links": [],
+   "replies": [
+    {
+     "by": "Eric Engoron",
+     "ts": "1790353917864249",
+     "text": "My planning process is gaining as much business context as humanly possible. Then, translating that into a spec that includes context on what’s already been built. Then I ask AI to present a plan for how it would build that spec, and I fact check each part of the plan and I ask more questions about why it made certain decisions. Then, I ask it to update the plan with my  feedback and only after my final review does it start building.\n\nBecause I work mainly on billing and enterprise, my delegation process is all about context building. AI doesn’t have great context on scale or proper billing processes, so the planning process becomes far more important",
+     "role": "guest"
+    }
+   ],
+   "answered": true,
+   "short": "planning work with AI",
+   "gist": "He gathers business context, writes a spec, has AI propose a plan, questions and revises it, and only then lets it build."
+  },
+  {
+   "id": "msg_iR3zZ5vbyfs8",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_iR3zZ5vbyfs8/the-future-of-gtm-engineering-and-how-to-stay-on-t",
+   "session": "2026-09-eric-engoron",
+   "title": "The future of GTM engineering, and keeping up while things move fast",
+   "asker": "Ayaan A.",
+   "qts": "1790099466674889",
+   "likes": 4,
+   "tags": [
+    "GTM engineering",
+    "AI & vibe coding"
+   ],
+   "question": "What is the future of GTM engineering? what should one do to be on track when things are moving so faster than you while also managing the day to day work.",
+   "links": [],
+   "replies": [
+    {
+     "by": "Eric Engoron",
+     "ts": "1790353516752179",
+     "text": "To me, the future of GTM Engineering is two fold:\n\n• 1. Making sure that all of your systems are working together effectively\n• 2. Making sure that you’re taking feedback from users of those systems, and making improvements and iterations to those systems.\n\nBy working together effectively, what I really mean is that AI will build a bunch of separate systems that achieve similar things, if it doesn’t have full context on what’s already been built. If we give it more context, a system architecture, or something similar, you’d make sure you’re not duplicating work and things flow properly from and to systems of record",
+     "role": "guest"
+    }
+   ],
+   "answered": true,
+   "short": "the future of GTM engineering",
+   "gist": "He sees two parts: making all your systems work together, and improving them from user feedback. Giving AI system context avoids duplicate work."
+  },
+  {
+   "id": "msg_VaKvmrH7qTBj",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_VaKvmrH7qTBj/step-by-step-process-for-creating-audience-lists-a",
+   "session": "2026-09-eric-engoron",
+   "title": "Building lists: from audience to signal-ready segments",
+   "asker": "Thiago C.",
+   "qts": "1790083593770349",
+   "likes": 1,
+   "tags": [
+    "Using Clay",
+    "GTM engineering"
+   ],
+   "question": "What is the process, step-by-step, you use to create your lists? from Audience to segment with signals ready for outreach",
+   "links": [],
+   "replies": [
+    {
+     "by": "Eric Engoron",
+     "ts": "1790352299437529",
+     "text": "As an engineer, I don’t create many lists, so this is probably a better question for our GTME team, but my general advice here is to start targeted, use creativity, and then scale when you find what works.",
+     "role": "guest"
+    }
+   ],
+   "answered": true,
+   "short": "building targeted lists",
+   "gist": "Not his area as an engineer, but his advice is to start targeted, be creative, and scale what works."
+  },
+  {
+   "id": "msg_r2KpHcxhExPs",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_r2KpHcxhExPs/what-advice-would-you-give-to-save-credits-on-clay",
+   "session": "2026-09-eric-engoron",
+   "title": "How to save credits on Clay",
+   "asker": "Thiago C.",
+   "qts": "1790083509880789",
+   "likes": 5,
+   "tags": [
+    "Using Clay"
+   ],
+   "question": "What advice would you give to save credits on clay?",
+   "links": [],
+   "replies": [
+    {
+     "by": "Eric Engoron",
+     "ts": "1790352232014029",
+     "text": "My biggest advice here is that, especially as you’re starting to build out new workstreams, targeted lists are your best friends. Instead of just running a search for 50k engineers in NYC to send outreach to, try specific subsets of engineers, find what works, and then scale that out to others.\n\nAdditionally, using things like audiences to save the data you’ve already enriched, so you don’t enrich it again is key. If audiences isn’t an option for your team, an external snowflake etc can also be super helpful here.",
+     "role": "guest"
+    }
+   ],
+   "answered": true,
+   "short": "saving Clay credits",
+   "gist": "Start with small, targeted lists and scale what works. Save enriched data in Audiences (or a warehouse like Snowflake) so you don't enrich it twice."
+  },
+  {
+   "id": "msg_NaED9Vitbjdz",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_NaED9Vitbjdz/skills-and-habits-that-accelerate-mastery-in-build",
+   "session": "2026-09-eric-engoron",
+   "title": "The skill Eric wishes he'd learned earlier building integrations",
+   "asker": "Nishika G.",
+   "qts": "1789759382597649",
+   "likes": 2,
+   "tags": [
+    "Careers & skills",
+    "Integrations"
+   ],
+   "question": "And more specifically, since you've built over half of Clay's integrations yourself, what's a skill or habit you wish you had picked up earlier in your own career that would have accelerated how fast you got good at this?",
+   "links": [],
+   "replies": [
+    {
+     "by": "Eric Engoron",
+     "ts": "1790351990937919",
+     "text": "The biggest skill I wish I learned earlier on was how to better convey my technical thoughts to external providers. As you’re building these integrations, you’re working with a variety of different engineers. Each engineer has their own style and their own way of building things. However, what works for a company building an API, and what works for Clay in terms of how we build with it can often be different. So, you need to work with the external provider to figure out what works for both.\n\nThe biggest thing I’ve learned is that each person you communicate with has a different way they like to receive feedback and be explained a problem. It’s your job to figure out what that style is, so you can have effective communication",
+     "role": "guest"
+    }
+   ],
+   "answered": true,
+   "short": "working with API partners",
+   "gist": "He wishes he'd learned sooner how to explain technical needs to external API partners, and to adapt to how each person likes to get feedback."
+  },
+  {
+   "id": "msg_0TDZz2NTNI6E",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_0TDZz2NTNI6E/what-separates-successful-gtm-engineering-careers",
+   "session": "2026-09-eric-engoron",
+   "title": "What separates deep technical GTM careers from surface-level integration work",
+   "asker": "Nishika G.",
+   "qts": "1789759339862749",
+   "likes": 1,
+   "tags": [
+    "Careers & skills",
+    "GTM engineering"
+   ],
+   "question": "Also, If someone wants to build a real technical career in this GTM engineering and automation space, what would you say actually separates the people who grow into deep, valuable technical roles from the ones who stay stuck doing surface-level integration work?",
+   "links": [],
+   "replies": [
+    {
+     "by": "Eric Engoron",
+     "ts": "1790351814934909",
+     "text": "Another great question here! To start, I think I’d reframe the notion of surface-level integration work. Sure, certain things in the world of integrations might be simple, like setting up a webhook when a form is submitted to then go to a slack channel. However, at the same time, those surface-level things are also super complex if you look a little deeper. For instance:\n\n• This automation works when we have 50 people a week, but what if I had 5000.\n• If I run a commercial and get a bunch of traffic to my site, will this automation break?\n\nSo, there’s definitely a lot of deep technical thought to be done in the world of integrations.\n\nWith that being said, the biggest separation factor for me is being able to understand the context of why you’re building what you are, and being able to tackle that problem creatively. Often times, you’re given an automation job where someone tells you exactly what they need, but their solution may only be one option. So, what I like to do is take a step back from the solution and say: “What problem does this form automation actually solve”. Then you also start involving things like Systems Architecture into your skillset",
+     "role": "guest"
+    }
+   ],
+   "answered": true,
+   "short": "growing a deep technical career",
+   "gist": "Even simple integrations hide scale questions. What sets people apart is understanding why they're building something and solving the real problem creatively."
+  },
+  {
+   "id": "msg_vJrmQwriQrCE",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_vJrmQwriQrCE/balancing-flexibility-and-simplicity-in-building-c",
+   "session": "2026-09-eric-engoron",
+   "title": "Flexible and powerful vs. simple: how integrations and waterfalls are designed",
+   "asker": "Nishika G.",
+   "qts": "1789759204236789",
+   "likes": 2,
+   "tags": [
+    "Integrations",
+    "Building Clay"
+   ],
+   "question": "Hi Eric! You've built more than half of Clay's 200+ integrations, so I'm curious about the engineering judgment behind that.\n\nWhen you're deciding how to build a new integration or add it into a waterfall, how do you decide the tradeoff between making it flexible and powerful versus keeping it simple enough that someone new to Clay can actually use it without getting overwhelmed?",
+   "links": [],
+   "replies": [
+    {
+     "by": "Eric Engoron",
+     "ts": "1790351478627469",
+     "text": "This is a great question! The answer has actually changed over time.\n\nIn the beginning, we would actually take each integration provider, and tailor the responses to work better in Clay to match with other providers, so it would be easier to use. So, we’d rename fields, remove the fields that were confusing (i.e. a revenue amount without a currency or cents vs dollars), and then make sure everything was cohesive.\n\nHowever, as we started scaling the number of providers, this was not scalable because the providers themselves would be asked questions about the data and then say: “we don’t provide that field” and it would be a whole mess. So, we made the choice to stay true to the provider to allow things to be more flexible, even if the overhead was a bit more.\n\nIn terms of using Clay without getting overwhelmed, as we’re building a waterfall, we try to do our best to rank providers to give you the best results for what you need, and that’s going to get better over time as well. Moreover, Sculptor and investing in AI will help bridge the gap between our highly technical power users, and those just coming to Clay with a use-case. The goal is that we’d use our institutional knowledge to help you build effectively.",
+     "role": "guest"
+    }
+   ],
+   "answered": true,
+   "short": "flexible vs. simple integrations",
+   "gist": "Clay first normalized provider data for simplicity, then chose to stay true to each provider as it scaled. Ranked waterfalls and Sculptor help newcomers."
+  },
+  {
+   "id": "msg_jbsLSAevgnnI",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_jbsLSAevgnnI/sharing-your-most-meaningful-achievements-and-disa",
+   "session": "2026-09-eric-engoron",
+   "title": "Eric's most meaningful achievement and his biggest failure",
+   "asker": "Wesley v.",
+   "qts": "1789677610639659",
+   "likes": 2,
+   "tags": [
+    "Careers & skills"
+   ],
+   "question": "What's your most personally significant and meaningful achievement and what is your most meaningful disappointment or failure?",
+   "links": [],
+   "replies": [
+    {
+     "by": "Eric Engoron",
+     "ts": "1790351120766199",
+     "text": "Oh I really like this question. We’re going to get quite personal with this one 🙂\n\nMy most meaningful achievement is that, with my role at Clay, I was finally able to become who I wanted to be as an engineer. More specifically, I was never the engineer that really fell in love with algorithms, or liked thinking about things in terms of computational complexity. Sure, I could do it, but what I really loved about it was that I could build things to help people. I could build things that solved problems. In order to do that though, you need to have an overarching context of what you’re solving. So, I fell more into a generalist role that traditionally gets left behind as companies continue to scale. But, Clay saw that my ability to work effectively in any part of the business, because of the context that I had, allowed me to become the engineer that can still build, but just works across the entire business, helping people where needed.\n\nIn terms of my most meaningful failure, it was burning out earlier in my career. Being a generalist also means that a lot of people tend to want your advice on a lot of things, and it can be difficult to, especially in an early stage startup, set boundaries as you’re trying to grow. I did not recognize that burn out early on, which led to some bad decisions, and unhealthy habits. But, when i finally noticed it, I now use it as a guide to enforce my boundaries, and I think of it quite differently. I’m only as good as the clarity that I have and taking care of myself first is important",
+     "role": "guest"
+    }
+   ],
+   "answered": true,
+   "short": "wins, failures and burnout",
+   "gist": "His proudest win is becoming a generalist engineer who helps across the business. His biggest lesson was early burnout, which taught him to set boundaries."
+  },
+  {
+   "id": "msg_iEMhHeie7EJ5",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_iEMhHeie7EJ5/choosing-and-prioritizing-valuable-problems-when-g",
+   "session": "2026-09-eric-engoron",
+   "title": "Knowing which problems to solve early on, and how that changed with growth",
+   "asker": "Kartik P.",
+   "qts": "1789601316515109",
+   "likes": 2,
+   "tags": [
+    "Building Clay"
+   ],
+   "question": "How did you know which problems were the most valuable to solve when you started off, and how did that change as Clay began to grow?",
+   "links": [],
+   "replies": [
+    {
+     "by": "Eric Engoron",
+     "ts": "1790350080579859",
+     "text": "This is a fun question! My first job at Clay was actually getting on calls with Varun, and building whatever came out of those sales calls.\n\nWe would do this thing called the “reverse demo” where, instead of us demoing our product, we’d give our product to the prospect and then say, “What’s missing”, and literally just watch them go through it on a Zoom call. Then we would do a quick retro on what we saw, and that’s what we would build that day. We wanted to make sure we’d build something that folks would actually use, and the best way to do that was to ask them, in the world of integrations and GTM, what are you missing?\n\nAs Clay started to grow, we never lost that customer centric vision, but there was certainly more process around it, and planning cycles that meant I wasn’t just building 6 integrations in a single day anymore. Scale mattered, and so did making sure that these features worked for thousands of customers and not just one",
+     "role": "guest"
+    },
+    {
+     "by": "Kartik P.",
+     "ts": "1790350640368929",
+     "text": "Wow I love it, it honestly makes so much sense too, why not get the customer’s help to dictate your literal next steps, seems so obvious when you think about it!! Thank you! \n\nFollow up if you’re interested and have the time - I’ve heard other startup builders / founders mention to solve the hardest problems first and most often (so they can build a moat by doing the difficult things), did you apply any similar philosophy like that over these past few years as well?",
+     "role": "asker"
+    }
+   ],
+   "answered": true,
+   "short": "finding the problems worth solving",
+   "gist": "Early on he joined sales calls and built what prospects said was missing in \"reverse demos.\" As Clay grew, the customer focus stayed but gained process and scale."
+  },
+  {
+   "id": "msg_veb3xXzEgTqK",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_veb3xXzEgTqK/bridging-the-gap-between-vibe-coding-and-enterpris",
+   "session": "2026-09-eric-engoron",
+   "title": "The gap between vibe coding and enterprise-grade production code",
+   "asker": "Kartik P.",
+   "qts": "1789601268826079",
+   "likes": 5,
+   "tags": [
+    "AI & vibe coding"
+   ],
+   "question": "How big is the gap now between vibe coding and enterprise grade production code - how do you bring vibe coding up to that standard and enterprise coding to vibe coding simplicity?",
+   "links": [],
+   "replies": [
+    {
+     "by": "Eric Engoron",
+     "ts": "1790350471559859",
+     "text": "I think the gap between enterprise grade production code is certainly lessening as AI becomes more advanced, but it’s still very prevalent. As mentioned in previous threads, AI is only as good as the context it is given. So, a lot of the pain points come from AI not having enough information about who you are as a business, how things should be run, how you think about scaling to thousands and thousands of customers etc. There’s also a big difference for writing a salesforce integration that has support for 100000 records, and one that supports over a billion records reliably.\n\nEnterprise to me also can mean you scaling your own company, and then more problems arise. For instance, if I’m charging for AI usage, and eventually need to get audited, did AI build my billing system in a way where I can pass a financial audit, and it will all flow into my ERP system?\n\nIn my mind, the best ways to bring it up to standard are:\n\n• Always ask the question about scale\n• Hopefully, as i alluded to in a previous thread, we have some type of enterprise primitive that any vibecoding tool can build on top of\n• Use conversations with others as the best way to gain context, and make sure your AI is aware of those conversations\n\nVibe-coding is just like any other skill, you need to learn what you don’t know from others, because known unknowns are easier to think about than unknown unknowns",
+     "role": "guest"
+    },
+    {
+     "by": "Kartik P.",
+     "ts": "1790350963897849",
+     "text": "That makes a lot of sense! I typically tell Claude to “follow the top engineering standards, especially so that we can continue to iterate on our project in the coming years as we scale for many many people over many years” or something like that and that has been interesting to work with.\n\nThank you!",
+     "role": "asker"
+    }
+   ],
+   "answered": true,
+   "short": "vibe coding vs. production code",
+   "gist": "The gap is shrinking but real, because AI lacks business and scale context. Always ask about scale, build on solid primitives, and feed AI context from real conversations."
+  },
+  {
+   "id": "msg_keqnBj0O7rTI",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_keqnBj0O7rTI/advice-from-eric-on-how-non-technical-people-can-u",
+   "session": "2026-09-eric-engoron",
+   "title": "How non-technical people can become more technical with Clay and LLMs",
+   "asker": "Andrea B.",
+   "qts": "1789597720177879",
+   "likes": 3,
+   "tags": [
+    "AI & vibe coding",
+    "Careers & skills"
+   ],
+   "question": "What advice would Eric have for non-technical folks trying to become more technical through tools like Clay and LLMs? Vibe-coding advice?",
+   "links": [],
+   "replies": [
+    {
+     "by": "Eric Engoron",
+     "ts": "1790349838493969",
+     "text": "The biggest advice that I could possibly give anyone trying to become more technical is that creativity is your greatest strength. It’s funny, because traditionally non-technical roles (i.e. marketing, brand, etc) are traditionally seen as the creative ones, but in my experience, my creativity is how I’ve been able to really build my own engineering knowledge.\n\nIn this sense, what I mean by creativity, is that there’s tons and tons of different ways to build a workflow in Clay, there’s tons and tons of different ways to prompt an LLM to answer a question, don’t be afraid to experiment, to get results wrong, to ask AI to cite its sources so you can learn. Also don’t be afraid to ask this community, linkedin, etc for guidance while learning.\n\nIn the world of AI, engineers are becoming product people, so what really matters is your ability to think about problems differently from those around you.\n\nFor vibe-coding advice, I’d say that the biggest thing is to come to the AI with as detailed a plan as possible, or even use it to help write your plan. Ask it what you may not be thinking of in your current spec, and use it as a thought partner, because those answers will help it gain context as well.",
+     "role": "guest"
+    }
+   ],
+   "answered": true,
+   "short": "becoming more technical",
+   "gist": "Creativity is your biggest strength: experiment, ask AI to cite sources, and ask the community. For vibe coding, bring a detailed plan and use AI as a thought partner."
+  },
+  {
+   "id": "msg_CK2ieArNOX1k",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_CK2ieArNOX1k/common-mistakes-in-vibe-code-and-how-to-fix-them",
+   "session": "2026-09-eric-engoron",
+   "title": "The biggest mistake people make when vibe coding",
+   "asker": "Eric N.",
+   "qts": "1789591235476149",
+   "likes": 6,
+   "tags": [
+    "AI & vibe coding"
+   ],
+   "question": "What is the biggest mistake people are making when they vibe code and how would he fix them?",
+   "links": [],
+   "replies": [
+    {
+     "by": "Eric Engoron",
+     "ts": "1790349517849749",
+     "text": "The biggest mistake people make when vibecoding is assuming that AI knows the proper way to build things without validation and that AI thinks of all of the edge cases, so that you do not have to. The unfortunate truth is that AI only thinks about the context that you give it. So, if you don’t bring up things like security, the fact that you’re building something multi-user, the fact that you’ll eventually have X number of users using the platform, you fall victim to AI making errors in implementation because it’s misinformed.\n\nThe ultimate fix for this from my perspective would be that we identify a system prompt that can make AI think about all of these things and ask you a bunch of questions to get to the answers like security etc that you may not have thought of, then we pair that with a set of “vibe-coded approved components”, built by engineers to help vibe coders follow best practices (i.e. the right performant way to paginate a list).\n\nIn the short term, while that silver bullet doesn’t really exist, or is at least sort of the way there in a bunch of different places, use plan mode often, and in the early days of building your systems, consult engineers you know to make sure AI is going down the right path and then build upon them.",
+     "role": "guest"
+    }
+   ],
+   "answered": true,
+   "short": "vibe coding mistakes",
+   "gist": "The biggest mistake is assuming AI handles edge cases like security, multiple users and scale on its own. Use plan mode and check in with engineers early."
+  },
+  {
+   "id": "msg_YYPKOOGr1r1H",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_YYPKOOGr1r1H/daily-habits-eric-uses-to-become-a-better-engineer",
+   "session": "2026-09-eric-engoron",
+   "title": "The daily habit that makes Eric Engoron a better engineer",
+   "asker": "Eric N.",
+   "qts": "1789591212849589",
+   "likes": 6,
+   "tags": [
+    "Careers & skills"
+   ],
+   "question": "What does Eric do on a daily basis that he thinks makes him a better engineer that other engineers should learn from?",
+   "links": [],
+   "replies": [
+    {
+     "by": "Eric Engoron",
+     "ts": "1790349113720569",
+     "text": "The biggest thing that I do that is not a part of the traditional engineering mindset is spending my mornings chatting with product folks. Especially in the world of AI, your context is the most important thing you have. Combine your technical knowledge, with business context, and you have a winning combination.\n\nOften times, engineers are given projects from PMs, and just build to spec, but if you can truly understand what it is you’re building and become opinionated in the business sense as well, nothing will stop you 🙂",
+     "role": "guest"
+    },
+    {
+     "by": "Eric N.",
+     "ts": "1790349134863679",
+     "text": "you do have great opinions",
+     "role": "asker"
+    }
+   ],
+   "answered": true,
+   "short": "habits of a better engineer",
+   "gist": "He spends his mornings talking with product people. Pairing technical skill with business context is what sets engineers apart."
+  },
+  {
+   "id": "msg_lWyOW014T2zj",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_lWyOW014T2zj/how-mishti-used-data-and-innovation-to-coin-the-gt",
+   "session": "2026-09-mishti-sharma",
+   "title": "How Clay knew coining the GTM Engineer role was the right call",
+   "asker": "Kartik P.",
+   "qts": "1789060855285409",
+   "likes": 1,
+   "tags": [
+    "GTM engineering",
+    "Storytelling & brand"
+   ],
+   "question": "Hi Mishti, congrats on the latest funding round. Everything you’re doing is clearly working - how did you know that the choices you’ve made, like coining GTME as a role, was the right direction to take the company in? Was it data-driven (and if yes, how do you gather data for something like this, what do you even look at?), inspired by precedents set by other firms or something else? Do you see potential for any other companies to be coining new roles in the next few years? And will you be coining more at Clay? Looking forward to your full article on Substack. Would love to learn how someone starts a career in this as well. Thanks.",
+   "links": [],
+   "replies": [
+    {
+     "by": "Mishti Sharma",
+     "ts": "1789062077656349",
+     "text": "Thanks for the question! We definitely didn't think GTM engineering would necessarily take off. We were just responding to an internal need when we started hiring for the role, before we even wrote about it. Then we noticed that a lot of the companies we were selling to were super intrigued by the work our early GTMEs were doing — and they wanted to hire GTMEs too!\n\nLittle organic signals like that that made us feel like we should talk publicly about the role more. (Even then, there was no guarantee that it would really catch on beyond a certain tiny niche of us and our peers.)\n\nI think the key thing here is we never started with \"oh, we need to stand out in the market — what roles or brand campaigns will do that\"? GTM engineering at Clay happened very organically based on a true internal need + the changes in the market (AI changing how growth was done and what was possible).\n\nI don't think we're going to be coining more titles, but who knows 🙂 The key thing is that coining a title or a brand campaign in isolation really rarely works. It really has to be the perfect combination of how something your company helps with hooks into a current need, change in the market, or topic of discussion I think!",
+     "role": "guest"
+    },
+    {
+     "by": "Kartik P.",
+     "ts": "1789062488616379",
+     "text": "That must have been exciting! Thank you for your answer and for creating new opportunities for so many people.",
+     "role": "asker"
+    }
+   ],
+   "answered": true,
+   "short": "coining the GTM engineer role",
+   "gist": "Clay didn't expect the title to take off; it came from a real internal need and customers wanting GTMEs too. Coining a title in isolation rarely works."
+  },
+  {
+   "id": "msg_bsy706O6WH0P",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_bsy706O6WH0P/key-elements-of-captivating-brand-storytelling-in",
+   "session": "2026-09-mishti-sharma",
+   "title": "What makes brand storytelling captivating, and brands worth following",
+   "asker": "Fruzsi P.",
+   "qts": "1789060545070129",
+   "likes": 1,
+   "tags": [
+    "Storytelling & brand"
+   ],
+   "question": "HI Mishti S.! This may be a deceptively simple question: what do you think are the key elements that make brand storytelling truly captivating and exceptional, especially in an industry like tech, which can sometimes feel quite technical? And are there any brands worth following in your opinion? (other than Clay, ofc! 🙂 )",
+   "links": [],
+   "replies": [
+    {
+     "by": "Mishti Sharma",
+     "ts": "1789062645703379",
+     "text": "I like Air, Ramp, and Stripe! Duolingo for socials. Gamma could be interesting. Anthropic definitely has a certain warm cinematic aesthetic though I wouldn't say they're doing anything groundbreaking.\n\nI think what makes brand storytelling good is what makes any kind of story good: having stakes, a good hook, plot, talking about actual people, actual trends in the world, and issues, not just about your product.\n\nWe're all super attuned to what feels like obvious marketing. But some of the companies above have made things a normal person would actually want to read in their free time. For example, Ramp's Economist puts out a lot of interesting data — he recently did a report on the most expensed New York City restaurants. Stripe Press has published amazing books. Air does awesome events with filmmakers and authors in New York. At Clay, we are trying to make YouTube videos and shows about topics that an everyday person would find interesting. There's always a way to hook it into your product somehow, but I feel like less is more if that makes any sense?",
+     "role": "guest"
+    },
+    {
+     "by": "Fruzsi P.",
+     "ts": "1789065707356689",
+     "text": "Mishti S. absolutely! And thank you for the recommendations, I'm checking them out right now - just learned about Ramp's content, it's really nice!",
+     "role": "asker"
+    }
+   ],
+   "answered": true,
+   "short": "great brand storytelling",
+   "gist": "She likes Air, Ramp, Stripe, Duolingo and Gamma. Great brand stories have stakes, a hook and real people, and aren't only about the product."
+  },
+  {
+   "id": "msg_6k9DOLYZVKj5",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_6k9DOLYZVKj5/how-to-position-yourself-as-a-candidate-when-start",
+   "session": "2026-09-mishti-sharma",
+   "title": "Positioning yourself so a company takes a bet on you",
+   "asker": "Sandra U.",
+   "qts": "1789059585665399",
+   "likes": 1,
+   "tags": [
+    "Careers & skills"
+   ],
+   "question": "I think, for me, my question would be (it's maybe silly): how do you figure out how to position yourself as a person that would be giving a shot at a company? I've looked at your journey, and it's kind of fascinating how you gave Clay a shot, and Clay also gave you a shot. Let's say I'm trying to be on this new career path. I want to position myself as somebody that a company will take a bet on, even if I have little or no experience, but I'm looking to put in the work required.\n\nThanks",
+   "links": [],
+   "replies": [
+    {
+     "by": "Shriya N.",
+     "ts": "1789059643420899",
+     "text": "Not silly at all! 🥺",
+     "role": "host"
+    },
+    {
+     "by": "Mishti Sharma",
+     "ts": "1789062400197569",
+     "text": "Sandra! So nice to hear from you here ❤️ ❤️\n\nGreat questions! I think the best way is to actually proactively try to help a company you're really interested in with something that you think they need, based on what you can learn about them online. The way I created my first job at another startup was just texting the founder a bunch of product improvements that I thought he should make. He ended up hiring me in a product role even though I'd never done it before and I'd never actually even worked at a startup before.\n\nFor example, someone could find a company you knew sold to a certain niche and and find some leads for them with suggested messaging for a GTM role. Or look at a company's website and send them feedback about how to improve it for a PMM or design role. These are the kinds of things that catch people's attention right away because you're already solving a problem and thinking critically about their business. That's really all people care about, I think, especially smart people in the startup world, where it's often the case that most people don't really have a background in what their current job is before. Hope that helps but lmk if you have more thoughts on this!\n\n(For what it's worth I know this depends on the industry but I think startups in America, at least, are very open to this kind of approach, though older-school industries like finance, law, etc. or even startups abroad where norms are more formal might be different)",
+     "role": "guest"
+    },
+    {
+     "by": "Sandra U.",
+     "ts": "1789140985009789",
+     "text": "Thank you so much\n\nMakes so much sense to find where I can be of value and approach instead of waiting till they open up spots to hire.\n\nYour response answers my question, Appreciate you taking the time to do this",
+     "role": "asker"
+    }
+   ],
+   "answered": true,
+   "short": "getting a company to bet on you",
+   "gist": "Proactively help a company you admire with something it needs, like leads or product feedback. Solving a real problem gets attention fast."
+  },
+  {
+   "id": "msg_PTkqUlUIpnT5",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_PTkqUlUIpnT5/using-google-maps-and-gtm-engineers-to-innovate-fu",
+   "session": "2026-09-mishti-sharma",
+   "title": "GTM engineering for nonprofits and fundraising",
+   "asker": "Motasim",
+   "qts": "1789050658565009",
+   "likes": 3,
+   "tags": [
+    "GTM engineering"
+   ],
+   "question": "Hey Mishti! I've been listening to a few pods with Becca and Everett, and the example that stuck with me was the waste company using Google Maps to identify bins by color. That's the kind of play I keep thinking about: a signal nobody would think to look for.\n\nAre there GTM engineers doing this in the nonprofit space? Fundraising looks like the same motion under different words. Thanks!",
+   "links": [],
+   "replies": [
+    {
+     "by": "Mishti Sharma",
+     "ts": "1789061317419349",
+     "text": "There definitely are! I'm not sure by name exactly what different people are working on but a few people at Clay actually recently started an initiative to help nonprofits. I've heard a lot of agency owners being really interested in pro bono work.\n\nI've spoken to several friends who are at nonprofits and you're spot on that the problems are often exactly the same. Whether it's finding funders or partners or recipients for their services, people are trying to find + research a person that's the best fit for something they're trying to do — and reach out to them. That's what GTM engineering and Clay can really excel at!",
+     "role": "guest"
+    },
+    {
+     "by": "Motasim",
+     "ts": "1789061718863929",
+     "text": "Thanks",
+     "role": "asker"
+    }
+   ],
+   "answered": true,
+   "short": "GTM engineering for nonprofits",
+   "gist": "Yes. Some people at Clay started an initiative to help nonprofits, and finding funders and partners is the same research-and-outreach problem Clay solves."
+  },
+  {
+   "id": "msg_9IymSdsja4tS",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_9IymSdsja4tS/what-is-a-good-gtm-engineer-project-for-beginners",
+   "session": "2026-09-mishti-sharma",
+   "title": "A beginner GTM engineering project that proves the skill",
+   "asker": "Gerardo",
+   "qts": "1789045205982469",
+   "likes": 3,
+   "tags": [
+    "GTM engineering",
+    "Careers & skills"
+   ],
+   "question": "Hi Mishti 👋 Thank you for taking the time to answer our questions; it's greatly appreciated!\n\nClay has written about the best GTMEs being \"hybrids,\" commercially thinkers who build vs just being tool specialists. For someone with no portfolio, what's 1 concrete example of a project you've seen that proves this, not just claims it on a resume?\n\nContext, I'm new to pretty much everything and learning as I go. I want to ensure I'm spending my time forming good habits and learning key skills early on before I spread myself thin exploring ancillary ones. I don't know enough to know what is a \"need to have\" vs. a \"nice to have\" so any guidance you can provide would be warmly received 🙏",
+   "links": [
+    {
+     "label": "Clay: How to hire a GTM engineer",
+     "href": "https://www.clay.com/blog/how-to-hire-a-gtm-engineer"
+    }
+   ],
+   "replies": [
+    {
+     "by": "Mishti Sharma",
+     "ts": "1789061503977839",
+     "text": "Totally hear you! It's hard to figure out how to learn things described as abstractly as \"systems thinking in practice.\" One great start, I think, would be to reach out to a business, learn what they're struggling with in their go-to-market motion (it could even be someone super local, like a coffee shop or a laundromat), and build them out a workflow that would help them.\n\nI think Clay and a lot of GTM engineering tools are best learned by having specific projects in mind versus in the abstract. There are definitely a lot of boot camps that do a good job at teaching fundamental skills! But the reason I suggest something like this is that it'll immediately get you into the belly of a business: understanding what they're struggling with, coming up with a solution, and then implementing it, which is the core skill I think.",
+     "role": "guest"
+    },
+    {
+     "by": "Mishti Sharma",
+     "ts": "1789061574556249",
+     "text": "I know some of our employee bootcamp projects really range from sourcing pizzerias in New York to crawling lists of journalists that are good to pitch for various topics. It's often not even related to a specific customer problem or something but people learn these tools by just thinking about some research and outreach tasks they're curious about and then trying it out",
+     "role": "guest"
+    }
+   ],
+   "answered": true,
+   "short": "a first GTM engineering project",
+   "gist": "Find a real business, even a local one, learn its go-to-market struggles, and build a workflow that helps. Clay's own bootcamp projects work the same way."
+  },
+  {
+   "id": "msg_pLeZwHTja6aD",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_pLeZwHTja6aD/how-to-choose-the-right-linkedin-audience-for-enga",
+   "session": "2026-09-mishti-sharma",
+   "title": "Choosing a LinkedIn audience when many Clay people post",
+   "asker": "Isha S.",
+   "qts": "1789034944374839",
+   "likes": 2,
+   "tags": [
+    "Content & LinkedIn"
+   ],
+   "question": "Hi Mishti S. as someone who drives a lot of LinkedIn traffic for Clay, how do you decide on the type of audience you want to attract through your profile and the ideas that will get them curious about Clay, considering now that the marketing and sales profiles at Clay are also active on this front?",
+   "links": [
+    {
+     "label": "Video Rishi P. shared",
+     "href": "https://youtu.be/Pdhgu9U4g_I"
+    }
+   ],
+   "replies": [
+    {
+     "by": "Rishi P.",
+     "ts": "1789036057213239",
+     "text": "Peter K. is the person you should look for, his youtube video has really nice breakdown",
+     "role": "community"
+    },
+    {
+     "by": "Isha S.",
+     "ts": "1789036150942219",
+     "text": "Can you point me to the specific video?",
+     "role": "asker"
+    },
+    {
+     "by": "Rishi P.",
+     "ts": "1789036191120409",
+     "text": "https://youtu.be/Pdhgu9U4g_I",
+     "role": "community"
+    },
+    {
+     "by": "Mishti Sharma",
+     "ts": "1789060855973989",
+     "text": "Different people have different expertise areas at Clay and our LinkedIn posting usually stems from that, as well as from our personal interests and journey. For me I know I can talk the most about having an interesting career path and the storytelling/narrative role, which has been picking up a lot in the market and where Clay has done some really great work. A lot of my posts are about:\n\n• brand / narrative / storytelling\n• my personal journey\n• things I think are special about Clay\n\nI also feel free to write about personal topics, like I recently posted about finishing my first short documentary! We have a person whose full-time job is helping with executive posts, helping people ideate and build personal areas of expertise and I'm sure that will just continue to grow over time!",
+     "role": "guest"
+    }
+   ],
+   "answered": true,
+   "short": "finding your LinkedIn audience",
+   "gist": "She posts from her own expertise: narrative and storytelling, her career path and what's special about Clay, plus personal topics."
+  },
+  {
+   "id": "msg_ntNdUBtAdCjS",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_ntNdUBtAdCjS/recommended-skills-to-build-early-for-aspiring-gtm",
+   "session": "2026-09-mishti-sharma",
+   "title": "Skills to build early if you want to become a GTM engineer",
+   "asker": "Nishika G.",
+   "qts": "1788970106050249",
+   "likes": 4,
+   "tags": [
+    "Careers & skills",
+    "GTM engineering"
+   ],
+   "question": "Also, if someone wanted to eventually become really good at this kind of work, or even become a GTM engineer, what skills would you recommend they deliberately build early on?\n\nI’d genuinely love to hear how you think about it.",
+   "links": [],
+   "replies": [
+    {
+     "by": "Daayem S.",
+     "ts": "1788979050387649",
+     "text": "What a great question.\n\nDevelop an instinct for researching, learning, and deeply understanding people's problems in their respective industries.\n\nWe all know that owners/founders wanna increase revenue and cut costs - but the mechanisms for that in each industry would be different.\n\nFor a business owner in the medical field, that might look like being on more insurance providers' panels so they can take on more patients/clients.\n\nFor an owner/founder in the ecom space, more efficient ad spend allocation would help them both increase rev while reducing ad costs (double whammy), and whatever product you're marketing to them should be framed as an effective means to that end.\n\nSame for when you're targeting the finance guy, the HR lady, and the operations folks.\n\nStudy these verticals and industries deeply, understand the work-related pain-points they suffer everyday + the goals/objectives they're trying everyday to achieve, and how to connect both in your copy (messaging angles).\n\nDeveloping and training that instinct will give you a huge edge over other GTMEs who get confused about building a full GTM strategy when they're given a new client to handle, and end up writing generic copy and building lists with inaccurate targeting, and don't frame the offer in a way that would be attractive to the target persona(s).",
+     "role": "community"
+    },
+    {
+     "by": "Sanjib S.",
+     "ts": "1789030393934149",
+     "text": "what a simple answer and yet directional enough to start on Daayem S.. Just to add on to his pointers.\n\nbe curious on understanding, they why behind the trends, visualize the mechanisms of the solution you want to implement and from there on you can actually start doing things\n\nPS: In my view GTM engineering is more of a high school or college level maths. You already know what is true, so you now just try and evaluate the right steps to reach your solution.",
+     "role": "community"
+    },
+    {
+     "by": "Nishika G.",
+     "ts": "1789036639494709",
+     "text": "Daayem S. This is genuinely one of the most useful breakdowns I've read on this, thank you for taking the time to write it out. The point about connecting the daily pain points to the goals they're chasing, and using that to frame the offer, is something I'll actively start applying to how I research prospects before writing copy. Really appreciate this.",
+     "role": "asker"
+    },
+    {
+     "by": "Nishika G.",
+     "ts": "1789036674534609",
+     "text": "Sanjib S. Love the maths analogy, that actually reframes it perfectly. Knowing the destination and working backward through the right steps instead of guessing forward makes so much more sense than how I was approaching it. Thanks for adding onto Daayem's point, this whole thread is going straight into my notes.",
+     "role": "asker"
+    },
+    {
+     "by": "Mishti Sharma",
+     "ts": "1789063016665189",
+     "text": "I think Daayem is spot on. I'd actually just recommend diving into projects instead of even focusing on skills too much in isolation early on! This answer might be relevant here too:",
+     "role": "guest"
+    },
+    {
+     "by": "Nishika G.",
+     "ts": "1789064590774209",
+     "text": "Mishti S. This is genuinely great advice, and it actually validates something I've already started doing. I recently built an outreach automation combining Apollo, Clay, and n8n for a small set of real businesses, and you're right, the learning that came from actually building for a real use case was completely different from just going through tutorials. Really appreciate you taking the time to write this out, it's motivating me to go find a few more real businesses to build for next. Thank you, Mishti!",
+     "role": "asker"
+    },
+    {
+     "by": "Mishti Sharma",
+     "ts": "1789065339475359",
+     "text": "love this so much!!! you're going to crush it! talking about this on linkedin would also be a great way to show what you're doing in public if you can do without reveal any private info etc!",
+     "role": "guest"
+    },
+    {
+     "by": "Nishika G.",
+     "ts": "1789148728338509",
+     "text": "Mishti S. Thank you so much, that genuinely means a lot! I actually shared the Apollo + Clay + n8n build on LinkedIn, keeping all the actual business details private and focusing on the workflow and process. I’d be happy to send you the link if you’d like to take a look. I also sent you a connection request there, would be great to connect!\n\nAlso, I’ve been thinking a lot about what you said around narratives and GTM. As I keep building different workflows in Clay, I’m trying to get better at understanding not just what I can build, but what is actually worth building for a business. If you ever have a few minutes, I’d genuinely love to hear how you think about that distinction.",
+     "role": "asker"
+    },
+    {
+     "by": "Srishti A.",
+     "ts": "1789227087446699",
+     "text": "this is such a fruitful conversation, i think everyone who is new to clay, should read this 2-3 times before moving forward, no matter the stage they are at!",
+     "role": "community"
+    },
+    {
+     "by": "Daayem S.",
+     "ts": "1789227282852959",
+     "text": "Damn, think I'll make a LinkedIn post out of this 😂\nPretty sure a lot of other people would have the same question or benefit from a shift in perspective",
+     "role": "community"
+    }
+   ],
+   "answered": true,
+   "short": "skills for aspiring GTM engineers",
+   "gist": "She agrees with community member Daayem's advice to deeply understand each industry's problems, and suggests learning through real projects over isolated skills."
+  },
+  {
+   "id": "msg_z9M3srF3S3kh",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_z9M3srF3S3kh/how-to-craft-simple-and-compelling-product-stories",
+   "session": "2026-09-mishti-sharma",
+   "title": "Making a technical product like Clay simple and compelling",
+   "asker": "Nishika G.",
+   "qts": "1788969943406899",
+   "likes": 5,
+   "tags": [
+    "Storytelling & brand"
+   ],
+   "question": "Hi Mishti S. ! I’ve been wanting to ask you something.\n\nClay is actually how I first came across the term GTM, and the more I’ve learned about Clay, the more interested I’ve become in the intersection of product, GTM, and storytelling.\n\nYou’re working on narratives for a product that can get pretty technical, with things like Claygent, waterfalls, AI columns, enrichment, etc. I’m curious how you think about making something technically complex feel simple and compelling without losing what makes the product powerful.\n\nWhen you’re working on a new feature or product story, how do you decide what the “aha” should be for someone who has never used Clay before?",
+   "links": [],
+   "replies": [
+    {
+     "by": "Mishti Sharma",
+     "ts": "1789060345934839",
+     "text": "Great question! I think at the heart of every (even complicated) product is something that can be simply explained. At clay, that's growth as a theme — helping companies grow to their full potential. A lot of things fall out of that, e.g., from macro to micro\n\n• we help businesses grow\n• ...that means we need to help businesses find who actually needs them\n• ...that. means we need to have the best company/person data in the world\n• ...so we aggregate 200+ data sources and layer on AI agents so you can find witih precision who you should be selling to\n• ...and then help you act on that data by helping you through the sales process (pushing to outbound campaigns, qualifying inbound leads, etc.)\n• ...and eventually, we're making this process as autonomous as possible, so Clay can predict the next action you should take to grow your business - and then help take it\n\nA lot of our product features might seem granular but they really deal with the last three bullets!",
+     "role": "guest"
+    },
+    {
+     "by": "Mishti Sharma",
+     "ts": "1789060428652469",
+     "text": "Someone's aha moment often depends on how much of an expert they are in this field. For example if you're a layperson and have never sold anything before, we're probably going to help you understand the first two bullets but if you've been in rev ops for 10 years, you're probably going to be the most excited about the last bullet",
+     "role": "guest"
+    },
+    {
+     "by": "Nishika G.",
+     "ts": "1789064461866069",
+     "text": "Mishti S. This is such a clear way to break it down, thank you. The macro to micro structure actually makes a lot of sense of why Clay feels overwhelming at first glance but clicks once you connect the dots backward from \"helping businesses grow.\" The point about the aha moment depending on someone's expertise level is really useful too, I'll keep that in mind as I think about how I explain my own builds to people at different levels. Really appreciate you laying this out.",
+     "role": "asker"
+    }
+   ],
+   "answered": true,
+   "short": "explaining a complex product",
+   "gist": "Anchor a complex product in one simple theme (growth, for Clay), then go from macro to micro. The \"aha\" depends on how expert the audience is."
+  },
+  {
+   "id": "msg_SH634D2ZTAhc",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_SH634D2ZTAhc/understanding-mishtis-storyboarding-process-for-cl",
+   "session": "2026-09-mishti-sharma",
+   "title": "How a content idea gets from Mishti's head to the whole crew",
+   "asker": "Akash R.",
+   "qts": "1788868773287319",
+   "likes": 9,
+   "tags": [
+    "Storytelling & brand",
+    "Content & LinkedIn"
+   ],
+   "question": "love your content, mishti! esp, the analogies you come up with. i want to understand your storyboarding process once you ideate on the piece of content you want to work on. how do you ensure the entire piece of content idea reaches to every single crew member that's involved in the making in a way you imagined/visualized?\n\nnot sure if it's one question or two. feel free to answer one of them if they're two separate questions.",
+   "links": [],
+   "replies": [
+    {
+     "by": "Mishti Sharma",
+     "ts": "1789060682249669",
+     "text": "Thanks for this question! We're actually quite a lean team here so this has been more organic than it might be at bigger companies. For example with our fundraising video, John wrote a draft script, I edited it with him until it was final, Jake and John ran the video production based on that. I did the voiceover. Once they were done managing the post-production process with editors and animators, I was involved in the review process. And then we shipped! It's an example of something where I wasn't the DRI but it all revolved around three core people at the company.\n\nFor some other pieces (for example, the piece I wrote on GTM engineering or GTM Alpha for our substack), I pretty much operated solo. I did some interviews with people on our team to understand what analogy/thesis I wanted to put forth, then I wrote it, then I sent it to a bunch of people at the company and also our customers, and iterated based on that.\n\nWhere there is more cross-functional management is in big projects like communicating a pricing announcement or fundraising announcements, especially in the past, when we made heavy efforts on gifting and events. But it all came down to having a core thesis document that laid out the main statement that we were trying to make. Even for a fundraiser announcement that involves 20 people, you can get a lot of alignment with a clearly written outline or blog.",
+     "role": "guest"
+    }
+   ],
+   "answered": true,
+   "short": "taking content from idea to launch",
+   "gist": "Clay's content team is lean: some pieces involve a few people, others she writes solo. Big launches are aligned around one clear thesis document."
+  },
+  {
+   "id": "msg_HpjICKPq7aex",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_HpjICKPq7aex/how-to-foster-a-team-culture-obsessed-with-the-cra",
+   "session": "2026-09-mishti-sharma",
+   "title": "Building a team culture obsessed with the craft of storytelling",
+   "asker": "Max R.",
+   "qts": "1788760576157349",
+   "likes": 5,
+   "tags": [
+    "Storytelling & brand"
+   ],
+   "question": "How can we foster a team culture that's obsessed with the craft of good storytelling? It doesn't just have to be in the tech space, since the best and most unique ideas can often come from outside the space. (Totally not me trying to justify my many hobbies and side quests)",
+   "links": [],
+   "replies": [
+    {
+     "by": "Mishti Sharma",
+     "ts": "1789063219076689",
+     "text": "Love this ❤️ One thing that's made a big difference at Clay is simply having our leader, Kareem, really obsessed with craft, art, and good storytelling. A lot of culture flows from the top so the fact that he was open to creating a grant program for creative projects, creating a book benefit, funding some of our more ambitious internal video projects, and investing in really good design and brand early on — all of those things made a difference.\n\nRegardless of who your leader is, I think another great thing to do is simply talk about what you're loving, reading, and watching more amongst each other, to share your best ideas and even just go try them out and see what works. I love when people bring their personal selves to work too 🙂",
+     "role": "guest"
+    }
+   ],
+   "answered": true,
+   "short": "building team culture",
+   "gist": "Culture flows from the top, and Kareem invests in craft, art and design. Anyone can help by sharing what they're reading and watching."
+  },
+  {
+   "id": "msg_r0u54QOAYVo6",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_r0u54QOAYVo6/tips-and-resources-for-mastering-the-art-of-editin",
+   "session": "2026-09-mishti-sharma",
+   "title": "How to edit your writing, and how Mishti uses AI to edit",
+   "asker": "Max R.",
+   "qts": "1788760527608279",
+   "likes": 6,
+   "tags": [
+    "Writing & reading",
+    "AI & vibe coding"
+   ],
+   "question": "Editing tips! ✏️ It's one thing to write and not have a blank page anymore, but editing is the next hard skill to master. Where's the best place for me to start learning how to edit writing well? What are your personal tips for editing? Do you use AI to help with the editing? If so, how do you use it to help enable you to edit better? If not, where would you use AI in the writing process, if you use it at all?",
+   "links": [],
+   "replies": [
+    {
+     "by": "Mishti Sharma",
+     "ts": "1789062903146639",
+     "text": "This is a really great question! I do have a really particular way I use AI to edit and I find it insanely useful. Here are some of my top tips:\n\n• An essay should have clear stakes and a thesis up front.\n• Paragraphs in an essay need to be ordered in a way that makes sense.\n• Every single paragraph needs a topic sentence that previews what the rest of the paragraph is going to be about.\n• Every single paragraph needs a transition out of the last paragraph and into the next paragraph.\n• (A lot of the above are about guiding the reader so their mind can follow where you're going)!\n• On a micro level cut fluff, cut jargon, cut wordiness, don't use unnecessary adverbs and adjectives, avoid passive voice, be as succinct as possible\n\nThe number one thing I do when I'm using AI to edit is ask it to give me 5 versions of an intro hook, or a transition sentence out of one paragraph and into another, or a topic sentence for a paragraph. Then I'll pick what I like the best. I also very frequently paste a paragraph into AI and say, \"This feels clunky. Make it flow better\" or \"There's too much jargon in this. Make it more plainspoken and succinct.\" It's actually really good at helping I think!",
+     "role": "guest"
+    }
+   ],
+   "answered": true,
+   "short": "editing your writing",
+   "gist": "Lead with stakes and a thesis, order paragraphs logically, and cut fluff. She uses AI to generate hook and transition options and to smooth clunky paragraphs."
+  },
+  {
+   "id": "msg_lzHzKfMT0Lmu",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_lzHzKfMT0Lmu/which-books-and-authors-have-shaped-your-writing-v",
+   "session": "2026-09-mishti-sharma",
+   "title": "Books and authors that shaped Mishti's writing voice",
+   "asker": "Max R.",
+   "qts": "1788760464550669",
+   "likes": 4,
+   "tags": [
+    "Writing & reading"
+   ],
+   "question": "On books, I also have to know — What books shaped your writing? Making this broader, who are the authors that shaped your voice? (Books and other publications!)",
+   "links": [],
+   "replies": [
+    {
+     "by": "Mishti Sharma",
+     "ts": "1789061132536359",
+     "text": "It's hard to give a definitive answer to this because I've been reading an insane amount since I was a really young child! I'm sure it's the cumulative effect of many authors over time. I read tons of fiction when I was young: E.B. White, Harry Potter. I studied classics so I read a lot of the ancient epics. I have always read a ton of fiction and I love the voice of authors like Jhumpa Lahiri and Hisham Matar today. It's a big mix 🙂\n\nAnother thing that has definitely shaped my writing hugely is just having really good editors. Some of them were in high school, some of them were in college, and some of them are now! Last year I wrote my first piece for the New York Times and I still learned so, so much from my editor, both in terms of tiny nitpicks and overall feedback. There are small things people have told me that stick in my head — things like being succinct, not overusing adjectives, making sure There are always transitions between paragraphs, making sure that the thesis of a piece is always clear, not using too many gerunds or gerundives — a lot of stylistic things that I think aggregate to good writing!\n\nI think for reading, varying genres is a great idea. If useful, in terms of books I think could be helpful for someone trying to get into writing, I think Bird by Bird by Anne Lamott is a great resource and a classic.",
+     "role": "guest"
+    }
+   ],
+   "answered": true,
+   "short": "books that shaped her writing",
+   "gist": "A lifetime of reading, from fiction to the classics, plus great editors shaped her writing. She recommends Bird by Bird by Anne Lamott."
+  },
+  {
+   "id": "msg_TxORHv2TIwbu",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_TxORHv2TIwbu/what-are-you-reading-now-to-improve-your-writing-s",
+   "session": "2026-09-mishti-sharma",
+   "title": "What Mishti is reading now",
+   "asker": "Max R.",
+   "qts": "1788760440639669",
+   "likes": 6,
+   "tags": [
+    "Writing & reading"
+   ],
+   "question": "On getting better at writing: I've been told that what you read is how you write. So, I'm curious to know what you're reading nowadays📚 It can be newsletters, your go-to place for news, and of course, books!",
+   "links": [],
+   "replies": [
+    {
+     "by": "Mishti Sharma",
+     "ts": "1789060050127969",
+     "text": "love this. I usually I'm in the middle of a couple of books at once. Right now it's a few books about religious history (the way religions develop over time as its own kind of narrative art)! I'm reading Arabs by Tim Mackintosh Smith and The Story of the Jews by Simon Schama. Arabs has been extremely fascinating!\n\nI also like trying to mix fiction with nonfiction. Right now I'm in the middle of a great collection of short stories by Lucia Berlin called A Manual for Cleaning Women. We actually started a great benefit at Clay where you can get a free book a month. That's been awesome. Otherwise I love going on a tear at the library!\n\nI don't read any newsletters regularly, but for the news I have a cherished daily print subscription to the NYT and end up on various sites online too.",
+     "role": "guest"
+    }
+   ],
+   "answered": true,
+   "short": "what she's reading now",
+   "gist": "Books on religious history (Arabs and The Story of the Jews), Lucia Berlin's short stories, and a daily print New York Times."
+  },
+  {
+   "id": "msg_4hhKw2FUtarh",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_4hhKw2FUtarh/exploring-the-future-of-storytelling-writing-tips",
+   "session": "2026-09-mishti-sharma",
+   "title": "The future of storytelling and brand in tech, and why GTMEs should care",
+   "asker": "Max R.",
+   "qts": "1788548196529799",
+   "likes": 17,
+   "tags": [
+    "Storytelling & brand",
+    "GTM engineering"
+   ],
+   "question": "The list of questions is such a great starting point already, and I want to know everything! Particularly:\n\n• What is the future of storytelling and brand in tech? Why should more people care about it, especially/including GTMEs? \n\nThank you for organizing this, Shriya and Clay team! Looking forward to this 🔥\n\n*Splitting the questions as requested so it’s one question per post for easier voting",
+   "links": [],
+   "replies": [
+    {
+     "by": "Shriya N.",
+     "ts": "1788724086897769",
+     "text": "Thank you so much Max R.!! Can you split these so there's one question per post? That way we can vote per-question!\n\n(This is our very first AMA so I'm still figuring out the details - thank you SO much for kicking it off 🤩)",
+     "role": "host"
+    },
+    {
+     "by": "Max R.",
+     "ts": "1788760613504359",
+     "text": "Gotcha, Shriya N.! All done",
+     "role": "asker"
+    },
+    {
+     "by": "Shriya N.",
+     "ts": "1788800560249849",
+     "text": "Thank you so much Max R.!!",
+     "role": "host"
+    }
+   ],
+   "answered": false,
+   "short": "the future of storytelling",
+   "hidden": true,
+   "hiddenReason": "Umbrella post; Max split it into separate questions, which are listed individually."
+  },
+  {
+   "id": "msg_TUlKXzjMi4QI",
+   "url": "https://community.clay.com/x/10-ask-me-anything/msg_TUlKXzjMi4QI/mishti-s",
+   "session": "2026-09-mishti-sharma",
+   "title": "Breaking into a GTM agency: content strategy and what to build",
+   "asker": "Aslam C.",
+   "qts": "1789386798906179",
+   "likes": 0,
+   "tags": [
+    "Careers & skills",
+    "Content & LinkedIn"
+   ],
+   "question": "Mishti S. Now I need a job in a GTM Agency.\n\nWhat should be Ln. content strategy?\n\nTo get into a reputable GTM Agency  or GTM Company, I need\ncredibility, proof, and case study for sure right!?\n( I have 3 case study in terms of systems built now)\n\nother than credibility, case study, etc. what should I build!?\n\nor is there a better overall strategy than Ln. content posting and networking via Ln. ?",
+   "links": [],
+   "afterSession": true,
+   "replies": [
+    {
+     "by": "Shriya N.",
+     "ts": "1789394936902399",
+     "text": "Hey Aslam C., this AMA has finished but we will have more in the future! Please don't tag the guest once they've wrapped up 🙏🏽 You can see that it's done because of the pinned post above.",
+     "role": "host"
+    },
+    {
+     "by": "Aslam C.",
+     "ts": "1789524995706439",
+     "text": "Was there a post that it's done?\n\nApologize, didnt notice",
+     "role": "asker"
+    },
+    {
+     "by": "Shriya N.",
+     "ts": "1789527811442859",
+     "text": "Yes it's right above this! No prob 🙂",
+     "role": "host"
+    }
+   ],
+   "answered": false,
+   "short": "breaking into a GTM agency"
+  }
+ ],
+ "hosts": [
+  {
+   "handle": "Shriya N.",
+   "note": "Runs the Clay community AMAs"
+  }
+ ],
+ "host": {
+  "name": "Shriya Nevatia",
+  "handle": "Shriya N.",
+  "role": "Community Manager",
+  "photo": "img/shriya.jpg",
+  "linkedin": "https://www.linkedin.com/in/shriyanevatia/"
+ },
+ "careersUrl": "https://www.clay.com/careers",
+ "channelUrl": "https://community.clay.com/x/10-ask-me-anything",
+ "people": {
+  "Akash R.": "img/people/akash-r.jpg",
+  "Andrea B.": "img/people/andrea-b.jpg",
+  "Aslam C.": "img/people/aslam-c.jpg",
+  "Ayaan A.": "img/people/ayaan-a.jpg",
+  "Eric N.": "img/people/eric-n.jpg",
+  "Fruzsi P.": "img/people/fruzsi-p.jpg",
+  "Gerardo": "img/people/gerardo.jpg",
+  "Heli V.": "img/people/heli-v.jpg",
+  "Isha S.": "img/people/isha-s.jpg",
+  "Jon H.": "img/people/jon-h.jpg",
+  "Kartik P.": "img/people/kartik-p.jpg",
+  "Max R.": "img/people/max-r.jpg",
+  "Motasim": "img/people/motasim.jpg",
+  "Nishika G.": "img/people/nishika-g.jpg",
+  "Sandra U.": "img/people/sandra-u.jpg",
+  "Thiago C.": "img/people/thiago-c.jpg",
+  "Wesley v.": "img/people/wesley-v.jpg"
+ },
+ "communityUrl": "https://www.clay.com/slack-community",
+ "curator": "Kartik P."
+}
