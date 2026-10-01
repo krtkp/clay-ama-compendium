@@ -38,7 +38,7 @@ const shortName = (name, q) => {
   if (name === s.guest){ const parts = name.split(/\s+/); return parts.length > 1 ? `${parts[0]} ${parts[parts.length - 1][0]}.` : name; }
   return name;
 };
-const pill = (name, q, kind) => { const ph = photoOf(name, q); return `<span class="pp ${kind}">${ph ? `<img src="${esc(ph)}" alt="" loading="lazy" decoding="async">` : `<span class="ini" aria-hidden="true">${esc(initials(name))}</span>`}${esc(shortName(name, q))}</span>`; };
+const pill = (name, q, kind) => { const ph = photoOf(name, q); return `<span class="pp ${kind}">${ph ? `<img src="${esc(ph)}" alt="">` : `<span class="ini" aria-hidden="true">${esc(initials(name))}</span>`}${esc(shortName(name, q))}</span>`; };
 const ICON_UP = `<svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13.5V3M3.2 7.6 8 2.8l4.8 4.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 const para = t => String(t || "").split(/\n{2,}/).map(x => `<p>${esc(x.trim()).replace(/\n/g, "<br>")}</p>`).join("");
 const ICON_STAR = `<svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor"/></svg>`;
