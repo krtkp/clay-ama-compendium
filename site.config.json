@@ -4,7 +4,7 @@
   "domain": "ama.smallgenai.com",
   "fallbackHost": "clay-ama-compendium.vercel.app",
   "posthog": {
-    "key": "",
+    "key": "phc_rc6JQijSkhBB56xAREAHQcfCCMWZ9pcnfXHRHCvcSPcB",
     "host": "https://us.i.posthog.com"
   }
 }
