@@ -49,7 +49,7 @@ Editors sign in from the footer ("Editor sign-in") with an emailed link and get 
 | Vercel environment variable | What it is |
 |---|---|
 | `SESSION_SECRET` | Long random string that signs sign-in links and sessions |
-| `ALLOWED_EDITORS` | Comma-separated emails that can sign in |
+| `ALLOWED_EDITORS` | Comma-separated emails that can sign in, optionally with a display name: `you@x.com=Kartik,shriya@y.com=Shriya` |
 | `RESEND_API_KEY` | Sends the sign-in emails |
 | `EMAIL_FROM` | e.g. `Clay AMA Compendium <signin@smallgenai.com>` (a domain verified in Resend) |
 | `GITHUB_TOKEN` | Fine-grained token with contents read/write on this repo |

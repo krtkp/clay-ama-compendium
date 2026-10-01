@@ -15,8 +15,10 @@ export function verify(token, kind){
   if (want.length !== got.length || !timingSafeEqual(want, got)) return null;
   try { const v = JSON.parse(Buffer.from(p, "base64url").toString()); return v.k === kind && v.x > Date.now() && isEditor(v.e) ? v : null; } catch { return null; }
 }
-export const editors = () => (process.env.ALLOWED_EDITORS || "").split(",").map(s => s.trim().toLowerCase()).filter(Boolean);
-export const isEditor = email => !!email && editors().includes(String(email).trim().toLowerCase());
+// ALLOWED_EDITORS: comma-separated, each "email" or "email=Display name", e.g. "kartik@x.com=Kartik,shriya@y.com=Shriya"
+const roster = () => new Map((process.env.ALLOWED_EDITORS || "").split(",").map(s => s.trim()).filter(Boolean).map(s => { const [e, n] = s.split("="); return [e.trim().toLowerCase(), (n || "").trim()]; }));
+export const editors = () => [...roster().keys()];
+export const isEditor = email => !!email && roster().has(String(email).trim().toLowerCase());
 
 export function cookies(req){ return Object.fromEntries((req.headers.cookie || "").split(/;\s*/).filter(Boolean).map(c => { const i = c.indexOf("="); return [c.slice(0, i), decodeURIComponent(c.slice(i + 1))]; })); }
 export const session = req => verify(cookies(req).ama_s, "sess");
@@ -31,4 +33,4 @@ export function setSession(res, email){
 export function clearSession(res){ res.setHeader("Set-Cookie", ["ama_s=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Lax", "ama_ed=; Path=/; Max-Age=0; Secure; SameSite=Lax"]); }
 // Writes must come from the site itself
 export function sameOrigin(req){ const o = req.headers.origin || ""; return !o || o === SITE || /^https:\/\/clay-ama-compendium[\w-]*\.vercel\.app$/.test(o) || /^http:\/\/localhost(:\d+)?$/.test(o); }
-export const nameOf = email => { const n = String(email).split("@")[0].split(/[._-]/)[0]; return n ? n[0].toUpperCase() + n.slice(1) : email; };
+export const nameOf = email => { const set = roster().get(String(email).trim().toLowerCase()); if (set) return set; const n = String(email).split("@")[0].split(/[._-]/)[0].replace(/\d+$/, ""); return n ? n[0].toUpperCase() + n.slice(1) : email; };
