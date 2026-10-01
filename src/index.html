@@ -2125,8 +2125,9 @@ function buildLibrary(){
       ${qs.length > LIBSHOW ? `<button class="more" type="button" data-libmore="${qs.length}"><span>Show ${qs.length - LIBSHOW} more</span>${ICON_DOWN}</button>` : ""}
     </section>`).join("");
 }
-const ARTIFACT_URL = "https://claude.ai/artifact/52eyGziSh9oQTJEvjhKee2";
-const SITE_URL = ON_SITE ? location.origin + "/" : (document.querySelector('meta[name="ama:site"]')?.content || ARTIFACT_URL);
+// Every link people copy points to the public website, including copies made inside the Claude artifact
+const PUBLIC_URL = "https://clay-ama-compendium.vercel.app/";
+const SITE_URL = document.querySelector('meta[name="ama:site"]')?.content || PUBLIC_URL;
 function libShare(t){
   const qs = (LIB.find(x => x[0] === t) || [])[1] || [];
   modalBack = null;
