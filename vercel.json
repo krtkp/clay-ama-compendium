@@ -6,6 +6,17 @@
   "cleanUrls": true,
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "clay-ama-compendium.vercel.app"
+        }
+      ],
+      "destination": "https://ama.smallgenai.com/:path*",
+      "permanent": true
+    },
+    {
       "source": "/topics",
       "destination": "/#topics",
       "permanent": false

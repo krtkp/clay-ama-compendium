@@ -1,7 +1,10 @@
 {
   "title": "Clay AMA Compendium",
   "shortName": "Clay AMAs",
-  "domain": "",
+  "domain": "ama.smallgenai.com",
   "fallbackHost": "clay-ama-compendium.vercel.app",
-  "posthog": { "key": "", "host": "https://us.i.posthog.com" }
+  "posthog": {
+    "key": "",
+    "host": "https://us.i.posthog.com"
+  }
 }

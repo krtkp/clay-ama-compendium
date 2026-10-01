@@ -1,5 +1,7 @@
 # Clay AMA Compendium
 
+**Live at [ama.smallgenai.com](https://ama.smallgenai.com)**
+
 Every answer from the Clay community's Ask Me Anything sessions, kept in one place: searchable by topic and guest, shareable into Slack, and swipeable as a card deck when you just want to catch up.
 
 Unofficial and community-made. Questions and answers are quoted word for word from the public [#10-ask-me-anything](https://community.clay.com/x/10-ask-me-anything) channel; each answer is the guest's own view.

@@ -2126,7 +2126,7 @@ function buildLibrary(){
     </section>`).join("");
 }
 // Every link people copy points to the public website, including copies made inside the Claude artifact
-const PUBLIC_URL = "https://clay-ama-compendium.vercel.app/";
+const PUBLIC_URL = "https://ama.smallgenai.com/";
 const SITE_URL = document.querySelector('meta[name="ama:site"]')?.content || PUBLIC_URL;
 function libShare(t){
   const qs = (LIB.find(x => x[0] === t) || [])[1] || [];
