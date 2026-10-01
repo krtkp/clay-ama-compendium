@@ -1669,7 +1669,7 @@ const ICON_OUT = `<svg width="11" height="11" viewBox="0 0 12 12" aria-hidden="t
 function card(qa, opt = {}){
   const key = opt.key || qa.id, open = st.open.has(key);
   const s = SESS[qa.session], main = qa.replies.find(r => r.role === "guest"), n = qa.replies.length;
-  const stats = `<span class="stats2">${main ? `<span class="when"><span class="v">Replied </span>${fmtDate(tsDate(main.ts))}</span>` : `<span class="when">Waiting for ${esc(firstName(s.guest))}</span>`}${qa.likes ? `<span class="ic" title="${qa.likes} upvote${qa.likes===1?"":"s"} on the question" aria-label="${qa.likes} upvotes">${ICON_UP}${qa.likes}</span>` : ""}${n && open ? `<span class="ic" title="${n} ${n===1?"reply":"replies"}" aria-label="${n} ${n===1?"reply":"replies"}">${ICON_REPLY}${n}</span>` : ""}</span>`;
+  const stats = `<span class="stats2">${main ? `<span class="when">${open ? `<span class="v">Replied </span>` : ""}${fmtDate(tsDate(main.ts))}</span>` : `<span class="when">Waiting for ${esc(firstName(s.guest))}</span>`}${qa.likes ? `<span class="ic" title="${qa.likes} upvote${qa.likes===1?"":"s"} on the question" aria-label="${qa.likes} upvotes">${ICON_UP}${qa.likes}</span>` : ""}${n && open ? `<span class="ic" title="${n} ${n===1?"reply":"replies"}" aria-label="${n} ${n===1?"reply":"replies"}">${ICON_REPLY}${n}</span>` : ""}</span>`;
   const after = qa.afterSession ? `<span class="pill">Asked after the session ended</span>` : "";
   const gold = qa.id === ALLTOP && !opt.label;
   const body = open

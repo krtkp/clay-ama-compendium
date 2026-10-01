@@ -53,7 +53,7 @@ const ALLTOP = ([...qas].sort((a, b) => (b.likes || 0) - (a.likes || 0))[0] || {
 const prerenderCard = q => {
   const s = SESS[q.session], main = q.replies.find(r => r.role === "guest"), rank = podium.indexOf(q) + 1, gold = q.id === ALLTOP;
   const chips = (gold ? `<span class="rk gold">${ICON_STAR}Most upvoted of all time</span>` : "") + (rank ? `<span class="rk"><b>#${rank}</b><span class="rkl"> ${esc(labels[rank - 1])}</span></span>` : "");
-  const stats = `<span class="stats2"><span class="when"><span class="v">Replied </span>${fmtDate(tsDate(main.ts))}</span>${q.likes ? `<span class="ic" aria-label="${q.likes} upvotes">${ICON_UP}${q.likes}</span>` : ""}</span>`;
+  const stats = `<span class="stats2"><span class="when">${fmtDate(tsDate(main.ts))}</span>${q.likes ? `<span class="ic" aria-label="${q.likes} upvotes">${ICON_UP}${q.likes}</span>` : ""}</span>`;
   return `<article class="qa${rank ? ` rank rank${rank}` : ""}${gold ? " alltime" : ""}" id="${esc(q.id)}" data-card="${esc(q.id)}" tabindex="0" aria-expanded="false" aria-label="${rank ? `${esc(labels[rank - 1])}: ` : ""}${esc(q.title)}, ${esc(firstName(q.asker))} and ${esc(firstName(s.guest))}">
     ${chips ? `<div class="ribbon">${chips}</div>` : ""}
     <div class="phead"><h3>${esc(q.title)}</h3></div>
