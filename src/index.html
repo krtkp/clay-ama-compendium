@@ -462,18 +462,14 @@ article.qa.rank3 h3{font-size:20px}
 .seg.showseg button[aria-pressed="true"]{background:transparent; color:var(--btn-ink)}
 .seg.showseg .thumb{position:absolute; z-index:0; top:3px; bottom:3px; left:0; width:0; border-radius:9px; background:var(--btn)}
 .rrow .dd.show{display:none}
-/* the search bar stays within reach while you scroll. Once pinned it turns into a floating glass capsule:
-   cards scroll underneath it crisply, the capsule itself blurs and saturates what's behind it, with a specular rim on top (the iOS 26 look) */
-section.search{position:sticky; top:calc(env(safe-area-inset-top, 0px) + 10px); z-index:20; transition:border-color .2s, box-shadow .25s, background-color .25s}
+/* the search bar stays within reach while you scroll. Once pinned it floats as a solid capsule with a specular rim and a real
+   shadow: the look of a glass control without the blur, which iPhones can't afford while cards animate underneath */
+section.search{position:sticky; top:calc(env(safe-area-inset-top, 0px) + 10px); z-index:20; transition:border-color .2s, box-shadow .25s}
 article.qa{scroll-margin-top:96px}
-section.search.stuck{background:color-mix(in srgb, var(--surface) 70%, transparent); -webkit-backdrop-filter:blur(28px) saturate(1.8); backdrop-filter:blur(28px) saturate(1.8); border-color:color-mix(in srgb, var(--ai) 42%, var(--ai-line)); box-shadow:inset 0 1px 0 var(--hl), inset 0 -1px 0 rgba(0,0,0,.05), 0 1px 2px rgba(21,21,24,.08), 0 16px 36px -14px rgba(21,21,24,.38)}
-section.search.stuck input{background:color-mix(in srgb, var(--sunk) 55%, transparent)}
+section.search.stuck{border-color:color-mix(in srgb, var(--ai) 42%, var(--ai-line)); box-shadow:inset 0 1px 0 var(--hl), inset 0 -1px 0 rgba(0,0,0,.05), 0 1px 2px rgba(21,21,24,.08), 0 16px 36px -14px rgba(21,21,24,.38)}
 section.search.stuck:focus-within{box-shadow:inset 0 1px 0 var(--hl), 0 0 0 4px color-mix(in srgb, var(--ai) 18%, transparent), 0 16px 36px -14px rgba(21,21,24,.38)}
-@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) section.search.stuck{background:color-mix(in srgb, var(--surface) 72%, transparent); box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 1px 2px rgba(0,0,0,.4), 0 18px 40px -14px rgba(0,0,0,.8)} }
-:root[data-theme="dark"] section.search.stuck{background:color-mix(in srgb, var(--surface) 72%, transparent); box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 1px 2px rgba(0,0,0,.4), 0 18px 40px -14px rgba(0,0,0,.8)}
-@supports not (backdrop-filter: blur(1px)){ section.search.stuck{background:var(--surface)} }
-html.cardanim section.search.stuck{-webkit-backdrop-filter:none; backdrop-filter:none; background:color-mix(in srgb, var(--surface) 94%, transparent)}
-@media (prefers-reduced-transparency: reduce){ section.search.stuck{background:var(--surface); -webkit-backdrop-filter:none; backdrop-filter:none} }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) section.search.stuck{box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 1px 2px rgba(0,0,0,.4), 0 18px 40px -14px rgba(0,0,0,.8)} }
+:root[data-theme="dark"] section.search.stuck{box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 1px 2px rgba(0,0,0,.4), 0 18px 40px -14px rgba(0,0,0,.8)}
 .search input::placeholder{color:var(--muted); opacity:1}
 /* empty-state suggestions */
 .suggest{display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-top:12px}
@@ -1926,7 +1922,7 @@ function toggleCard(key){
   let ghost = null;
   if (pos){ ghost = pb.cloneNode(true); ghost.style.cssText = `position:absolute; left:${pos.left}px; top:${pos.top}px; width:${pos.width}px; margin:0; pointer-events:none; opacity:0`; before.appendChild(ghost); }
   cardBusy.add(key);
-  const dur = matchMedia("(max-width:640px)").matches ? 230 : 270, ease = "cubic-bezier(.32,.72,0,1)";
+  const dur = matchMedia("(max-width:640px)").matches ? 200 : 240, ease = "cubic-bezier(.32,.72,0,1)";
   lockHeight(before, true);
   const grow = before.animate([{ height: h0 + "px" }, { height: h1 + "px" }], { duration: dur, easing: ease, fill: "forwards" });
   before.querySelectorAll(".convo, .endrow, .actions").forEach(p => p.animate([{ opacity: 1, transform: "none" }, { opacity: 0, transform: "translateY(-8px)" }], { duration: 90, easing: "ease-out", fill: "forwards" }));
@@ -1948,8 +1944,6 @@ function bezier(x1, y1, x2, y2){
 function lockHeight(el, on){
   el.style.overflow = on ? "hidden" : ""; el.style.contain = on ? "paint" : ""; el.style.willChange = on ? "height" : "";
   document.documentElement.style.overflowAnchor = on ? "none" : "";
-  // While a card changes height, every card below it repaints each frame; the glass search bar would re-blur all of it too, so it goes plain for the moment
-  document.documentElement.classList.toggle("cardanim", on);
 }
 // Organic open/close: the card grows to its new height on a soft spring, gives a tiny press-and-settle,
 // and the conversation arrives one bubble at a time (asker from the left, guest from the right).
@@ -1959,7 +1953,7 @@ function animateOpen(el, h0){
   const h1 = el.getBoundingClientRect().height;
   if (h1 - h0 > 1){
     lockHeight(el, true);
-    const a = el.animate([{ height: h0 + "px" }, { height: h1 + "px" }], { duration: 320, easing: "cubic-bezier(.32,.72,0,1)" });
+    const a = el.animate([{ height: h0 + "px" }, { height: h1 + "px" }], { duration: 260, easing: "cubic-bezier(.32,.72,0,1)" });
     a.onfinish = a.oncancel = () => lockHeight(el, false);
   }
   [...el.querySelectorAll(".turn, .endrow, .actions")].forEach((p, i) => {
