@@ -155,8 +155,8 @@ article.qa h3{font:800 20px/1.25 var(--sans); letter-spacing:-.02em; text-wrap:b
 .turn.asker{padding-right:36px}
 .turn.guest{flex-direction:row-reverse; padding-left:36px}
 .tav{width:36px; height:36px; border-radius:50%; object-fit:cover; flex:none; display:grid; place-items:center; font:700 13px/1 var(--sans); background:var(--surface)}
-.turn.asker .tav{box-shadow:0 0 0 2px var(--surface), 0 0 0 3.5px var(--asker); color:var(--asker)}
-.turn.guest .tav{box-shadow:0 0 0 2px var(--surface), 0 0 0 3.5px var(--guest); color:var(--guest)}
+.turn.asker .tav{box-shadow:0 0 0 2px var(--surface), 0 0 0 4px var(--asker); color:var(--asker)}
+.turn.guest .tav{box-shadow:0 0 0 2px var(--surface), 0 0 0 4px var(--guest); color:var(--guest)}
 .bubble{flex:1; min-width:0; padding:10px 14px 12px; font:400 15px/1.6 var(--sans); color:var(--ink)}
 .turn.asker .bubble{background:var(--asker-soft); border-radius:6px 18px 18px 18px}
 .turn.guest .bubble{background:var(--guest-soft); border-radius:18px 6px 18px 18px}
@@ -323,8 +323,8 @@ header.mast{row-gap:10px}
 .turn.other .tav{box-shadow:0 0 0 2px var(--surface), 0 0 0 3.5px var(--rule2); color:var(--muted)}
 .bubble .nm .role{margin-left:6px; vertical-align:1px}
 .bubble .nm{font-weight:600}
-.turn.asker .tav{box-shadow:0 0 0 2px var(--surface), 0 0 0 3.5px var(--asker)}
-.turn.guest .tav{box-shadow:0 0 0 2px var(--surface), 0 0 0 3.5px var(--guest)}
+.turn.asker .tav{box-shadow:0 0 0 2px var(--surface), 0 0 0 4px var(--asker)}
+.turn.guest .tav{box-shadow:0 0 0 2px var(--surface), 0 0 0 4px var(--guest)}
 .pp{font-weight:600}
 .stats b{color:var(--ink); font-weight:600}
 .eyebrow{color:var(--muted)}
@@ -641,7 +641,7 @@ footer .flinks a:hover{color:var(--ink); text-decoration:underline; text-underli
 #viewLib .rest[hidden]{display:none}
 #viewLib .ans{background:var(--surface); border-radius:20px; box-shadow:var(--shadow); padding:16px 18px; display:grid; gap:10px}
 #viewLib .ans .who{display:flex; align-items:center; gap:8px; font:500 13px/1.3 var(--sans); color:var(--faint); flex-wrap:wrap}
-#viewLib .ans .who img{width:26px; height:26px; border-radius:50%; object-fit:cover; flex:none; box-shadow:0 0 0 2px var(--surface), 0 0 0 3.5px var(--guest)}
+#viewLib .ans .who img{width:26px; height:26px; border-radius:50%; object-fit:cover; flex:none; box-shadow:0 0 0 2px var(--surface), 0 0 0 4px var(--guest)}
 #viewLib .ans .who b{color:var(--guest); font-weight:600}
 #viewLib .ans .who .up{margin-left:auto; color:var(--muted); font-weight:600; font-variant-numeric:tabular-nums}
 #viewLib .ans h3{margin:0; font:540 18px/1.3 var(--sans); letter-spacing:-.015em; text-wrap:balance}
@@ -1958,7 +1958,9 @@ function animateOpen(el, h0){
   }
   [...el.querySelectorAll(".turn, .endrow, .actions")].forEach((p, i) => {
     const dx = p.classList.contains("guest") ? 12 : p.classList.contains("turn") ? -12 : 0;
-    p.animate([{ opacity: 0, transform: `translate(${dx}px, 8px)` }, { opacity: 1, transform: "none" }], { duration: 220, delay: 40 + Math.min(i, 7) * 30, easing: CURVE, fill: "backwards" });
+    p.style.willChange = "transform, opacity";
+    const a = p.animate([{ opacity: 0, transform: `translate(${dx}px, 8px)` }, { opacity: 1, transform: "none" }], { duration: 220, delay: 40 + Math.min(i, 7) * 30, easing: CURVE, fill: "backwards" });
+    a.onfinish = a.oncancel = () => { p.style.willChange = ""; };
   });
 }
 
