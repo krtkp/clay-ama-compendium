@@ -80,7 +80,7 @@ h1 em{font-style:normal; color:var(--accent)}
 /* speakers */
 .spk-wrap{position:relative; margin-bottom:14px}
 .spk-row{display:flex; gap:10px; overflow-x:auto; padding:3px 3px 6px; margin:0 -3px; scrollbar-width:thin}
-.spk{all:unset; box-sizing:border-box; flex:0 0 auto; width:188px; cursor:pointer; display:flex; flex-direction:column; align-items:center; text-align:center; gap:2px; padding:16px 12px 14px; border-radius:16px; background:var(--surface); border:1px solid var(--rule); transition:border-color .15s, background .15s}
+.spk{all:unset; box-sizing:border-box; flex:0 0 auto; width:188px; cursor:pointer; display:flex; flex-direction:column; align-items:center; text-align:center; gap:2px; padding:16px 12px 14px; border-radius:16px; background:var(--surface); border:1px solid var(--rule); transition:border-color .12s, background .12s}
 .spk:hover{border-color:var(--faint)}
 .spk:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
 .spk .av{width:84px; height:84px; margin-bottom:10px; box-shadow:0 0 0 3px var(--surface), 0 0 0 5px var(--ring, var(--rule))}
@@ -208,7 +208,7 @@ article.qa h3{font:800 20px/1.25 var(--sans); letter-spacing:-.02em; text-wrap:b
 .x:hover{background:var(--sunk); color:var(--ink)}
 
 .list{display:grid; gap:10px}
-article.qa{background:var(--surface); border:1px solid var(--rule); border-radius:var(--r); padding:14px 16px; display:grid; gap:10px; scroll-margin-top:16px; cursor:pointer; transition:border-color .15s}
+article.qa{background:var(--surface); border:1px solid var(--rule); border-radius:var(--r); padding:14px 16px; display:grid; gap:10px; scroll-margin-top:16px; cursor:pointer; transition:border-color .12s}
 article.qa:hover{border-color:var(--faint)}
 article.qa.open{cursor:auto}
 article.qa{position:relative}
@@ -269,7 +269,7 @@ footer p{margin:0; max-width:78ch}
 .mbox .seg{justify-self:start}
 
 /* search bar: Clay violet edge, stronger when you're typing */
-section.search{border:1.5px solid var(--ai-line); transition:border-color .2s, box-shadow .2s}
+section.search{border:1.5px solid var(--ai-line); transition:border-color .15s, box-shadow .15s}
 section.search:hover{border-color:color-mix(in srgb, var(--ai) 55%, var(--ai-line))}
 section.search:focus-within{border-color:var(--ai); box-shadow:0 0 0 4px color-mix(in srgb, var(--ai) 16%, transparent), var(--shadow)}
 .search input:focus-visible{outline:none}
@@ -379,7 +379,7 @@ article.qa.rank2 h3{font-size:21px}
 article.qa.rank3{border:1.5px solid var(--r3-line); box-shadow:0 1px 2px rgba(21,21,24,.04), 0 16px 40px -24px rgba(21,21,24,.22)}
 article.qa.rank3 h3{font-size:20px}
 @media (prefers-reduced-motion:no-preference){
-  article.qa.rank{transition:transform .25s ease, box-shadow .25s ease, translate .32s ease-out}
+  article.qa.rank{transition:transform .18s ease, box-shadow .18s ease, translate .24s ease-out}
 }
 
 @media (max-width:640px){
@@ -444,7 +444,7 @@ article.qa.rank3 h3{font-size:20px}
   .pbar{column-gap:4px}
   .stats2 .when .v{display:none}
 }
-@media (prefers-reduced-motion:no-preference){ article.qa{transition:box-shadow .3s} }
+@media (prefers-reduced-motion:no-preference){ article.qa{transition:box-shadow .22s} }
 
 /* ===== visual refresh, part 1 ===== */
 /* spotlight: the latest AMA leads the guest row */
@@ -464,7 +464,7 @@ article.qa.rank3 h3{font-size:20px}
 .rrow .dd.show{display:none}
 /* the search bar stays within reach while you scroll. Once pinned it floats as a solid capsule with a specular rim and a real
    shadow: the look of a glass control without the blur, which iPhones can't afford while cards animate underneath */
-section.search{position:sticky; top:calc(env(safe-area-inset-top, 0px) + 10px); z-index:20; transition:border-color .2s, box-shadow .25s}
+section.search{position:sticky; top:calc(env(safe-area-inset-top, 0px) + 10px); z-index:20; transition:border-color .15s, box-shadow .18s}
 article.qa{scroll-margin-top:96px}
 section.search.stuck{border-color:color-mix(in srgb, var(--ai) 42%, var(--ai-line)); box-shadow:inset 0 1px 0 var(--hl), inset 0 -1px 0 rgba(0,0,0,.05), 0 1px 2px rgba(21,21,24,.08), 0 16px 36px -14px rgba(21,21,24,.38)}
 section.search.stuck:focus-within{box-shadow:inset 0 1px 0 var(--hl), 0 0 0 4px color-mix(in srgb, var(--ai) 18%, transparent), 0 16px 36px -14px rgba(21,21,24,.38)}
@@ -503,7 +503,7 @@ section.search.stuck:focus-within{box-shadow:inset 0 1px 0 var(--hl), 0 0 0 4px 
 .skel i{display:block; height:12px; border-radius:6px; background:linear-gradient(90deg, var(--sunk) 0, var(--rule) 40%, var(--sunk) 80%); background-size:200% 100%}
 .skel i.t{height:18px; width:72%} .skel i.s{width:44%}
 @media (prefers-reduced-motion:no-preference){ .skel i{animation:shim 1.4s linear infinite} @keyframes shim{to{background-position:-200% 0}} }
-article.qa.flash{transition:box-shadow .6s}
+article.qa.flash{transition:box-shadow .45s}
 /* softer gold at night */
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) article.qa.alltime{background:linear-gradient(var(--surface), var(--surface)) padding-box, linear-gradient(110deg, #8A6412 0%, #B8871A 18%, #D9B456 30%, #B8871A 42%, #8A6412 60%, #B8871A 78%, #D9B456 90%, #8A6412 100%) border-box; background-size:100% 100%, 200% 100%; box-shadow:0 14px 34px -26px #8A6412, var(--shadow)} }
 :root[data-theme="dark"] article.qa.alltime{background:linear-gradient(var(--surface), var(--surface)) padding-box, linear-gradient(110deg, #8A6412 0%, #B8871A 18%, #D9B456 30%, #B8871A 42%, #8A6412 60%, #B8871A 78%, #D9B456 90%, #8A6412 100%) border-box; background-size:100% 100%, 200% 100%}
@@ -623,10 +623,10 @@ footer .flinks a:hover{color:var(--ink); text-decoration:underline; text-underli
 .mtop:has(.tbback) h2{flex:1; text-align:center}
 /* ===== By topic view ===== */
 .stats{white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
-.chips{position:sticky; top:0; z-index:10; margin:4px -16px 4px; padding:10px 16px; display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; transition:background-color .2s}
+.chips{position:sticky; top:0; z-index:10; margin:4px -16px 4px; padding:10px 16px; display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; transition:background-color .15s}
 .chips::-webkit-scrollbar{display:none}
 .chips.stuck{background:linear-gradient(var(--ground) 78%, color-mix(in srgb, var(--ground) 0%, transparent))}
-.chip{flex:none; display:inline-flex; align-items:center; gap:7px; padding:8px 13px; border-radius:12px; background:var(--surface); box-shadow:var(--shadow); color:var(--ink); text-decoration:none; font:600 13.5px/1 var(--sans); white-space:nowrap; transition:transform var(--t-quick) var(--spring-snap), background-color .2s, color .2s}
+.chip{flex:none; display:inline-flex; align-items:center; gap:7px; padding:8px 13px; border-radius:12px; background:var(--surface); box-shadow:var(--shadow); color:var(--ink); text-decoration:none; font:600 13.5px/1 var(--sans); white-space:nowrap; transition:transform var(--t-quick) var(--spring-snap), background-color .15s, color .15s}
 .chip .n{font:500 12.5px/1 var(--sans); color:var(--faint); font-variant-numeric:tabular-nums}
 .chip[aria-current="true"]{background:var(--btn); color:var(--btn-ink)}
 .chip[aria-current="true"] .n{color:inherit; opacity:.7}
@@ -651,10 +651,10 @@ footer .flinks a:hover{color:var(--ink); text-decoration:underline; text-underli
 #viewLib .links{display:flex; flex-wrap:wrap; gap:6px 16px; font:600 13px/1 var(--sans)}
 #viewLib .links a{text-decoration:none}
 #viewLib .links a:hover{text-decoration:underline}
-#viewLib .more{all:unset; box-sizing:border-box; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:7px; width:100%; min-height:42px; margin-top:8px; border-radius:14px; font:600 13.5px/1 var(--sans); color:var(--muted); background:color-mix(in srgb, var(--surface) 60%, transparent); border:1px dashed var(--rule2); transition:background-color .2s, color .2s, transform .2s var(--spring-snap)}
+#viewLib .more{all:unset; box-sizing:border-box; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:7px; width:100%; min-height:42px; margin-top:8px; border-radius:14px; font:600 13.5px/1 var(--sans); color:var(--muted); background:color-mix(in srgb, var(--surface) 60%, transparent); border:1px dashed var(--rule2); transition:background-color .15s, color .15s, transform .15s var(--spring-snap)}
 #viewLib .more:hover{color:var(--ink); background:var(--surface)}
 #viewLib .more:active{transform:scale(.985)}
-#viewLib .more svg{transition:transform .25s var(--spring-snap)}
+#viewLib .more svg{transition:transform .18s var(--spring-snap)}
 #viewLib .more.up svg{transform:rotate(180deg)}
 @media (max-width:640px){
   #viewLib .thead h2{font-size:19px}
@@ -663,7 +663,7 @@ footer .flinks a:hover{color:var(--ink); text-decoration:underline; text-underli
 }
 
 /* ===== guest panel: editor block up top, public content below ===== */
-.edfab{transition:opacity .2s, transform var(--t-quick) var(--spring-snap)}
+.edfab{transition:opacity .15s, transform var(--t-quick) var(--spring-snap)}
 .spk-pop .facts{margin-top:2px}
 .spk-pop .intro{padding-top:2px}
 .popcta{display:flex; flex-wrap:wrap; gap:8px; padding-top:4px}
@@ -683,7 +683,7 @@ footer .flinks a:hover{color:var(--ink); text-decoration:underline; text-underli
 .poptb .acts{margin-left:auto; display:flex; gap:6px}
 .poptb .pill{all:unset; box-sizing:border-box; cursor:pointer; display:inline-flex; align-items:center; height:28px; padding:0 11px; border-radius:999px; background:var(--surface); border:1px solid color-mix(in srgb, var(--ink) 20%, transparent); font:600 12px/1 var(--sans); color:var(--ink); text-decoration:none; white-space:nowrap; transition:transform var(--t-quick) var(--spring-snap)}
 .poptb .pill:active{transform:scale(.96)}
-.edfab{z-index:110; transition:bottom .38s cubic-bezier(.32,.72,0,1), width .25s, padding .25s, transform var(--t-quick) var(--spring-snap)}
+.edfab{z-index:110; transition:bottom .28s cubic-bezier(.32,.72,0,1), width .18s, padding .18s, transform var(--t-quick) var(--spring-snap)}
 @media (max-width:640px){
   body.docked .edfab{bottom:calc(var(--sheet-h, 0px) + 12px); width:44px; height:44px; padding:0; justify-content:center; gap:0}
   body.docked .edfab .lbl{display:none}
@@ -701,14 +701,14 @@ footer .flinks a:hover{color:var(--ink); text-decoration:underline; text-underli
    Springs for things arriving, plain ease-out for things leaving. Durations: instant 120, quick 200, base 320, expressive 520.
    Every tappable thing presses to 97% and springs back. Reduced motion turns all of it off. */
 :root{
-  --t-instant:120ms; --t-quick:200ms; --t-base:320ms; --t-expressive:520ms;
+  --t-instant:90ms; --t-quick:150ms; --t-base:240ms; --t-expressive:380ms;
   --spring-snap:cubic-bezier(.2,.95,.3,1); --spring-soft:cubic-bezier(.3,1.18,.5,1); --spring-bounce:cubic-bezier(.34,1.45,.64,1);
   --ease-exit:cubic-bezier(.4,0,1,1);
 }
 @media (prefers-reduced-motion:no-preference){
   .btn,.mychip,.ddbtn,.x,.hidebtn,.spkc .info,.linkbtn,.ddlist li{transition:transform var(--t-quick) var(--spring-snap), background-color var(--t-quick), border-color var(--t-quick), color var(--t-quick)}
-  .spk{transition:transform var(--t-quick) var(--spring-snap), border-color .15s, background .15s, box-shadow var(--t-quick)}
-  article.qa{transition:box-shadow .3s, border-color .15s, transform var(--t-base) var(--spring-snap)}
+  .spk{transition:transform var(--t-quick) var(--spring-snap), border-color .12s, background .12s, box-shadow var(--t-quick)}
+  article.qa{transition:box-shadow .22s, border-color .12s, transform var(--t-base) var(--spring-snap)}
   :is(.btn,.mychip,.ddbtn,.x,.hidebtn,.spk,.spkc .info):active{transform:scale(.97); transition-duration:var(--t-instant)}
   .ddlist li:active{transform:scale(.985)}
   article.qa:not(.open):active{transform:scale(.985); transition-duration:var(--t-instant)}
@@ -717,7 +717,7 @@ footer .flinks a:hover{color:var(--ink); text-decoration:underline; text-underli
 /* ===== Deck: swipe through an AMA, a topic, or a search ===== */
 .catchup{margin:-6px 0 16px}
 .catchup:empty{display:none}
-.catch{display:flex; align-items:center; gap:12px; padding:11px 14px 11px 12px; border-radius:16px; background:var(--surface); box-shadow:var(--shadow); color:var(--ink); text-decoration:none; transition:transform var(--t-quick) var(--spring-snap), box-shadow .25s}
+.catch{display:flex; align-items:center; gap:12px; padding:11px 14px 11px 12px; border-radius:16px; background:var(--surface); box-shadow:var(--shadow); color:var(--ink); text-decoration:none; transition:transform var(--t-quick) var(--spring-snap), box-shadow .18s}
 .catch:active{transform:scale(.985)}
 .catch .play{flex:none; width:38px; height:38px; border-radius:12px; background:var(--btn); color:var(--btn-ink); display:grid; place-items:center}
 .catch .ct{flex:1; min-width:0; display:grid; gap:3px}
@@ -740,7 +740,7 @@ footer .flinks a:hover{color:var(--ink); text-decoration:underline; text-underli
 .dclose:active{transform:scale(.94)}
 .dclose:focus-visible,.dbtn:focus-visible,.dmore:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
 .dprog{grid-column:1 / -1; height:4px; border-radius:4px; background:color-mix(in srgb, var(--ink) 10%, transparent); overflow:hidden}
-.dprog i{display:block; height:100%; width:0; border-radius:4px; background:var(--ink); transition:width .45s cubic-bezier(.2,.8,.2,1)}
+.dprog i{display:block; height:100%; width:0; border-radius:4px; background:var(--ink); transition:width .24s cubic-bezier(.2,.8,.2,1)}
 .dstage{position:relative; flex:1; min-height:0; width:min(560px, 100%); margin:16px auto 0; perspective:1500px}
 @media (min-width:641px){ .deck{justify-content:center} .dstage{flex:0 0 auto; height:min(640px, calc(100vh - 220px))} .dcard{max-height:min(100% - 30px, 620px)} }
 .dcard{position:absolute; inset:0; margin:0 auto auto; max-height:min(100% - 30px, 600px); transform-origin:50% 100%; border-radius:24px; will-change:transform; touch-action:pan-y; cursor:grab; user-select:none; -webkit-user-select:none; -webkit-tap-highlight-color:transparent}
@@ -748,7 +748,7 @@ footer .flinks a:hover{color:var(--ink); text-decoration:underline; text-underli
 .dcard.behind1{transform:translateY(14px) scale(.955)}
 .dcard.behind1 .dface,.dcard.behind2 .dface{box-shadow:0 2px 4px rgba(21,21,24,.05), 0 14px 30px -18px rgba(21,21,24,.25)}
 .dcard.behind2{transform:translateY(26px) scale(.91); opacity:.72}
-.dcard .flipper{position:absolute; inset:0; transform-style:preserve-3d; transition:transform .56s cubic-bezier(.3,.7,.3,1)}
+.dcard .flipper{position:absolute; inset:0; transform-style:preserve-3d; transition:transform .4s cubic-bezier(.3,.7,.3,1)}
 .dcard.flipped .flipper{transform:rotateY(180deg)}
 @media (prefers-reduced-motion:reduce){ .dcard .flipper{transition:none} }
 .dface{position:absolute; inset:0; border-radius:24px; background:var(--surface); box-shadow:0 2px 4px rgba(21,21,24,.05), 0 30px 60px -24px rgba(21,21,24,.38); backface-visibility:hidden; -webkit-backface-visibility:hidden; display:flex; flex-direction:column; padding:22px 22px 18px; overflow:hidden}
@@ -783,7 +783,7 @@ footer .flinks a:hover{color:var(--ink); text-decoration:underline; text-underli
 .kept small{flex:none; font-weight:500; color:var(--faint)}
 .dend-act{display:flex; gap:8px; flex-wrap:wrap}
 .dend-act .btn{display:inline-flex; align-items:center; gap:7px}
-.dmore{all:unset; box-sizing:border-box; cursor:pointer; display:flex; align-items:center; gap:12px; padding:10px 12px; border-radius:14px; border:1px solid var(--rule); color:var(--ink); font:500 14px/1.25 var(--sans); transition:border-color .15s, transform var(--t-quick) var(--spring-snap)}
+.dmore{all:unset; box-sizing:border-box; cursor:pointer; display:flex; align-items:center; gap:12px; padding:10px 12px; border-radius:14px; border:1px solid var(--rule); color:var(--ink); font:500 14px/1.25 var(--sans); transition:border-color .12s, transform var(--t-quick) var(--spring-snap)}
 .dmore:hover{border-color:var(--faint)}
 .dmore:active{transform:scale(.985)}
 .dmore b{display:block; font-weight:600}
@@ -835,7 +835,7 @@ footer .flinks a:hover{color:var(--ink); text-decoration:underline; text-underli
 .toast:has(.t1){flex-wrap:nowrap}
 .toast .t1{flex:1 1 auto; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
 .toast .t1 + .linkbtn{flex:none}
-.askcta{display:flex; align-items:center; gap:12px; margin-top:4px; padding:14px 16px; border-radius:16px; border:1.5px dashed color-mix(in srgb, var(--ink) 18%, transparent); color:var(--ink); text-decoration:none; transition:border-color .15s, background-color .15s, transform var(--t-quick) var(--spring-snap)}
+.askcta{display:flex; align-items:center; gap:12px; margin-top:4px; padding:14px 16px; border-radius:16px; border:1.5px dashed color-mix(in srgb, var(--ink) 18%, transparent); color:var(--ink); text-decoration:none; transition:border-color .12s, background-color .12s, transform var(--t-quick) var(--spring-snap)}
 .askcta:hover{border-color:var(--accent); background:color-mix(in srgb, var(--accent) 5%, transparent)}
 .askcta:active{transform:scale(.99)}
 .askcta .ai{flex:none; width:34px; height:34px; border-radius:11px; display:grid; place-items:center; background:var(--accent-soft); color:var(--accent)}
@@ -882,7 +882,7 @@ footer .about a{color:inherit; text-underline-offset:3px}
 .deye .who{color:var(--muted); letter-spacing:.1em; flex:1 1 auto; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
 .deye .ap{flex:none; width:24px; height:24px; border-radius:50%; object-fit:cover; margin-right:-2px}
 .deye .ap.ph{display:grid; place-items:center; background:var(--sunk); color:var(--muted); font:700 9.5px/1 var(--sans); letter-spacing:0}
-.kmark{margin-left:auto; flex:none; display:none; color:var(--faint); opacity:.28; transition:opacity .2s, color .2s, transform .3s var(--spring-snap)}
+.kmark{margin-left:auto; flex:none; display:none; color:var(--faint); opacity:.28; transition:opacity .15s, color .15s, transform .22s var(--spring-snap)}
 .kmark.on{display:inline-flex; color:var(--accent); opacity:1}
 .dmid{flex:1; min-height:0; display:flex; flex-direction:column; justify-content:center; padding:16px 0 14px; overflow:hidden}
 .dq{margin:0; color:var(--ink); font-weight:500; letter-spacing:-.015em; min-height:0; flex:0 1 auto; overflow:hidden; -webkit-line-clamp:unset; display:block}
@@ -922,7 +922,7 @@ footer .about a{color:inherit; text-underline-offset:3px}
 .nextup .hk{margin-bottom:8px}
 .nrow{display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; margin:0 -22px; padding:2px 22px 4px}
 .nrow::-webkit-scrollbar{display:none}
-.nchip{flex:none; display:inline-flex; align-items:center; gap:9px; padding:6px 13px 6px 6px; border-radius:999px; border:1px solid var(--rule); background:var(--surface); text-decoration:none; color:var(--ink); font:600 13.5px/1.1 var(--sans); transition:border-color .15s, transform var(--t-quick) var(--spring-snap)}
+.nchip{flex:none; display:inline-flex; align-items:center; gap:9px; padding:6px 13px 6px 6px; border-radius:999px; border:1px solid var(--rule); background:var(--surface); text-decoration:none; color:var(--ink); font:600 13.5px/1.1 var(--sans); transition:border-color .12s, transform var(--t-quick) var(--spring-snap)}
 .nchip:hover{border-color:var(--faint)} .nchip:active{transform:scale(.97)}
 .nchip img{width:30px; height:30px; border-radius:50%; object-fit:cover}
 .nchip small{display:block; font-weight:500; color:var(--faint); font-size:11.5px; margin-top:3px}
@@ -1012,7 +1012,7 @@ const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt
 const reduceMotion = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 try { history.scrollRestoration = "manual"; } catch {}
 // Motion tokens, shared by every animation on the page
-const M = { quick: 200, base: 320, expressive: 520, snap: "cubic-bezier(.2,.95,.3,1)", soft: "cubic-bezier(.3,1.18,.5,1)", bounce: "cubic-bezier(.34,1.45,.64,1)", exit: "cubic-bezier(.4,0,1,1)" };
+const M = { quick: 150, base: 240, expressive: 380, snap: "cubic-bezier(.2,.95,.3,1)", soft: "cubic-bezier(.3,1.18,.5,1)", bounce: "cubic-bezier(.34,1.45,.64,1)", exit: "cubic-bezier(.4,0,1,1)" };
 const motion = (el, frames, opts) => (el && el.animate && !reduceMotion()) ? el.animate(frames, opts) : null;
 // FLIP: cards that survive a re-render glide from where they were; cards that arrive rise in
 function flipList(update){
@@ -1025,8 +1025,8 @@ function flipList(update){
   document.querySelectorAll("#list [data-card]").forEach(el => {
     const r = el.getBoundingClientRect(); if (r.top > innerHeight + 80 || r.bottom < -80) return;
     const old = before.get(el.id);
-    if (old != null){ const dy = old - r.top; if (Math.abs(dy) > 1) el.animate([{ transform: `translateY(${dy}px)` }, { transform: "none" }], { duration: 440, easing: M.soft }); }
-    else el.animate([{ opacity: 0, transform: "translateY(12px) scale(.985)" }, { opacity: 1, transform: "none" }], { duration: 420, delay: Math.min(n++, 7) * 40, easing: M.snap, fill: "backwards" });
+    if (old != null){ const dy = old - r.top; if (Math.abs(dy) > 1) el.animate([{ transform: `translateY(${dy}px)` }, { transform: "none" }], { duration: 320, easing: M.soft }); }
+    else el.animate([{ opacity: 0, transform: "translateY(12px) scale(.985)" }, { opacity: 1, transform: "none" }], { duration: 280, delay: Math.min(n++, 7) * 22, easing: M.snap, fill: "backwards" });
   });
 }
 let lastDD = null, lastThumb = null;
@@ -1133,8 +1133,8 @@ function setView(v, animate = true){
   // the title and tabs stay exactly where they are; if you'd scrolled past them, you land at the top of the new view
   window.scrollTo({ top: Math.min(scrollY, Math.max(0, inn.getBoundingClientRect().top + scrollY - 8)), behavior: "instant" });
   if (animate){
-    motion(inn, [{ opacity: 0, transform: "translateY(4px)" }, { opacity: 1, transform: "none" }], { duration: 150, easing: "ease-out" });
-    motion($("#stats"), [{ opacity: 0 }, { opacity: 1 }], { duration: 120, easing: "ease-out" });
+    motion(inn, [{ opacity: 0, transform: "translateY(4px)" }, { opacity: 1, transform: "none" }], { duration: 120, easing: "ease-out" });
+    motion($("#stats"), [{ opacity: 0 }, { opacity: 1 }], { duration: 100, easing: "ease-out" });
   }
   setTimeout(() => { document.body.style.minHeight = ""; }, 200);
 }
@@ -1417,8 +1417,8 @@ function renderSpeakers(){
 // A tapped guest card gives a small spring: dips, overshoots a hair, settles; its "i" button pops in
 function tapPop(id){
   const b = document.querySelector(`#speakers [data-spk="${id}"]`); if (!b) return;
-  motion(b, [{ transform: "scale(.955)" }, { transform: "scale(1.018)", offset: .55 }, { transform: "scale(1)" }], { duration: 420, easing: "cubic-bezier(.3,.7,.3,1)" });
-  const i = b.parentElement.querySelector(".info"); if (i) motion(i, [{ transform: "scale(.4)", opacity: 0 }, { transform: "scale(1.12)", opacity: 1, offset: .6 }, { transform: "scale(1)" }], { duration: 380, delay: 60, easing: "ease-out", fill: "backwards" });
+  motion(b, [{ transform: "scale(.955)" }, { transform: "scale(1.018)", offset: .55 }, { transform: "scale(1)" }], { duration: 300, easing: "cubic-bezier(.3,.7,.3,1)" });
+  const i = b.parentElement.querySelector(".info"); if (i) motion(i, [{ transform: "scale(.4)", opacity: 0 }, { transform: "scale(1.12)", opacity: 1, offset: .6 }, { transform: "scale(1)" }], { duration: 280, delay: 40, easing: "ease-out", fill: "backwards" });
   if (navigator.vibrate) try { navigator.vibrate(6); } catch {}
 }
 // FLIP: each card glides from where it was; the photo grows or shrinks into place; the words fade in at the new size
@@ -1426,11 +1426,11 @@ function playSpeakers(m){
   document.querySelectorAll("#speakers [data-spk]").forEach(b => {
     const o = m[b.dataset.spk]; if (!o) return;
     const r = b.getBoundingClientRect(), dx = o.card.left - r.left, dy = o.card.top - r.top;
-    b.animate([{ transform: `translate(${dx}px, ${dy}px)` }, { transform: "none" }], { duration: 380, easing: CURVE });
+    b.animate([{ transform: `translate(${dx}px, ${dy}px)` }, { transform: "none" }], { duration: 280, easing: CURVE });
     const av = b.querySelector(".av,.ph");
     if (av && o.av){ const a = av.getBoundingClientRect(), k = o.av.width / a.width;
-      av.animate([{ transformOrigin: "0 0", transform: `translate(${o.av.left - a.left - dx}px, ${o.av.top - a.top - dy}px) scale(${k})` }, { transformOrigin: "0 0", transform: "none" }], { duration: 380, easing: CURVE }); }
-    b.querySelectorAll(".txtcol, .nums").forEach(t => t.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 160, delay: 110, easing: "ease-out", fill: "backwards" }));
+      av.animate([{ transformOrigin: "0 0", transform: `translate(${o.av.left - a.left - dx}px, ${o.av.top - a.top - dy}px) scale(${k})` }, { transformOrigin: "0 0", transform: "none" }], { duration: 280, easing: CURVE }); }
+    b.querySelectorAll(".txtcol, .nums").forEach(t => t.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 130, delay: 70, easing: "ease-out", fill: "backwards" }));
   });
 }
 function renderPop(){
@@ -1901,7 +1901,7 @@ function toggleCard(key){
     cardBusy.delete(key);
     before.outerHTML = html;
     const el = document.getElementById(key); if (!el) return;
-    el.classList.add("settling"); setTimeout(() => el.classList.remove("settling"), 450);
+    el.classList.add("settling"); setTimeout(() => el.classList.remove("settling"), 340);
     if (landed){ el.focus({ preventScroll: true }); el.classList.add("flash"); setTimeout(() => el.classList.remove("flash"), 1400); }
   };
   // Card entirely scrolled past, or no motion wanted: swap and land on it
@@ -1922,11 +1922,11 @@ function toggleCard(key){
   let ghost = null;
   if (pos){ ghost = pb.cloneNode(true); ghost.style.cssText = `position:absolute; left:${pos.left}px; top:${pos.top}px; width:${pos.width}px; margin:0; pointer-events:none; opacity:0`; before.appendChild(ghost); }
   cardBusy.add(key);
-  const dur = matchMedia("(max-width:640px)").matches ? 200 : 240, ease = "cubic-bezier(.32,.72,0,1)";
+  const dur = matchMedia("(max-width:640px)").matches ? 160 : 190, ease = "cubic-bezier(.32,.72,0,1)";
   lockHeight(before, true);
   const grow = before.animate([{ height: h0 + "px" }, { height: h1 + "px" }], { duration: dur, easing: ease, fill: "forwards" });
-  before.querySelectorAll(".convo, .endrow, .actions").forEach(p => p.animate([{ opacity: 1, transform: "none" }, { opacity: 0, transform: "translateY(-8px)" }], { duration: 90, easing: "ease-out", fill: "forwards" }));
-  if (ghost) ghost.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 150, delay: 90, easing: "ease-out", fill: "forwards" });
+  before.querySelectorAll(".convo, .endrow, .actions").forEach(p => p.animate([{ opacity: 1, transform: "none" }, { opacity: 0, transform: "translateY(-8px)" }], { duration: 70, easing: "ease-out", fill: "forwards" }));
+  if (ghost) ghost.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 120, delay: 60, easing: "ease-out", fill: "forwards" });
   // Title scrolled above the search bar: glide the page with the card so the title stays under your thumb
   const dy = r0.top < inset ? r0.top - inset : 0;
   if (dy){ const y0 = scrollY, t0 = performance.now(), E = bezier(.32, .72, 0, 1);
@@ -1953,13 +1953,13 @@ function animateOpen(el, h0){
   const h1 = el.getBoundingClientRect().height;
   if (h1 - h0 > 1){
     lockHeight(el, true);
-    const a = el.animate([{ height: h0 + "px" }, { height: h1 + "px" }], { duration: 260, easing: "cubic-bezier(.32,.72,0,1)" });
+    const a = el.animate([{ height: h0 + "px" }, { height: h1 + "px" }], { duration: 200, easing: "cubic-bezier(.32,.72,0,1)" });
     a.onfinish = a.oncancel = () => lockHeight(el, false);
   }
   [...el.querySelectorAll(".turn, .endrow, .actions")].forEach((p, i) => {
     const dx = p.classList.contains("guest") ? 12 : p.classList.contains("turn") ? -12 : 0;
     p.style.willChange = "transform, opacity";
-    const a = p.animate([{ opacity: 0, transform: `translate(${dx}px, 8px)` }, { opacity: 1, transform: "none" }], { duration: 220, delay: 40 + Math.min(i, 7) * 30, easing: CURVE, fill: "backwards" });
+    const a = p.animate([{ opacity: 0, transform: `translate(${dx}px, 8px)` }, { opacity: 1, transform: "none" }], { duration: 170, delay: 20 + Math.min(i, 7) * 18, easing: CURVE, fill: "backwards" });
     a.onfinish = a.oncancel = () => { p.style.willChange = ""; };
   });
 }
@@ -2149,7 +2149,7 @@ function libMore(m){
   const sec = m.closest("section"), rest = sec.querySelector(".rest");
   rest.hidden = !rest.hidden; m.classList.toggle("up", !rest.hidden);
   m.querySelector("span").textContent = rest.hidden ? `Show ${+m.dataset.libmore - LIBSHOW} more` : "Show fewer";
-  if (!rest.hidden) [...rest.children].forEach((el, i) => motion(el, [{ opacity: 0, transform: "translateY(8px)" }, { opacity: 1, transform: "none" }], { duration: 300, delay: Math.min(i, 6) * 40, easing: CURVE, fill: "backwards" }));
+  if (!rest.hidden) [...rest.children].forEach((el, i) => motion(el, [{ opacity: 0, transform: "translateY(8px)" }, { opacity: 1, transform: "none" }], { duration: 220, delay: Math.min(i, 6) * 24, easing: CURVE, fill: "backwards" }));
   else window.scrollTo({ top: Math.max(0, sec.getBoundingClientRect().top + scrollY - 64), behavior: "instant" });
 }
 // the chip for the topic you're reading lights up; the row pins where the browser allows it
@@ -2289,10 +2289,10 @@ function deckThrow(dir, x = 0, y = 0, rot = 0){
   if (dir > 0 && navigator.vibrate) try { navigator.vibrate(8); } catch {}
   const stamp = top.querySelector(dir > 0 ? ".stamp.keep" : ".stamp.next"); if (stamp) stamp.style.opacity = 1;
   const W = Math.max(innerWidth, 600);
-  const a = motion(top, [{ transform: `translate(${x}px, ${y}px) rotate(${rot}deg)` }, { transform: `translate(${dir * W * 1.15}px, ${y + 30}px) rotate(${dir * 22}deg)` }], { duration: 300, easing: "cubic-bezier(.3,.6,.55,1)", fill: "forwards" });
+  const a = motion(top, [{ transform: `translate(${x}px, ${y}px) rotate(${rot}deg)` }, { transform: `translate(${dir * W * 1.15}px, ${y + 30}px) rotate(${dir * 22}deg)` }], { duration: 220, easing: "cubic-bezier(.3,.6,.55,1)", fill: "forwards" });
   const b1 = $("#dstage .dcard.behind1"), b2 = $("#dstage .dcard.behind2");
-  const riseA = b1 ? motion(b1, [{ transform: "translateY(14px) scale(.955)" }, { transform: "none" }], { duration: 300, easing: M.soft, fill: "forwards" }) : null;
-  const riseB = b2 ? motion(b2, [{ transform: "translateY(26px) scale(.91)", opacity: .72 }, { transform: "translateY(14px) scale(.955)", opacity: 1 }], { duration: 300, easing: M.soft, fill: "forwards" }) : null;
+  const riseA = b1 ? motion(b1, [{ transform: "translateY(14px) scale(.955)" }, { transform: "none" }], { duration: 220, easing: M.soft, fill: "forwards" }) : null;
+  const riseB = b2 ? motion(b2, [{ transform: "translateY(26px) scale(.91)", opacity: .72 }, { transform: "translateY(14px) scale(.955)", opacity: 1 }], { duration: 220, easing: M.soft, fill: "forwards" }) : null;
   const id = DECK.list[DECK.i].id, wasNew = !KEPT.has(id);
   DECK.hist.push({ i: DECK.i, dir, kept: dir > 0, wasNew });
   track(dir > 0 ? "card_keep" : "card_skip", { id, deck: deckHash(DECK.spec), position: DECK.i + 1 });
@@ -2302,7 +2302,7 @@ function deckThrow(dir, x = 0, y = 0, rot = 0){
   DECK.finish = () => { [a, riseA, riseB].forEach(x => { try { x && x.finish(); } catch {} }); done(); };
   const last = riseA || a;
   if (last) last.onfinish = done; else done();
-  setTimeout(done, 700);   // never leave the deck stuck if an animation is cut short
+  setTimeout(done, 520);   // never leave the deck stuck if an animation is cut short
 }
 $("#dstage").addEventListener("pointerdown", e => {
   if (!(DECK.busy && DECK.finish) || e.target.closest("a, button")) return;
@@ -2329,7 +2329,7 @@ $("#dstage").addEventListener("wheel", e => {
   clearTimeout(WHEEL.t);
   const th = Math.min(120, top.offsetWidth * .32);
   if (Math.abs(x) > th){ WHEEL.x = 0; WHEEL.card = null; top.style.transform = ""; deckThrow(x > 0 ? 1 : -1, x, 0, x * .06); return; }
-  WHEEL.t = setTimeout(() => { const from = top.style.transform; top.style.transform = ""; keep.style.opacity = next.style.opacity = 0; if (from) motion(top, [{ transform: from }, { transform: "none" }], { duration: 520, easing: M.bounce }); WHEEL.x = 0; WHEEL.card = null; }, 160);
+  WHEEL.t = setTimeout(() => { const from = top.style.transform; top.style.transform = ""; keep.style.opacity = next.style.opacity = 0; if (from) motion(top, [{ transform: from }, { transform: "none" }], { duration: 360, easing: M.bounce }); WHEEL.x = 0; WHEEL.card = null; }, 160);
 }, { passive: false });
 // Bring the last card back, from the side it left; a keep is undone with it
 function deckUndo(){
@@ -2339,8 +2339,8 @@ function deckUndo(){
   DECK.i = h.i;
   renderDeck(false);
   const top = $("#dstage .dcard.top"), W = Math.max(innerWidth, 600);
-  motion(top, [{ transform: `translate(${h.dir * W * 1.15}px, 30px) rotate(${h.dir * 22}deg)` }, { transform: "none" }], { duration: 460, easing: M.soft });
-  const b1 = $("#dstage .dcard.behind1"); if (b1) motion(b1, [{ transform: "none" }, { transform: "translateY(14px) scale(.955)" }], { duration: 400, easing: M.soft, fill: "forwards" });
+  motion(top, [{ transform: `translate(${h.dir * W * 1.15}px, 30px) rotate(${h.dir * 22}deg)` }, { transform: "none" }], { duration: 340, easing: M.soft });
+  const b1 = $("#dstage .dcard.behind1"); if (b1) motion(b1, [{ transform: "none" }, { transform: "translateY(14px) scale(.955)" }], { duration: 300, easing: M.soft, fill: "forwards" });
   if (navigator.vibrate) try { navigator.vibrate(4); } catch {}
 }
 // The kept counter at the bottom of the deck: the number rolls and the pill pops when it changes
@@ -2351,9 +2351,9 @@ function updateCount(bump){
   if (String(n) === was) return;
   if (!bump || reduceMotion()){ b.textContent = n; return; }
   const up = n > Number(was);
-  motion(b, [{ transform: `translateY(${up ? "-" : ""}70%)`, opacity: 0 }, { transform: "none", opacity: 1 }], { duration: 260, easing: M.snap });
+  motion(b, [{ transform: `translateY(${up ? "-" : ""}70%)`, opacity: 0 }, { transform: "none", opacity: 1 }], { duration: 200, easing: M.snap });
   b.textContent = n;
-  motion(el, [{ transform: "scale(1)" }, { transform: "scale(1.22)", offset: .4 }, { transform: "scale(1)" }], { duration: 440, easing: M.bounce });
+  motion(el, [{ transform: "scale(1)" }, { transform: "scale(1.22)", offset: .4 }, { transform: "scale(1)" }], { duration: 320, easing: M.bounce });
 }
 function bindDrag(card){
   if (!card) return;
@@ -2387,7 +2387,7 @@ function bindDrag(card){
     const th = Math.min(120, card.offsetWidth * .32), flick = Math.abs(vx) > .55 && Math.sign(vx) === Math.sign(dx) && Math.abs(dx) > 28;
     if (Math.abs(dx) > th || flick){ const from = { x: dx, y: dy * .35, r: dx * .06 }; card.style.transform = ""; deckThrow(dx > 0 ? 1 : -1, from.x, from.y, from.r); return; }
     const from = card.style.transform; card.style.transform = ""; keep.style.opacity = next.style.opacity = 0;
-    if (from) motion(card, [{ transform: from }, { transform: "none" }], { duration: 520, easing: M.bounce });
+    if (from) motion(card, [{ transform: from }, { transform: "none" }], { duration: 360, easing: M.bounce });
   };
   card.addEventListener("pointerup", end); card.addEventListener("pointercancel", end);
 }
@@ -2501,10 +2501,10 @@ function bindSheet(el, isGrab, close){
     if (!active || e.pointerId !== id) return; active = false; if (vert === null) return;
     const h = el.getBoundingClientRect().height;
     if (dy > Math.min(110, h * .28) || vy > .5){
-      const a = motion(el, [{ transform: `translateY(${dy}px)` }, { transform: "translateY(110%)" }], { duration: 240, easing: M.exit, fill: "forwards" });
+      const a = motion(el, [{ transform: `translateY(${dy}px)` }, { transform: "translateY(110%)" }], { duration: 180, easing: M.exit, fill: "forwards" });
       const fin = () => { close(); if (a) a.cancel(); el.style.transform = ""; };
       if (a) a.onfinish = fin; else fin();
-    } else { const from = el.style.transform; el.style.transform = ""; motion(el, [{ transform: from }, { transform: "none" }], { duration: 440, easing: M.bounce }); }
+    } else { const from = el.style.transform; el.style.transform = ""; motion(el, [{ transform: from }, { transform: "none" }], { duration: 320, easing: M.bounce }); }
   };
   el.addEventListener("pointerup", end); el.addEventListener("pointercancel", end);
 }
