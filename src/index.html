@@ -53,6 +53,7 @@
   --r1-bg:#3A1E0E; --r1-ink:#FFA066; --r1-line:#C8612A; --r2-bg:#3A1030; --r2-ink:#FF8FD9; --r2-line:#C24A98; --r3-bg:#0B2D36; --r3-ink:#7FE0FA; --r3-line:#2F97B8;
 }
 *{box-sizing:border-box}
+html{touch-action:manipulation}   /* taps act at once; no pause to see if a second tap is coming */
 [hidden]{display:none!important}
 body{background:linear-gradient(180deg, var(--sky) 0, var(--ground) 380px) no-repeat, var(--ground); color:var(--ink); font:15px/1.5 var(--sans); padding-inline:16px; padding-block:0 56px}
 .wrap{max-width:960px; margin:0 auto}
@@ -208,6 +209,7 @@ article.qa h3{font:800 20px/1.25 var(--sans); letter-spacing:-.02em; text-wrap:b
 .x:hover{background:var(--sunk); color:var(--ink)}
 
 .list{display:grid; gap:10px}
+.qasheet{position:absolute; border-radius:20px; background:var(--surface); box-shadow:var(--shadow); transform-origin:50% 0; pointer-events:none; will-change:transform}
 article.qa{background:var(--surface); border:1px solid var(--rule); border-radius:var(--r); padding:14px 16px; display:grid; gap:10px; scroll-margin-top:16px; cursor:pointer; transition:border-color .12s}
 article.qa:hover{border-color:var(--faint)}
 article.qa.open{cursor:auto}
@@ -1881,87 +1883,76 @@ function jumpTo(id){
   if (el){ window.scrollTo({ top: Math.max(0, el.getBoundingClientRect().top + scrollY - 96), behavior: reduceMotion() ? "auto" : "smooth" }); el.classList.add("flash"); setTimeout(() => el.classList.remove("flash"), 2200); }
 }
 const CURVE = "cubic-bezier(.2,.8,.2,1)";   // short tail: fast, no crawl at the end
-const cardBusy = new Set();
+// ---------- opening and closing a card ----------
+// The layout changes at once and nothing animates height. The card takes its new size on the very next frame, and whatever
+// sits below it slides from where it was drawn to where it now belongs. Only transform and opacity move, so the browser's
+// compositor runs it: full frame rate on any phone, including an iPhone in Low Power Mode, which halves anything driven
+// from the main thread (a height animation, a scripted scroll).
+const SLIDE = { duration: 200, easing: "cubic-bezier(.22,1,.36,1)" };   // most of the distance in the first 60ms
+let anchorTimer = 0;
 function toggleCard(key){
-  const before = document.getElementById(key); if (!before || cardBusy.has(key)) return;
-  const qa = QAS.find(q => q.id === key);
-  if (!st.open.has(key)){
-    track("card_open", { id: key });
-    const h0 = before.getBoundingClientRect().height;
-    st.open.add(key);
-    before.outerHTML = card(qa, RANKS.get(key) || {});
-    animateOpen(document.getElementById(key), h0);
-    return;
-  }
-  st.open.delete(key);
-  const html = card(qa, RANKS.get(key) || {});
+  const before = document.getElementById(key); if (!before) return;
+  const qa = QAS.find(q => q.id === key); if (!qa) return;
+  const opening = !st.open.has(key), moving = !!before.animate && !reduceMotion();
   const inset = ($(".search")?.getBoundingClientRect().bottom || 0) + 12;
-  const r0 = before.getBoundingClientRect(), h0 = r0.height;
-  const finish = landed => {
-    cardBusy.delete(key);
-    before.outerHTML = html;
-    const el = document.getElementById(key); if (!el) return;
-    el.classList.add("settling"); setTimeout(() => el.classList.remove("settling"), 340);
-    if (landed){ el.focus({ preventScroll: true }); el.classList.add("flash"); setTimeout(() => el.classList.remove("flash"), 1400); }
-  };
-  // Card entirely scrolled past, or no motion wanted: swap and land on it
-  if (reduceMotion() || !before.animate || r0.bottom < inset + 24){
-    const past = r0.top < inset; finish(past);
-    if (past){ const el = document.getElementById(key); window.scrollTo({ top: Math.max(0, el.getBoundingClientRect().top + scrollY - inset), behavior: "instant" }); }
+  if (before.previousElementSibling?.classList.contains("qasheet")) before.previousElementSibling.remove();
+  const r0 = before.getBoundingClientRect();
+  // Everything below the card: the rest of the list, then the footer
+  const below = []; for (let n = before.nextElementSibling; n; n = n.nextElementSibling) below.push(n);
+  const foot = document.querySelector("footer"); if (foot) below.push(foot);
+  // First, where each of them is drawn right now. A slide still in flight is included, so a second tap picks up from there
+  const first = moving ? below.map(n => n.getBoundingClientRect().top) : null;
+  below.forEach(n => { if (n.__slide){ n.__slide.cancel(); n.__slide = null; } });
+  // Then the change itself, all at once
+  if (opening) st.open.add(key); else st.open.delete(key);
+  const root = document.documentElement; root.style.overflowAnchor = "none";   // the card keeps its place; the page doesn't re-anchor around it
+  clearTimeout(anchorTimer); anchorTimer = setTimeout(() => { root.style.overflowAnchor = ""; }, SLIDE.duration + 80);
+  before.outerHTML = card(qa, RANKS.get(key) || {});
+  const el = document.getElementById(key); if (!el) return;
+  // Closing a card whose title had scrolled up under the search bar: bring the title back under the thumb
+  const landed = !opening && r0.top < inset;
+  if (landed) window.scrollTo({ top: Math.max(0, el.getBoundingClientRect().top + scrollY - inset), behavior: "instant" });
+  if (!opening){ el.classList.add("settling"); setTimeout(() => el.classList.remove("settling"), 340); }
+  if (landed){ el.focus({ preventScroll: true }); el.classList.add("flash"); setTimeout(() => el.classList.remove("flash"), 1400); }
+  if (opening) setTimeout(() => track("card_open", { id: key }), 300);   // after the motion, never before it
+  if (!moving) return;
+  // Last, where they belong now; each one slides the difference. Only what is on screen at either end of the move takes part,
+  // and when a tall card closes nothing starts further away than just below the screen (it was out of sight anyway)
+  const vh = innerHeight, last = below.map(n => n.getBoundingClientRect()), r1 = el.getBoundingClientRect();
+  const cap = opening ? Infinity : Math.max(0, vh - r1.bottom) + 60;
+  const travel = below.map((n, i) => Math.min(first[i] - last[i].top, cap));
+  below.forEach((n, i) => {
+    const dy = travel[i]; if (Math.abs(dy) < 1) return;
+    if (Math.min(last[i].top, last[i].top + dy) > vh || Math.max(last[i].top, last[i].top + dy) + last[i].height < 0) return;
+    n.__slide = n.animate([{ transform: `translateY(${dy}px)` }, { transform: "none" }], SLIDE);
+  });
+  if (opening){
+    // The conversation is already laid out in full; the bubbles just step in from their speaker's side
+    [...el.querySelectorAll(".turn, .endrow, .actions")].forEach((p, i) => {
+      const dx = p.classList.contains("guest") ? 8 : p.classList.contains("turn") ? -8 : 0;
+      p.style.willChange = "transform, opacity";
+      const a = p.animate([{ opacity: 0, transform: `translate(${dx}px, 4px)` }, { opacity: 1, transform: "none" }], { duration: 120, delay: Math.min(i, 6) * 12, easing: CURVE, fill: "backwards" });
+      a.onfinish = a.oncancel = () => { p.style.willChange = ""; };
+    });
     return;
   }
-  // Measure the closed card with a real (invisible) node of the same width
-  const probe = document.createElement("div"); probe.innerHTML = html; const next = probe.firstElementChild;
-  next.style.cssText = `position:absolute; visibility:hidden; pointer-events:none; left:0; top:0; width:${r0.width}px`;
-  before.parentNode.appendChild(next); const h1 = next.getBoundingClientRect().height;
-  // where the summary row sits inside the closed card, measured from its padding edge (borders differ on podium cards)
-  const pb = next.querySelector(".pbar"), ns = getComputedStyle(next), nr = next.getBoundingClientRect(), pr = pb ? pb.getBoundingClientRect() : null;
-  const pos = pr ? { top: pr.top - nr.top - parseFloat(ns.borderTopWidth), left: pr.left - nr.left - parseFloat(ns.borderLeftWidth), width: pr.width } : null;
-  next.remove();
-  // The summary row, painted in place under the fading conversation
-  let ghost = null;
-  if (pos){ ghost = pb.cloneNode(true); ghost.style.cssText = `position:absolute; left:${pos.left}px; top:${pos.top}px; width:${pos.width}px; margin:0; pointer-events:none; opacity:0`; before.appendChild(ghost); }
-  cardBusy.add(key);
-  const dur = matchMedia("(max-width:640px)").matches ? 160 : 190, ease = "cubic-bezier(.32,.72,0,1)";
-  lockHeight(before, true);
-  const grow = before.animate([{ height: h0 + "px" }, { height: h1 + "px" }], { duration: dur, easing: ease, fill: "forwards" });
-  before.querySelectorAll(".convo, .endrow, .actions").forEach(p => p.animate([{ opacity: 1, transform: "none" }, { opacity: 0, transform: "translateY(-8px)" }], { duration: 70, easing: "ease-out", fill: "forwards" }));
-  if (ghost) ghost.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 120, delay: 60, easing: "ease-out", fill: "forwards" });
-  // Title scrolled above the search bar: glide the page with the card so the title stays under your thumb
-  const dy = r0.top < inset ? r0.top - inset : 0;
-  if (dy){ const y0 = scrollY, t0 = performance.now(), E = bezier(.32, .72, 0, 1);
-    const step = now => { const k = Math.min(1, (now - t0) / dur); window.scrollTo(0, y0 + dy * E(k)); if (k < 1) requestAnimationFrame(step); };
-    requestAnimationFrame(step); }
-  grow.onfinish = () => { lockHeight(before, false); finish(!!dy); };
-  grow.oncancel = () => { lockHeight(before, false); finish(false); };
-}
-// cubic-bezier easing as a function, so page scroll can ride the same curve as the card
-function bezier(x1, y1, x2, y2){
-  const cx = 3 * x1, bx = 3 * (x2 - x1) - cx, ax = 1 - cx - bx, cy = 3 * y1, by = 3 * (y2 - y1) - cy, ay = 1 - cy - by;
-  const X = t => ((ax * t + bx) * t + cx) * t, Y = t => ((ay * t + by) * t + cy) * t, dX = t => (3 * ax * t + 2 * bx) * t + cx;
-  return x => { let t = x; for (let i = 0; i < 6; i++){ const d = dX(t); if (Math.abs(d) < 1e-6) break; t -= (X(t) - x) / d; } return Y(Math.max(0, Math.min(1, t))); };
-}
-function lockHeight(el, on){
-  el.style.overflow = on ? "hidden" : ""; el.style.contain = on ? "paint" : ""; el.style.willChange = on ? "height" : "";
-  document.documentElement.style.overflowAnchor = on ? "none" : "";
-}
-// Organic open/close: the card grows to its new height on a soft spring, gives a tiny press-and-settle,
-// and the conversation arrives one bubble at a time (asker from the left, guest from the right).
-const EASE_OUT = "cubic-bezier(.22,1,.36,1)", SPRING = "cubic-bezier(.34,1.45,.64,1)";
-function animateOpen(el, h0){
-  if (!el || !h0 || !el.animate || reduceMotion()) return;
-  const h1 = el.getBoundingClientRect().height;
-  if (h1 - h0 > 1){
-    lockHeight(el, true);
-    const a = el.animate([{ height: h0 + "px" }, { height: h1 + "px" }], { duration: 200, easing: "cubic-bezier(.32,.72,0,1)" });
-    a.onfinish = a.oncancel = () => lockHeight(el, false);
+  // Closing. A blank sheet the size the card was stands behind it and shrinks on the same curve as the cards below rise,
+  // so the card reads as folding shut rather than its lower half vanishing
+  const rise = travel.length ? travel[0] : 0;
+  if (rise > 1){
+    const sheet = document.createElement("div"); sheet.className = "qasheet"; sheet.setAttribute("aria-hidden", "true");
+    const h = r1.height + rise;
+    sheet.style.cssText = `left:${el.offsetLeft}px; top:${el.offsetTop}px; width:${el.offsetWidth}px; height:${h}px`;
+    el.before(sheet);
+    const a = sheet.animate([{ transform: "none" }, { transform: `scaleY(${r1.height / h})` }], SLIDE);
+    a.onfinish = a.oncancel = () => sheet.remove();
   }
-  [...el.querySelectorAll(".turn, .endrow, .actions")].forEach((p, i) => {
-    const dx = p.classList.contains("guest") ? 12 : p.classList.contains("turn") ? -12 : 0;
-    p.style.willChange = "transform, opacity";
-    const a = p.animate([{ opacity: 0, transform: `translate(${dx}px, 8px)` }, { opacity: 1, transform: "none" }], { duration: 170, delay: 20 + Math.min(i, 7) * 18, easing: CURVE, fill: "backwards" });
-    a.onfinish = a.oncancel = () => { p.style.willChange = ""; };
-  });
+  if (landed) el.animate([{ opacity: 0, transform: "translateY(-14px)" }, { opacity: 1, transform: "none" }], { duration: 160, easing: CURVE });
+  else {
+    // The title never moved; the row of people fades in where the conversation began
+    const dTop = r0.top - r1.top; if (Math.abs(dTop) > 1) el.animate([{ transform: `translateY(${dTop}px)` }, { transform: "none" }], SLIDE);
+    el.querySelector(".pbar")?.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 120, easing: "ease-out" });
+  }
 }
 
 // ---------- events ----------
