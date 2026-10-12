@@ -1,6 +1,6 @@
 {
  "version": 1,
- "syncedAt": "2026-09-28T13:13:59Z",
+ "syncedAt": "2026-10-12T22:18:25Z",
  "source": "Clay Community Slack, #10-ask-me-anything (public mirror at community.clay.com)",
  "slackBase": "https://clayrunhq.slack.com/archives/C0BV7HRMR6G/p",
  "sessions": [
@@ -95,6 +95,12 @@
      "ts": "1790355476300899",
      "text": "The thing that made me so excited about Clay in the early days was that they saw the importance of integrations at Scale, and the thing that really sold me on it was Kareem’s conviction and his emphasis on creativity and not business.\n\nThe main things to focus on when choosing between startups, as cliche as this may sound, is can you get behind the vision. I fundamentally believe that your work product is only as good as your conviction in what you’re working on. If you don’t believe in what you’re building, you’re leaving room for your own growth on the table",
      "role": "guest"
+    },
+    {
+     "by": "Heli V.",
+     "ts": "1790604980851929",
+     "text": "Thanks for the time Eric E. appreciate you and your insights!",
+     "role": "asker"
     }
    ],
    "answered": true,
@@ -294,7 +300,7 @@
    "title": "How AI has changed the way Eric builds",
    "asker": "Max R.",
    "qts": "1790186206498799",
-   "likes": 2,
+   "likes": 3,
    "tags": [
     "AI & vibe coding"
    ],
@@ -511,6 +517,12 @@
      "ts": "1790351120766199",
      "text": "Oh I really like this question. We’re going to get quite personal with this one 🙂\n\nMy most meaningful achievement is that, with my role at Clay, I was finally able to become who I wanted to be as an engineer. More specifically, I was never the engineer that really fell in love with algorithms, or liked thinking about things in terms of computational complexity. Sure, I could do it, but what I really loved about it was that I could build things to help people. I could build things that solved problems. In order to do that though, you need to have an overarching context of what you’re solving. So, I fell more into a generalist role that traditionally gets left behind as companies continue to scale. But, Clay saw that my ability to work effectively in any part of the business, because of the context that I had, allowed me to become the engineer that can still build, but just works across the entire business, helping people where needed.\n\nIn terms of my most meaningful failure, it was burning out earlier in my career. Being a generalist also means that a lot of people tend to want your advice on a lot of things, and it can be difficult to, especially in an early stage startup, set boundaries as you’re trying to grow. I did not recognize that burn out early on, which led to some bad decisions, and unhealthy habits. But, when i finally noticed it, I now use it as a guide to enforce my boundaries, and I think of it quite differently. I’m only as good as the clarity that I have and taking care of myself first is important",
      "role": "guest"
+    },
+    {
+     "by": "Wesley v.",
+     "ts": "1790523030127679",
+     "text": "I really like the phrase \"I'm only as good as the clarity that I have\", thanks for sharing Eric E.!",
+     "role": "asker"
     }
    ],
    "answered": true,
@@ -964,7 +976,7 @@
    "title": "Making a technical product like Clay simple and compelling",
    "asker": "Nishika G.",
    "qts": "1788969943406899",
-   "likes": 5,
+   "likes": 6,
    "tags": [
     "Storytelling & brand"
    ],
@@ -1234,5 +1246,9 @@
   "Wesley v.": "img/people/wesley-v.jpg"
  },
  "communityUrl": "https://www.clay.com/slack-community",
- "curator": "Kartik P."
+ "curator": "Kartik P.",
+ "featured": [
+  "msg_SH634D2ZTAhc",
+  "msg_CK2ieArNOX1k"
+ ]
 }
