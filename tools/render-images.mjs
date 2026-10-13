@@ -24,8 +24,8 @@ const guests = data.sessions.filter(s => s.status !== "upcoming").sort((a, b) =>
 const og = `<html><head><style>${fonts}html,body{margin:0}
   body{width:1200px;height:630px;background:radial-gradient(ellipse 70% 90% at 50% 0%,#D7EBFE 0,#E9F1F8 45%,#F4F3F0 100%);font-family:H;color:#1B1A18;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
   .eye{display:flex;align-items:center;gap:14px;font:600 17px/1 H;letter-spacing:.16em;text-transform:uppercase;color:#55534E}
-  h1{margin:30px 0 0;font:700 96px/.98 H;letter-spacing:-.05em}
-  h1 em{display:block;font-style:normal;color:#395AFA}
+  h1{margin:30px 0 0;font:700 128px/.98 H;letter-spacing:-.05em}
+  h1 em{font-style:normal;color:#395AFA}
   .ppl{margin-top:38px;display:flex;align-items:center;gap:16px}
   .stack{display:flex}
   .stack img{width:64px;height:64px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 4px #F4F3F0;margin-left:-14px}
@@ -33,7 +33,7 @@ const og = `<html><head><style>${fonts}html,body{margin:0}
   .ppl span{font:600 22px/1.25 H;color:#55534E;text-align:left}
   .ppl b{display:block;color:#1B1A18;font-weight:700}</style></head>
   <body><div class="eye">${dots(13, 6)}<span>Clay community</span></div>
-  <h1>Clay AMA<em>Compendium</em></h1>
+  <h1>Clay <em>AMAs</em></h1>
   <div class="ppl"><div class="stack">${guests.map(s => `<img src="${img(s.photo)}">`).join("")}</div><span><b>Every AMA answer</b>${guests.length === 1 ? guests[0].guest : guests.map(s => s.guest.split(" ")[0]).join(", ").replace(/, ([^,]*)$/, " & $1")}</span></div>
   </body></html>`;
 

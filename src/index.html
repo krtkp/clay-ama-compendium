@@ -1,4 +1,4 @@
-<title>Clay AMA Compendium</title>
+<title>Clay AMAs</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400..800;1,400&display=swap">
@@ -949,7 +949,7 @@ canvas.confetti{position:fixed; inset:0; width:100vw; height:100vh; pointer-even
 <div class="wrap">
   <header class="mast">
     <div class="eyebrow"><span class="fruit" aria-hidden="true"><i style="background:var(--f1)"></i><i style="background:var(--f2)"></i><i style="background:var(--f3)"></i><i style="background:var(--f4)"></i><i style="background:var(--f5)"></i></span><span>Unofficial<span class="long"> · From the Clay Community Slack</span></span><a class="join" id="joinBtn" href="https://www.clay.com/slack-community" target="_blank" rel="noopener">Join the community <svg width="11" height="11" viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5h5v5M9.3 2.7 3 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-    <h1>Clay AMA <em>Compendium</em></h1>
+    <h1>Clay <em>AMAs</em></h1>
     <div class="stats" id="stats">Loading…</div>
     <div class="viewrow"><nav class="views" aria-label="Views"><a href="#" data-view="feed" aria-current="page">All answers</a><a href="#topics" data-view="lib">By topic</a></nav></div>
   </header>
@@ -963,7 +963,7 @@ canvas.confetti{position:fixed; inset:0; width:100vw; height:100vh; pointer-even
   </div>
   <section class="catchup" id="catchup" aria-label="Swipe mode"></section>
 
-  <section class="search" aria-label="Search the compendium">
+  <section class="search" aria-label="Search the answers">
     <form id="askForm" role="search">
       <input id="q" type="search" autocomplete="off" placeholder="Search questions, answers or people" aria-label="Search questions, answers or people">
     </form>
@@ -1286,7 +1286,7 @@ async function drawShare(){
   ctx.clearRect(0, 0, W, H); ctx.fillStyle = OAT; ctx.fillRect(0, 0, W, H);
   ctx.textBaseline = "alphabetic"; ctx.textAlign = "left";
   // header
-  ctx.font = `600 24px ${SANS}`; ctx.fillStyle = ink(.55); track(3.4); ctx.fillText("CLAY AMA COMPENDIUM", M, M + 20); track(0);
+  ctx.font = `600 24px ${SANS}`; ctx.fillStyle = ink(.55); track(3.4); ctx.fillText("CLAY AMAS", M, M + 20); track(0);
   // bottom band, laid out upward from the bottom margin
   const main = qa.replies.find(r => r.role === "guest");
   const when = (main ? tsDate(main.ts) : sessDate(s)).toLocaleDateString(undefined, { month: "short", year: "numeric" });
@@ -1776,7 +1776,7 @@ function toolbox(action, btn){
     download("clay-ama-archive.csv", [head, ...rows].map(r => r.map(csvCell).join(",")).join("\n"), btn); return;
   }
   if (action === "md"){
-    let md = `# Clay AMA Compendium: full archive\n\nExported ${fmtDate(new Date())}. ${QAS.length} questions.\n\n`;
+    let md = `# Clay AMAs: full archive\n\nExported ${fmtDate(new Date())}. ${QAS.length} questions.\n\n`;
     for (const qa of QAS){
       md += `## ${qa.title}\n\n**${qa.asker} asked** (${fmtDate(tsDate(qa.qts))}):\n\n> ${qa.question.replace(/\n/g, "\n> ")}\n\n`;
       for (const r of qa.replies) md += `**${r.by}**${r.role === "guest" ? " (Clay guest)" : ""}, ${fmtDate(tsDate(r.ts))}:\n\n${r.text}\n\n`;
@@ -1833,7 +1833,7 @@ function openSignin(expired){
   if (!ON_SITE) return;
   if (caps.editor){ modalBack = null; openModal("Toolbox", editorHTML()); return; }
   modalBack = null;
-  openModal("Editor sign-in", `<p class="note">${expired ? "That link has expired or was already replaced. Request a new one." : "For the people who look after the Compendium. Enter your email and we'll send a sign-in link."}</p>
+  openModal("Editor sign-in", `<p class="note">${expired ? "That link has expired or was already replaced. Request a new one." : "For the people who look after Clay AMAs. Enter your email and we'll send a sign-in link."}</p>
     <form id="signinForm" class="signin"><input id="signinEmail" type="email" autocomplete="email" required placeholder="you@company.com" aria-label="Email address"><button class="btn primary" type="submit">Email me a link</button></form>
     <p class="note" id="signinStatus" role="status"></p>`);
   setTimeout(() => $("#signinEmail")?.focus(), 60);
@@ -2070,7 +2070,7 @@ async function saveMarkdown(){
   track("download_markdown");
   const list = filtered();
   const who = st.asker ? `Questions from ${st.asker}` : st.guest === "all" ? "All speakers" : SESS[st.guest].guest;
-  let md = `# Clay AMA Compendium: ${who}${st.topic ? " · " + st.topic : ""}\n\nExported ${fmtDate(new Date())}. ${list.length} questions. Unofficial archive of the Clay Community AMA channel.\n\n`;
+  let md = `# Clay AMAs: ${who}${st.topic ? " · " + st.topic : ""}\n\nExported ${fmtDate(new Date())}. ${list.length} questions. Unofficial archive of the Clay Community AMA channel.\n\n`;
   for (const qa of list){
     md += `## ${qa.title}\n\n**${qa.asker} asked** (${fmtDate(tsDate(qa.qts))}):\n\n> ${qa.question.replace(/\n/g,"\n> ")}\n\n`;
     for (const r of qa.replies){ md += `**${r.by}**${r.role==="guest"?" (Clay guest)":r.role==="host"?" (Clay community team)":""}, ${fmtDate(tsDate(r.ts))}:\n\n${r.text}\n\n`; }
@@ -2132,7 +2132,7 @@ function libShare(t){
     box.querySelectorAll("input").forEach(i => { i.disabled = !i.checked && on.length >= 5; });
     const picked = qs.filter(q => on.some(i => i.value === q.id)), more = qs.length - picked.length;
     $("#tsText").value = `What Clay's AMA guests have said about ${t}:\n\n` + picked.map(q => `• ${q.title} — ${SESS[q.session].guest}${q.url ? ": " + q.url : ""}`).join("\n")
-      + (more > 0 ? `\n\n${more} more answer${more === 1 ? "" : "s"} on this topic in the Clay AMA Compendium: ${SITE_URL}` : `\n\nMore from Clay's AMAs in the Compendium: ${SITE_URL}`);
+      + (more > 0 ? `\n\n${more} more answer${more === 1 ? "" : "s"} on this topic on Clay AMAs: ${SITE_URL}` : `\n\nMore from Clay's AMAs: ${SITE_URL}`);
   };
   box.addEventListener("change", update); update();
 }
@@ -2425,7 +2425,7 @@ function peekQA(id){
     <div class="mact"><button class="btn small" type="button" data-share="${esc(qa.id)}">${ICON_IMG} Share as image</button><span class="sp"></span>${qa.url ? `<a class="lk" href="${esc(qa.url)}" target="_blank" rel="noopener">Community thread ${ICON_OUT}</a>` : ""}</div>`);
 }
 function keptMarkdown(list){
-  return `# Answers I kept from Clay's AMAs\n\n` + list.map(q => `## ${q.title}\n*${SESS[q.session].guest} · asked by ${q.asker}*\n\n${guestAnswer(q)}\n\n${q.url ? `Thread: ${q.url}\n\n` : ""}`).join("") + `From the Clay AMA Compendium: ${SITE_URL}\n`;
+  return `# Answers I kept from Clay's AMAs\n\n` + list.map(q => `## ${q.title}\n*${SESS[q.session].guest} · asked by ${q.asker}*\n\n${guestAnswer(q)}\n\n${q.url ? `Thread: ${q.url}\n\n` : ""}`).join("") + `From Clay AMAs: ${SITE_URL}\n`;
 }
 function keptFile(btn){ const list = keptList(); track("kept_download", { count: list.length }); if (list.length) download("clay-ama-kept.md", new Blob([keptMarkdown(list)], { type: "text/markdown" }), btn); }
 // One link carries a whole collection: open it on another device, or send it to someone, and it plays as a deck
@@ -2438,11 +2438,11 @@ async function shareCollection(btn){
   try { await navigator.clipboard.writeText(url); btn.textContent = "Link copied"; setTimeout(() => { btn.innerHTML = label; }, 1800); }
   catch { textSheet("Share collection", "Open this link on another device to bring your kept answers with you, or send it to someone.", url); }
 }
-function keptCopy(){ copyList(keptList(), "Answers I kept from Clay's AMAs", "More in the Clay AMA Compendium"); }
+function keptCopy(){ copyList(keptList(), "Answers I kept from Clay's AMAs", "More on Clay AMAs"); }
 function deckCopy(){
   const kept = DECK.kept.map(id => QAS.find(q => q.id === id)).filter(Boolean); if (!kept.length) return;
   const src = DECK.spec.kind === "s" ? DECK.title : DECK.spec.kind === "t" ? `Clay's AMAs on ${DECK.title}` : "Clay's AMAs";
-  copyList(kept, `Answers I kept from ${src}`, `Swipe through ${DECK.spec.kind === "s" ? DECK.title : "them"} yourself in the Clay AMA Compendium`);
+  copyList(kept, `Answers I kept from ${src}`, `Swipe through ${DECK.spec.kind === "s" ? DECK.title : "them"} yourself on Clay AMAs`);
 }
 function copyList(kept, lead, tail){
   if (!kept.length) return;
